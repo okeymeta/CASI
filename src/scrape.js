@@ -1,8 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const winkNLP = require('wink-nlp');
-const model = require('wink-eng-lite-web-model');
-const nlp = winkNLP(model);
+const nlp = require('compromise');
 const sentiment = require('sentiment');
 const { MongoClient } = require('mongodb');
 const zlib = require('zlib');
@@ -13,7 +11,19 @@ const client = new MongoClient(mongoUri);
 const SEARCH_QUERIES = [
     'artificial intelligence',
     'stress management',
-    'public speaking'
+    'public speaking',
+    'yoruba culture',
+    'nigerian tech',
+    'mental health',
+    'education technology',
+    'african history',
+    'sustainable development',
+    'data science',
+    'blockchain',
+    'climate change',
+    'global health',
+    'fintech',
+    'cultural heritage'
 ];
 
 const SEARCH_ENGINES = [
@@ -24,11 +34,24 @@ const SEARCH_ENGINES = [
 const WIKIPEDIA_API = 'https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=';
 
 const RATE_LIMIT_MS = 5000;
-const MAX_RETRIES = 3;
-const MAX_RESULTS_PER_QUERY = 3;
+const MAX_RETRIES = 5;
+const MAX_RESULTS_PER_QUERY = 5;
 
 async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function dropIndexIfExists(collection, indexName) {
+    try {
+        await collection.dropIndex(indexName);
+        console.log(`Dropped ${indexName} index`);
+    } catch (error) {
+        if (error.codeName === 'IndexNotFound') {
+            console.log(`${indexName} index not found, proceeding`);
+        } else {
+            console.warn(`Failed to drop ${indexName} index: ${error.message}`);
+        }
+    }
 }
 
 async function fetchWithRetry(url, retries = MAX_RETRIES) {
@@ -47,46 +70,58 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
             await delay(1000 * (MAX_RETRIES - retries + 1));
             return fetchWithRetry(url, retries - 1);
         }
-        throw new Error(`Failed to fetch ${url}: ${error.message}`);
+        console.error(`Failed to fetch ${url}: ${error.message}`);
+        return null;
     }
 }
 
 function preprocessContent(content) {
-    // Remove special characters, dashes, ellipses, and normalize contractions
     return content
-        .replace(/[\u2013\u2014]/g, '-') // Replace en/em dashes with hyphen
-        .replace(/\.\.\./g, '') // Remove ellipses
-        .replace(/’/g, "'") // Normalize apostrophes
-        .replace(/[^\w\s.,!?']/g, '') // Remove non-alphanumeric except basic punctuation
+        .replace(/039/g, "'")
+        .replace(/[\u2013\u2014]/g, '-')
+        .replace(/’/g, "'")
+        .replace(/[^\w\s.,!?']/g, '')
+        .replace(/\.\.+/g, '.')
         .trim();
+}
+
+function extractEntities(content) {
+    try {
+        const doc = nlp(content);
+        const entities = [];
+        doc.people().forEach(p => entities.push({ value: p.text(), type: 'person' }));
+        doc.places().forEach(p => entities.push({ value: p.text(), type: 'place' }));
+        doc.organizations().forEach(o => entities.push({ value: o.text(), type: 'organization' }));
+        doc.topics().forEach(t => entities.push({ value: t.text(), type: 'topic' }));
+        return entities;
+    } catch (error) {
+        console.warn(`Entity extraction failed for content: ${content.slice(0, 50)}...`, error.message);
+        return [];
+    }
 }
 
 async function scrapeWikipedia(query, prompt) {
     try {
         const url = `${WIKIPEDIA_API}${encodeURIComponent(query)}`;
         const data = await fetchWithRetry(url);
-        const results = data.query?.search || [];
+        if (!data) return [];
 
+        await client.connect();
+        const db = client.db('CASIDB');
+        const patterns = db.collection('patterns');
+
+        const results = data.query?.search || [];
         const scrapeResults = [];
         for (const result of results.slice(0, MAX_RESULTS_PER_QUERY)) {
             let content = result.snippet.replace(/<\/?[^>]+(>|$)/g, '') || 'No content available';
-            if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 10) {
+            if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 5) {
                 console.warn(`Invalid content for Wikipedia article: ${result.title}, content: ${content}`);
                 continue;
             }
 
             content = preprocessContent(content);
             const compressedContent = zlib.gzipSync(content).toString('base64');
-            const doc = nlp.readDoc(content);
-            let entities = [];
-            try {
-                const entityData = doc.entities();
-                if (entityData && typeof entityData.out === 'function') {
-                    entities = entityData.out(winkNLP.its.detail) || [];
-                }
-            } catch (error) {
-                console.warn(`Entity extraction failed for Wikipedia article: ${result.title}, content: ${content}`, error.message);
-            }
+            const entities = extractEntities(content);
 
             let sentimentScore = 0;
             try {
@@ -96,32 +131,37 @@ async function scrapeWikipedia(query, prompt) {
                 console.warn(`Sentiment analysis failed for Wikipedia article: ${result.title}, content: ${content}`, error.message);
             }
 
-            await client.connect();
-            const db = client.db('CASIDB');
-            const patterns = db.collection('patterns');
+            try {
+                const nodesAdded = await patterns.insertOne({
+                    url: `https://en.wikipedia.org/wiki/${encodeURIComponent(result.title)}`,
+                    prompt,
+                    entities,
+                    sentiment: sentimentScore,
+                    content: compressedContent,
+                    concept: query,
+                    source: 'Wikipedia',
+                    title: result.title,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
+                });
 
-            const nodesAdded = await patterns.insertOne({
-                url: `https://en.wikipedia.org/wiki/${encodeURIComponent(result.title)}`,
-                prompt,
-                entities,
-                sentiment: sentimentScore,
-                content: compressedContent,
-                concept: `${query}:${result.title}`, // Unique concept
-                source: 'Wikipedia',
-                title: result.title,
-                updatedAt: new Date(),
-                confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
-            });
-
-            console.log(`Learned from Wikipedia: ${result.title}, nodes added: ${nodesAdded.insertedId}`);
-            scrapeResults.push({
-                status: 'learned',
-                nodesAdded: 1,
-                confidence: Math.min(0.95 + sentimentScore / 100, 0.98),
-                source: 'Wikipedia',
-                title: result.title,
-                url: `https://en.wikipedia.org/wiki/${encodeURIComponent(result.title)}`
-            });
+                console.log(`Learned from Wikipedia: ${result.title}, nodes added: ${nodesAdded.insertedId}`);
+                scrapeResults.push({
+                    status: 'learned',
+                    nodesAdded: 1,
+                    confidence: Math.min(0.95 + sentimentScore / 100, 0.98),
+                    source: 'Wikipedia',
+                    title: result.title,
+                    url: `https://en.wikipedia.org/wiki/${encodeURIComponent(result.title)}`
+                });
+            } catch (error) {
+                if (error.code === 11000) {
+                    console.warn(`Duplicate entry for Wikipedia: ${result.title}, concept: ${query}, continuing`);
+                    continue;
+                }
+                console.error(`Failed to insert Wikipedia result: ${result.title}`, error.message);
+            }
         }
 
         await delay(RATE_LIMIT_MS);
@@ -136,8 +176,13 @@ async function scrapeSearchResults(query, prompt, engine) {
     try {
         const searchUrl = `${engine.url}${encodeURIComponent(query)}`;
         const html = await fetchWithRetry(searchUrl);
-        const $ = cheerio.load(html);
+        if (!html) return [];
 
+        await client.connect();
+        const db = client.db('CASIDB');
+        const patterns = db.collection('patterns');
+
+        const $ = cheerio.load(html);
         const results = [];
         $(engine.selector).each((i, element) => {
             if (i < MAX_RESULTS_PER_QUERY) {
@@ -154,23 +199,14 @@ async function scrapeSearchResults(query, prompt, engine) {
         const scrapeResults = [];
         for (const { title, snippet, link } of results) {
             let content = snippet || 'No content available';
-            if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 10) {
+            if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 5) {
                 console.warn(`Invalid content for ${engine.name} result: ${title}, content: ${content}`);
                 continue;
             }
 
             content = preprocessContent(content);
             const compressedContent = zlib.gzipSync(content).toString('base64');
-            const doc = nlp.readDoc(content);
-            let entities = [];
-            try {
-                const entityData = doc.entities();
-                if (entityData && typeof entityData.out === 'function') {
-                    entities = entityData.out(winkNLP.its.detail) || [];
-                }
-            } catch (error) {
-                console.warn(`Entity extraction failed for ${engine.name} result: ${title}, content: ${content}`, error.message);
-            }
+            const entities = extractEntities(content);
 
             let sentimentScore = 0;
             try {
@@ -180,32 +216,37 @@ async function scrapeSearchResults(query, prompt, engine) {
                 console.warn(`Sentiment analysis failed for ${engine.name} result: ${title}, content: ${content}`, error.message);
             }
 
-            await client.connect();
-            const db = client.db('CASIDB');
-            const patterns = db.collection('patterns');
+            try {
+                const nodesAdded = await patterns.insertOne({
+                    url: link,
+                    prompt,
+                    entities,
+                    sentiment: sentimentScore,
+                    content: compressedContent,
+                    concept: query,
+                    source: engine.name,
+                    title,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
+                });
 
-            const nodesAdded = await patterns.insertOne({
-                url: link,
-                prompt,
-                entities,
-                sentiment: sentimentScore,
-                content: compressedContent,
-                concept: `${query}:${title}`, // Unique concept
-                source: engine.name,
-                title,
-                updatedAt: new Date(),
-                confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
-            });
-
-            console.log(`Learned from ${engine.name}: ${title}, nodes added: ${nodesAdded.insertedId}`);
-            scrapeResults.push({
-                status: 'learned',
-                nodesAdded: 1,
-                confidence: Math.min(0.95 + sentimentScore / 100, 0.98),
-                source: engine.name,
-                title,
-                url: link
-            });
+                console.log(`Learned from ${engine.name}: ${title}, nodes added: ${nodesAdded.insertedId}`);
+                scrapeResults.push({
+                    status: 'learned',
+                    nodesAdded: 1,
+                    confidence: Math.min(0.95 + sentimentScore / 100, 0.98),
+                    source: engine.name,
+                    title,
+                    url: link
+                });
+            } catch (error) {
+                if (error.code === 11000) {
+                    console.warn(`Duplicate entry for ${engine.name}: ${title}, concept: ${query}, continuing`);
+                    continue;
+                }
+                console.error(`Failed to insert ${engine.name} result: ${title}`, error.message);
+            }
         }
 
         await delay(RATE_LIMIT_MS);
@@ -216,23 +257,35 @@ async function scrapeSearchResults(query, prompt, engine) {
     }
 }
 
-async function scrapeAll(prompt = 'Learn about AI, stress management, and public speaking') {
-    const results = [];
-    for (const query of SEARCH_QUERIES) {
-        console.log(`[ScrapeAll] Processing query: ${query}`);
-        // Scrape Wikipedia
-        const wikiResults = await scrapeWikipedia(query, prompt);
-        results.push(...wikiResults);
+async function scrapeAll(prompt = 'Learn about diverse topics including AI, culture, tech, health, and more') {
+    try {
+        await client.connect();
+        const db = client.db('CASIDB');
+        const patterns = db.collection('patterns');
+        await dropIndexIfExists(patterns, 'concept_1');
 
-        // Scrape Google and Bing
-        const searchPromises = SEARCH_ENGINES.map(engine => scrapeSearchResults(query, prompt, engine));
-        const searchResults = await Promise.all(searchPromises);
-        searchResults.forEach(engineResults => results.push(...engineResults));
+        const results = [];
+        for (const query of SEARCH_QUERIES) {
+            console.log(`[ScrapeAll] Processing query: ${query}`);
+            // Scrape Wikipedia
+            const wikiResults = await scrapeWikipedia(query, prompt);
+            results.push(...wikiResults);
 
-        await delay(RATE_LIMIT_MS);
+            // Scrape Google and Bing
+            const searchPromises = SEARCH_ENGINES.map(engine => scrapeSearchResults(query, prompt, engine));
+            const searchResults = await Promise.all(searchPromises);
+            searchResults.forEach(engineResults => results.push(...engineResults));
+
+            await delay(RATE_LIMIT_MS);
+        }
+        console.log(`[ScrapeAll] Completed, total results: ${results.length}`);
+        return results;
+    } catch (error) {
+        console.error(`[ScrapeAll] Failed: ${error.message}`);
+        return [];
+    } finally {
+        await client.close();
     }
-    console.log(`[ScrapeAll] Completed, total results: ${results.length}`);
-    return results;
 }
 
 module.exports = {

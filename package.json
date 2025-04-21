@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "cheerio": "^1.0.0",
+    "compromise": "^14.13.0",
     "crypto": "^1.0.1",
     "graphlib": "^2.1.8",
     "handlebars": "^4.7.8",
@@ -24,11 +25,11 @@
     "natural": "^6.12.0",
     "sentiment": "^5.0.2",
     "sharp": "^0.33.2",
-    "wink-eng-lite-web-model": "^1.8.1",
-    "wink-nlp": "^2.3.2"
+    "typo-js": "^1.2.4",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.25.2",
     "nodemon": "^3.1.9"
   },
   "author": "OkeyMeta Community",
