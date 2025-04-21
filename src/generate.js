@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const axios = require('axios');
 const lodash = require('lodash');
 const { MongoClient } = require('mongodb');
+const zlib = require('zlib');
 
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/CASIDB?retryWrites=true&w=majority';
 const client = new MongoClient(mongoUri);
@@ -29,22 +30,30 @@ async function googleVerify(text) {
     }
 }
 
+function preprocessPrompt(prompt) {
+    // Normalize contractions and special characters
+    return prompt
+        .replace(/’/g, "'") // Normalize apostrophes
+        .replace(/[^\w\s.,!?']/g, '') // Remove non-alphanumeric except basic punctuation
+        .trim();
+}
+
 async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, breadth = 5, maxWords = 100, mood = 'neutral' }) {
     try {
         // Strict prompt validation
-        if (!prompt || typeof prompt !== 'string' || prompt.trim().length < 3) {
+        if (!prompt || typeof prompt !== 'string' || prompt.trim().length < 1) {
             console.error('[Generate] Invalid prompt:', prompt);
-            throw new Error('Prompt must be a non-empty string with at least 3 characters');
+            throw new Error('Prompt must be a non-empty string');
         }
 
-        const cleanedPrompt = prompt.trim();
+        const cleanedPrompt = preprocessPrompt(prompt.trim());
         console.log(`[Generate] Processing prompt: ${cleanedPrompt}`);
 
         await client.connect();
         const db = client.db('CASIDB');
         const patterns = db.collection('patterns');
 
-        const doc = nlp.readDoc(cleanedPrompt);
+        const doc = nlp.readDoc(cleanedPrompt || ' ');
         let promptEntities = [];
         try {
             const entities = doc.entities();
@@ -66,21 +75,23 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             console.warn('[Generate] Sentiment analysis failed for prompt:', cleanedPrompt, error.message);
         }
 
+        // Broaden search for related patterns
         const relatedPatterns = await patterns.find({
             $or: [
-                { concept: { $regex: lodash.escapeRegExp(cleanedPrompt), $options: 'i' } },
+                { concept: { $regex: cleanedPrompt.split(':')[0] || lodash.escapeRegExp(cleanedPrompt), $options: 'i' } },
                 { entities: { $elemMatch: { value: { $in: promptEntities.map(e => e.value) } } } },
+                { concept: { $in: ['greeting', 'nervousness', 'artificial intelligence'] } }
             ],
         }).sort({ confidence: -1 }).limit(breadth).toArray();
         console.log(`[Generate] Found ${relatedPatterns.length} related patterns`);
 
         let synthesizedText = '';
+        const classifier = new natural.BayesClassifier();
         if (relatedPatterns.length > 0) {
-            const classifier = new natural.BayesClassifier();
             relatedPatterns.forEach(pattern => {
                 try {
                     const text = zlib.gunzipSync(Buffer.from(pattern.content, 'base64')).toString();
-                    classifier.addDocument(text, pattern.concept);
+                    classifier.addDocument(text, pattern.concept.split(':')[0] || pattern.concept);
                 } catch (error) {
                     console.warn('[Generate] Failed to decompress pattern content for ID:', pattern._id, error.message);
                 }
@@ -91,9 +102,34 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             synthesizedText = concepts.map(c => c.label).join(' ');
             const doc = nlp.readDoc(synthesizedText);
             synthesizedText = doc.sentences().out().slice(0, maxWords).join(' ');
-        } else {
-            console.warn('[Generate] No related patterns found, using fallback response');
-            synthesizedText = `Feeling nervous is normal. Practice your speech, use deep breathing (inhale 4s, exhale 4s), and visualize success.`;
+        }
+
+        // Synthesize response if no patterns or insufficient text
+        if (!synthesizedText || synthesizedText.length < 10) {
+            console.log('[Generate] Synthesizing response from classifier or seed patterns');
+            const classifier = new natural.BayesClassifier();
+            relatedPatterns.forEach(pattern => {
+                try {
+                    const text = zlib.gunzipSync(Buffer.from(pattern.content, 'base64')).toString();
+                    classifier.addDocument(text, pattern.concept.split(':')[0] || pattern.concept);
+                } catch (error) {
+                    console.warn('[Generate] Failed to decompress pattern content for ID:', pattern._id, error.message);
+                }
+            });
+
+            // Add fallback training data if no patterns
+            if (relatedPatterns.length === 0) {
+                classifier.addDocument('Hello, I’m CASI, here to help!', 'greeting');
+                classifier.addDocument('Hi! Let’s dive into your question or chat.', 'greeting');
+                classifier.addDocument('Nervousness is normal; try practicing or breathing exercises.', 'nervousness');
+                classifier.addDocument('AI is about machines learning and solving problems.', 'artificial intelligence');
+            }
+
+            classifier.train();
+            const concepts = classifier.getClassifications(cleanedPrompt).slice(0, depth);
+            synthesizedText = concepts.map(c => c.label).join(' ');
+            const doc = nlp.readDoc(synthesizedText);
+            synthesizedText = doc.sentences().out().slice(0, maxWords).join(' ') || 'I’m here to help! Please share more details or ask something specific.';
         }
 
         const template = handlebars.compile(RESPONSE_TEMPLATE);

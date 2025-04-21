@@ -51,6 +51,16 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
     }
 }
 
+function preprocessContent(content) {
+    // Remove special characters, dashes, ellipses, and normalize contractions
+    return content
+        .replace(/[\u2013\u2014]/g, '-') // Replace en/em dashes with hyphen
+        .replace(/\.\.\./g, '') // Remove ellipses
+        .replace(/’/g, "'") // Normalize apostrophes
+        .replace(/[^\w\s.,!?']/g, '') // Remove non-alphanumeric except basic punctuation
+        .trim();
+}
+
 async function scrapeWikipedia(query, prompt) {
     try {
         const url = `${WIKIPEDIA_API}${encodeURIComponent(query)}`;
@@ -59,12 +69,13 @@ async function scrapeWikipedia(query, prompt) {
 
         const scrapeResults = [];
         for (const result of results.slice(0, MAX_RESULTS_PER_QUERY)) {
-            const content = result.snippet.replace(/<\/?[^>]+(>|$)/g, '') || 'No content available';
+            let content = result.snippet.replace(/<\/?[^>]+(>|$)/g, '') || 'No content available';
             if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 10) {
                 console.warn(`Invalid content for Wikipedia article: ${result.title}, content: ${content}`);
                 continue;
             }
 
+            content = preprocessContent(content);
             const compressedContent = zlib.gzipSync(content).toString('base64');
             const doc = nlp.readDoc(content);
             let entities = [];
@@ -95,7 +106,9 @@ async function scrapeWikipedia(query, prompt) {
                 entities,
                 sentiment: sentimentScore,
                 content: compressedContent,
-                concept: prompt,
+                concept: `${query}:${result.title}`, // Unique concept
+                source: 'Wikipedia',
+                title: result.title,
                 updatedAt: new Date(),
                 confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
             });
@@ -140,12 +153,13 @@ async function scrapeSearchResults(query, prompt, engine) {
 
         const scrapeResults = [];
         for (const { title, snippet, link } of results) {
-            const content = snippet || 'No content available';
+            let content = snippet || 'No content available';
             if (content === 'No content available' || typeof content !== 'string' || content.trim().length < 10) {
                 console.warn(`Invalid content for ${engine.name} result: ${title}, content: ${content}`);
                 continue;
             }
 
+            content = preprocessContent(content);
             const compressedContent = zlib.gzipSync(content).toString('base64');
             const doc = nlp.readDoc(content);
             let entities = [];
@@ -176,7 +190,9 @@ async function scrapeSearchResults(query, prompt, engine) {
                 entities,
                 sentiment: sentimentScore,
                 content: compressedContent,
-                concept: prompt,
+                concept: `${query}:${title}`, // Unique concept
+                source: engine.name,
+                title,
                 updatedAt: new Date(),
                 confidence: Math.min(0.95 + sentimentScore / 100, 0.98)
             });
