@@ -6,11 +6,9 @@ const WebScraper = require('../scrape');
 const Generator = require('../generate');
 const lattice = require('../lattice');
 
-// MongoDB Connection
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const client = new MongoClient(mongoUri, { maxPoolSize: 10, retryWrites: true });
 
-// Response Cache
 const responseCache = new Map();
 const cacheResponse = (key, data, duration) => {
     responseCache.set(key, { data, timestamp: Date.now() + duration });
@@ -23,7 +21,6 @@ const getCachedResponse = (key) => {
     return null;
 };
 
-// HTTP Server
 const server = http.createServer(async (req, res) => {
     const { pathname } = parse(req.url, true);
     let body = '';
@@ -39,6 +36,10 @@ const server = http.createServer(async (req, res) => {
                 const url = validateUrl(data.url);
                 const prompt = validatePrompt(data.prompt);
                 response = await WebScraper.scrapeAndLearn(url, prompt);
+            } else if (req.method === 'POST' && pathname === '/api/scrape-all') {
+                const data = JSON.parse(body || '{}');
+                const prompt = validatePrompt(data.prompt || 'Learn about diverse topics');
+                response = await WebScraper.scrapeAll(prompt);
             } else if (req.method === 'POST' && pathname === '/api/generate') {
                 const data = JSON.parse(body || '{}');
                 const prompt = validatePrompt(data.prompt);
@@ -96,14 +97,18 @@ const server = http.createServer(async (req, res) => {
     });
 });
 
-// Initialize and Start Server
 const init = async () => {
     try {
         console.log('Connecting to MongoDB...');
         await client.connect();
         console.log('MongoDB connected');
+        if (typeof lattice.init !== 'function') {
+            throw new Error('lattice.init is not a function. Check src/lattice.js');
+        }
         await lattice.init();
         console.log('Lattice initialized');
+        await WebScraper.scrapeAll('Learn about diverse topics');
+        console.log('Initial scraping completed');
         server.listen(3000, () => {
             console.log('CASI server started on http://localhost:3000');
         });
