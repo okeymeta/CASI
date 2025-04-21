@@ -1,6 +1,6 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
-const { scrapeAll } = require('../scrape');
+const { scrapeAll, scrapeOnDemand } = require('../scrape');
 const { generateResponse } = require('../generate');
 const { init: initLattice } = require('../lattice');
 const winston = require('winston');
@@ -69,9 +69,71 @@ app.post('/api/scrape-all', async (req, res) => {
 
 app.post('/api/generate', async (req, res) => {
     try {
-        const { prompt, diversityFactor, depth, breadth, maxWords, mood } = req.body;
-        const response = await generateResponse({ prompt, diversityFactor, depth, breadth, maxWords, mood });
-        logger.info(`Generated response for prompt: ${prompt}, outputId: ${response.outputId}`);
+        const { prompt, diversityFactor = 0.5, depth = 10, breadth = 5, maxWords = 100, mood = 'neutral' } = req.body;
+
+        if (!prompt) {
+            res.status(400).json({ error: 'Prompt is required' });
+            return;
+        }
+
+        // Ensure patterns collection is available
+        const patterns = app.locals.patterns;
+        if (!patterns) {
+            throw new Error('Patterns collection not initialized');
+        }
+
+        // Query existing patterns
+        const query = prompt.toLowerCase().split(' ').join(' ');
+        const existingPatterns = await patterns.find({
+            concept: { $regex: query, $options: 'i' },
+            confidence: { $gte: 0.95 }
+        }).sort({ updatedAt: -1 }).limit(depth).toArray();
+
+        let response;
+        if (existingPatterns.length > 0) {
+            // Generate response with existing patterns
+            response = await generateResponse({
+                prompt,
+                diversityFactor,
+                depth,
+                breadth,
+                maxWords,
+                mood,
+                patterns: existingPatterns
+            });
+            logger.info(`Generated response with existing patterns for prompt: ${prompt}, outputId: ${response.outputId}`);
+        } else {
+            // No patterns found, trigger on-demand scraping
+            logger.info(`No patterns found for "${prompt}", triggering on-demand scrape`);
+            await scrapeOnDemand(query, prompt, patterns);
+
+            // Re-query after scraping
+            const newPatterns = await patterns.find({
+                concept: { $regex: query, $options: 'i' },
+                confidence: { $gte: 0.95 }
+            }).sort({ updatedAt: -1 }).limit(depth).toArray();
+
+            if (newPatterns.length > 0) {
+                response = await generateResponse({
+                    prompt,
+                    diversityFactor,
+                    depth,
+                    breadth,
+                    maxWords,
+                    mood,
+                    patterns: newPatterns
+                });
+                logger.info(`Generated response with new patterns for prompt: ${prompt}, outputId: ${response.outputId}`);
+            } else {
+                response = {
+                    text: 'Sorry, I couldn’t find enough info. Try again later!',
+                    confidence: 0.95,
+                    outputId: Date.now().toString()
+                };
+                logger.warn(`No patterns found after on-demand scraping for prompt: ${prompt}`);
+            }
+        }
+
         res.json(response);
     } catch (error) {
         logger.error(`Generate error for prompt: ${prompt}: ${error.message}`);

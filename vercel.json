@@ -1,12 +1,19 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "src/api/index.js", "use": "@vercel/node" }
-    ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "src/api/index.js" }
+        { "src": "/api/scrape-all", "methods": ["POST"], "dest": "src/api/index.js" },
+        { "src": "/api/generate", "methods": ["POST"], "dest": "src/api/index.js" },
+        { "src": "/.*", "dest": "src/api/index.js" }
     ],
-    "env": {
-      "PORT": "3000"
-    }
-  }
+    "functions": {
+        "src/api/index.js": {
+            "memory": 1024,
+            "maxDuration": 10
+        }
+    },
+    "crons": [
+        {
+            "schedule": "0 0 * * *",
+            "path": "/api/scrape-all"
+        }
+    ]
+}
