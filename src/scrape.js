@@ -106,7 +106,90 @@ const SEARCH_QUERIES = [
     'self-improvement',
     'productivity hacks',
     'fashion trends',
-    'sustainable fashion'
+    'sustainable fashion',
+    'how are you',
+    'tell me a joke',
+    'what is your name',
+    'what can you do',
+    'explain quantum computing simply',
+    'how to be happy',
+    'how to make friends',
+    'how to solve a conflict',
+    'how to learn fast',
+    'how to be productive',
+    'how to deal with stress',
+    'how to chat like a human',
+    'what is love',
+    'what is friendship',
+    'how to motivate myself',
+    'how to overcome failure',
+    'how to start a conversation',
+    'how to apologize',
+    'how to give advice',
+    'how to help someone',
+    'how to be creative',
+    'how to think critically',
+    'how to explain AI to a child',
+    'how to explain blockchain to a beginner',
+    'how to explain quantum computing to a layman',
+    'how to explain machine learning simply',
+    'how to explain data science simply',
+    'how to explain empathy',
+    'how to explain humor',
+    'how to explain sadness',
+    'how to explain happiness',
+    'how to explain curiosity',
+    'how to explain intelligence',
+    'how to explain consciousness',
+    'how to explain ethics',
+    'how to explain logic',
+    'how to explain reasoning',
+    'how to explain creativity',
+    'how to explain problem solving',
+    'how to explain learning',
+    'how to explain memory',
+    'how to explain perception',
+    'how to explain language',
+    'how to explain communication',
+    'how to explain understanding',
+    'how to explain knowledge',
+    'how to explain wisdom',
+    'how to explain decision making',
+    'how to explain planning',
+    'how to explain goal setting',
+    'how to explain self-improvement',
+    'how to explain self-awareness',
+    'how to explain emotional intelligence',
+    'how to explain artificial general intelligence',
+    'how to explain AGI',
+    'how to explain SLM',
+    'how to explain LLM',
+    'how to explain neural networks',
+    'how to explain deep learning',
+    'how to explain reinforcement learning',
+    'how to explain supervised learning',
+    'how to explain unsupervised learning',
+    'how to explain transfer learning',
+    'how to explain natural language processing',
+    'how to explain computer vision',
+    'how to explain robotics',
+    'how to explain automation',
+    'how to explain digital transformation',
+    'how to explain the future of AI',
+    'how to explain the risks of AI',
+    'how to explain the benefits of AI',
+    'how to explain the limitations of AI',
+    'how to explain the ethics of AI',
+    'how to explain the impact of AI on society',
+    'how to explain the impact of AI on jobs',
+    'how to explain the impact of AI on education',
+    'how to explain the impact of AI on healthcare',
+    'how to explain the impact of AI on business',
+    'how to explain the impact of AI on creativity',
+    'how to explain the impact of AI on communication',
+    'how to explain the impact of AI on relationships',
+    'how to explain the impact of AI on culture',
+    'how to explain the impact of AI on the world'
 ];
 
 const SEARCH_ENGINES = [
@@ -647,6 +730,53 @@ async function scrapeSearchResults(query, prompt, engine, patterns, maxResults =
     }
 }
 
+async function scrapeOkeyMetaAI(query, prompt, patterns) {
+    try {
+        const apiUrl = `https://api.okeymeta.com.ng/api/ssailm/model/okeyai3.0-vanguard/okeyai?input=${encodeURIComponent(query)}`;
+        const response = await axios.get(apiUrl, { timeout: 10000 });
+        if (!response.data || typeof response.data !== 'string' || response.data.trim().length < 5) {
+            return [];
+        }
+        const content = response.data.trim();
+        const compressedContent = zlib.gzipSync(content).toString('base64');
+        const entities = []; // Optionally extract entities if needed
+
+        let sentimentScore = 0;
+        try {
+            const sentimentResult = sentiment(content);
+            sentimentScore = sentimentResult && typeof sentimentResult.score === 'number' ? sentimentResult.score : 0;
+        } catch {}
+
+        try {
+            const nodesAdded = await patterns.insertOne({
+                url: apiUrl,
+                prompt,
+                entities,
+                sentiment: sentimentScore,
+                content: compressedContent,
+                concept: query,
+                source: 'OkeyMetaAI',
+                title: `OkeyMetaAI: ${query}`,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                confidence: Math.min(0.97 + sentimentScore / 100, 0.99)
+            });
+            return [{
+                status: 'learned',
+                nodesAdded: 1,
+                confidence: Math.min(0.97 + sentimentScore / 100, 0.99),
+                source: 'OkeyMetaAI',
+                title: `OkeyMetaAI: ${query}`,
+                url: apiUrl
+            }];
+        } catch (error) {
+            return [];
+        }
+    } catch (error) {
+        return [];
+    }
+}
+
 async function scrapeOnDemand(query, prompt, patterns) {
     try {
         logger.info(`On-demand scraping for new query: ${query}`);
@@ -668,6 +798,10 @@ async function scrapeOnDemand(query, prompt, patterns) {
         // Scrape Google Top Results
         const topResults = await scrapeGoogleTopResults(query, prompt, patterns, ON_DEMAND_MAX_RESULTS);
         results.push(...topResults);
+
+        // Scrape from OkeyMeta AI API for conversational data
+        const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
+        results.push(...aiResults);
 
         logger.info(`On-demand scraping completed for "${query}", added ${results.length} results`);
         return results;
@@ -719,6 +853,10 @@ async function scrapeAll(prompt = 'Learn about diverse topics including AI, cult
                 const timeResults = await scrapeTimeAndDate(query, prompt, patterns);
                 results.push(...timeResults);
             }
+
+            // Scrape from OkeyMeta AI API for conversational data
+            const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
+            results.push(...aiResults);
 
             await delay(RATE_LIMIT_MS);
         }

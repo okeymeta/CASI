@@ -1,7 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const { scrapeAll, scrapeOnDemand } = require('../scrape');
-const { generateResponse } = require('../generate');
+const { generateResponse, loadPatternsAndTrainModels } = require('../generate');
 const { init: initLattice } = require('../lattice');
 const winston = require('winston');
 
@@ -36,11 +36,16 @@ async function init() {
             app.locals.patterns = db.collection('patterns');
         }
 
+        // Load ML models at startup
+        await loadPatternsAndTrainModels();
+
         // Schedule periodic scraping (every 6 hours)
         setInterval(async () => {
             try {
                 const results = await scrapeAll('Learn about diverse topics including AI, culture, tech, health, and more');
                 logger.info(`Periodic scraping completed, added ${results.length} results`);
+                // Retrain models after new data
+                await loadPatternsAndTrainModels();
             } catch (error) {
                 logger.error('Periodic scraping failed:', error.message);
             }
@@ -49,6 +54,8 @@ async function init() {
         // Initial scrape
         const initialResults = await scrapeAll('Learn about diverse topics including AI, culture, tech, health, and more');
         logger.info(`Initial scraping completed, added ${initialResults.length} results`);
+        // Retrain models after initial scrape
+        await loadPatternsAndTrainModels();
     } catch (error) {
         logger.error('Initialization error:', error);
         throw error;
@@ -60,6 +67,8 @@ app.post('/api/scrape-all', async (req, res) => {
         const { prompt } = req.body;
         const results = await scrapeAll(prompt);
         logger.info(`Manual scrape-all completed, added ${results.length} results`);
+        // Retrain models after new data
+        await loadPatternsAndTrainModels();
         res.json(results);
     } catch (error) {
         logger.error('Scrape-all error:', error.message);
