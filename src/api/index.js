@@ -1,7 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const { scrapeAll, scrapeOnDemand } = require('../scrape');
-const { generateResponse, loadPatternsAndTrainModels } = require('../generate');
+const { generateResponse, loadPatternsAndTrainModels, initializeModels } = require('../generate');
 const { init: initLattice } = require('../lattice');
 const winston = require('winston');
 
@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/CASIDB?retryWrites=true&w=majority';
 const client = new MongoClient(mongoUri);
 
-// Logger setup
 const logger = winston.createLogger({
     transports: [
         new winston.transports.File({ filename: 'error.log' }),
@@ -31,30 +30,39 @@ async function init() {
             const { patterns } = await initLattice();
             app.locals.patterns = patterns;
         } catch (error) {
-            logger.warn('Lattice initialization failed, proceeding without lattice:', error.message);
+            logger.warn('Lattice initialization failed, using MongoDB patterns:', error.message);
             const db = client.db('CASIDB');
             app.locals.patterns = db.collection('patterns');
         }
 
-        // Load ML models at startup
-        await loadPatternsAndTrainModels();
+        try {
+            await initializeModels();
+            console.log('ML models loaded');
+        } catch (error) {
+            logger.error('Failed to load ML models:', error.message);
+            console.warn('Proceeding with limited functionality; transformer-based features disabled');
+        }
 
-        // Schedule periodic scraping (every 6 hours)
+        try {
+            await loadPatternsAndTrainModels();
+            console.log('Patterns and models loaded');
+        } catch (error) {
+            logger.error('Failed to load patterns and models:', error.message);
+            console.warn('Proceeding with basic NLP functionality');
+        }
+
         setInterval(async () => {
             try {
                 const results = await scrapeAll('Learn about diverse topics including AI, culture, tech, health, and more');
                 logger.info(`Periodic scraping completed, added ${results.length} results`);
-                // Retrain models after new data
                 await loadPatternsAndTrainModels();
             } catch (error) {
                 logger.error('Periodic scraping failed:', error.message);
             }
         }, 6 * 60 * 60 * 1000);
 
-        // Initial scrape
-        const initialResults = await scrapeAll('Learn about diverse topics including AI, culture, tech, health, and more');
-        logger.info(`Initial scraping completed, added ${initialResults.length} results`);
-        // Retrain models after initial scrape
+        const results = await scrapeAll('Learn about diverse topics including AI, culture, tech, health, and more');
+        logger.info(`Initial scraping completed, added ${results.length} results`);
         await loadPatternsAndTrainModels();
     } catch (error) {
         logger.error('Initialization error:', error);
@@ -65,9 +73,11 @@ async function init() {
 app.post('/api/scrape-all', async (req, res) => {
     try {
         const { prompt } = req.body;
+        if (!prompt) {
+            return res.status(400).json({ error: 'Prompt is required' });
+        }
         const results = await scrapeAll(prompt);
         logger.info(`Manual scrape-all completed, added ${results.length} results`);
-        // Retrain models after new data
         await loadPatternsAndTrainModels();
         res.json(results);
     } catch (error) {
@@ -78,20 +88,17 @@ app.post('/api/scrape-all', async (req, res) => {
 
 app.post('/api/generate', async (req, res) => {
     try {
-        const { prompt, diversityFactor = 0.5, depth = 10, breadth = 5, maxWords = 100, mood = 'neutral' } = req.body;
+        const { prompt, diversityFactor = 0.7, depth = 8, breadth = 6, maxWords = 300, mood = 'neutral' } = req.body;
 
         if (!prompt) {
-            res.status(400).json({ error: 'Prompt is required' });
-            return;
+            return res.status(400).json({ error: 'Prompt is required' });
         }
 
-        // Ensure patterns collection is available
         const patterns = app.locals.patterns;
         if (!patterns) {
             throw new Error('Patterns collection not initialized');
         }
 
-        // Query existing patterns
         const query = prompt.toLowerCase().split(' ').join(' ');
         const existingPatterns = await patterns.find({
             concept: { $regex: query, $options: 'i' },
@@ -100,7 +107,6 @@ app.post('/api/generate', async (req, res) => {
 
         let response;
         if (existingPatterns.length > 0) {
-            // Generate response with existing patterns
             response = await generateResponse({
                 prompt,
                 diversityFactor,
@@ -112,11 +118,9 @@ app.post('/api/generate', async (req, res) => {
             });
             logger.info(`Generated response with existing patterns for prompt: ${prompt}, outputId: ${response.outputId}`);
         } else {
-            // No patterns found, trigger on-demand scraping
             logger.info(`No patterns found for "${prompt}", triggering on-demand scrape`);
             await scrapeOnDemand(query, prompt, patterns);
 
-            // Re-query after scraping
             const newPatterns = await patterns.find({
                 concept: { $regex: query, $options: 'i' },
                 confidence: { $gte: 0.95 }
@@ -137,7 +141,7 @@ app.post('/api/generate', async (req, res) => {
                 response = {
                     text: 'Sorry, I couldn’t find enough info. Try again later!',
                     confidence: 0.95,
-                    outputId: Date.now().toString()
+                    outputId: crypto.randomBytes(12).toString('hex')
                 };
                 logger.warn(`No patterns found after on-demand scraping for prompt: ${prompt}`);
             }
