@@ -71,41 +71,94 @@ function preprocessPrompt(prompt) {
         .replace(/039/g, "'")
         .replace(/[\u2013\u2014]/g, '-')
         .replace(/’/g, "'")
-        .replace(/[^\w\s.,!?']/g, '')
+        .replace(/[^\w\s.,!?*'-]/g, '') // Preserve list and bold markers
         .replace(/\.\.+/g, '.')
         .trim()
         .toLowerCase();
 }
 
+function preserveFormatting(text) {
+    // Preserve list markers and bold formatting
+    text = text
+        .replace(/(\n\s*[-*]\s*)/g, '\n$1') // Keep bullet points
+        .replace(/(\n\s*\d+\.\s*)/g, '\n$1') // Keep numbered lists
+        .replace(/(\*\*[^\*]+\*\*)/g, '$1') // Keep bold markdown
+        .replace(/(\*[^\*]+\*)/g, '$1'); // Keep italic markdown
+    
+    // Normalize line breaks to single newlines
+    text = text.replace(/\n\s*\n+/g, '\n');
+    
+    // Remove extra spaces around punctuation
+    text = text.replace(/\s+([.,!?])/g, '$1');
+    
+    return text.trim();
+}
+
 function formatResponse(text, maxWords, mood) {
+    // Preserve formatting from OkeyAI
+    text = preserveFormatting(text);
+    
+    // Basic cleaning
     text = text
         .replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4}\b/g, '')
-        .replace(/\n+/g, ' ')
-        .replace(/\s+/g, ' ')
-        .replace(/[^\w\s.,!?]/g, '')
+        .replace(/[^\w\s.,!?*'\n-]/g, '') // Preserve newlines and markdown
         .trim();
+    
     const doc = nlp(text);
-    let sentences = doc.sentences().out('array').slice(0, 3);
+    let sentences = doc.sentences().out('array');
     if (sentences.length === 0) sentences = ['Let’s explore this topic together.'];
-    if (mood === 'enthusiastic') {
-        sentences = sentences.map(s => s.replace(/[.!?]$/, '!'));
-    } else if (mood === 'empathetic') {
-        sentences = sentences.map(s => s.replace(/[.!?]$/, '.'));
-    }
-    let wordCount = 0;
-    const selectedSentences = [];
-    for (const sentence of sentences) {
-        const words = sentence.split(' ');
-        if (wordCount + words.length <= maxWords) {
-            selectedSentences.push(sentence);
-            wordCount += words.length;
-        } else {
-            break;
+    
+    // Split text into lines to handle lists
+    const lines = text.split('\n').filter(line => line.trim());
+    let isList = lines.some(line => /^\s*(\d+\.\s+|[-*]\s+)/.test(line));
+    
+    // Apply mood adjustments
+    if (!isList) {
+        if (mood === 'enthusiastic') {
+            sentences = sentences.map(s => s.replace(/[.!?]$/, '!'));
+        } else if (mood === 'empathetic') {
+            sentences = sentences.map(s => s.replace(/[.!?]$/, '.'));
         }
     }
-    let finalText = selectedSentences.join(' ');
-    finalText = finalText.charAt(0).toUpperCase() + finalText.slice(1);
-    if (!/[.!?]/.test(finalText.slice(-1))) finalText += '.';
+    
+    // Handle lists explicitly
+    let outputLines = [];
+    let wordCount = 0;
+    if (isList) {
+        for (const line of lines) {
+            const words = line.split(' ');
+            if (wordCount + words.length <= maxWords) {
+                outputLines.push(line);
+                wordCount += words.length;
+            } else {
+                break;
+            }
+        }
+    } else {
+        for (const sentence of sentences) {
+            const words = sentence.split(' ');
+            if (wordCount + words.length <= maxWords) {
+                outputLines.push(sentence);
+                wordCount += words.length;
+            } else {
+                break;
+            }
+        }
+    }
+    
+    let finalText = outputLines.join(isList ? '\n' : ' ');
+    if (!finalText) finalText = 'Let’s dive into this topic!';
+    
+    // Capitalize first letter and ensure ending punctuation
+    if (!isList) {
+        finalText = finalText.charAt(0).toUpperCase() + finalText.slice(1);
+        if (!/[.!?]/.test(finalText.slice(-1))) finalText += '.';
+    }
+    
+    // Ensure grammatical correctness
+    const finalDoc = nlp(finalText);
+    finalText = finalDoc.text();
+    
     return finalText;
 }
 
@@ -124,23 +177,33 @@ function correctTypos(prompt) {
 }
 
 function synthesizeFromOkeyAI(okeyText, prompt, patterns) {
+    // Preserve original formatting
+    okeyText = preserveFormatting(okeyText);
+    
     const doc = nlp(okeyText);
     const sentences = doc.sentences().out('array');
     const entities = doc.topics().out('array').concat(doc.people().out('array'), doc.places().out('array'));
     const promptDoc = nlp(prompt);
     const promptEntities = promptDoc.topics().out('array').concat(promptDoc.people().out('array'), promptDoc.places().out('array'));
 
+    // Extract keywords with higher specificity
     tfidf.addDocument(okeyText);
     let keywords = [];
-    tfidf.listTerms(tfidf.documents.length - 1).slice(0, 10).forEach(item => keywords.push(item.term));
+    tfidf.listTerms(tfidf.documents.length - 1).slice(0, 15).forEach(item => {
+        if (item.tfidf > 1.5) keywords.push(item.term);
+    });
     tfidf.documents.pop();
 
+    // Find best matching pattern
     let bestMatch = null;
     let bestScore = 0;
     for (const p of patterns) {
         let score = 0;
         for (const kw of keywords) {
-            if (p.text.toLowerCase().includes(kw)) score++;
+            if (p.text.toLowerCase().includes(kw)) score += 2;
+        }
+        for (const entity of entities) {
+            if (p.text.toLowerCase().includes(entity.toLowerCase())) score += 1;
         }
         if (score > bestScore) {
             bestScore = score;
@@ -148,26 +211,37 @@ function synthesizeFromOkeyAI(okeyText, prompt, patterns) {
         }
     }
 
+    // Build response
     let base = okeyText;
     if (bestMatch && bestMatch.text && bestScore > 0) {
-        base = okeyText + ' ' + bestMatch.text;
+        const matchSentences = nlp(bestMatch.text).sentences().out('array');
+        // Combine intelligently, preserving list structure
+        const isOkeyList = okeyText.split('\n').some(line => /^\s*(\d+\.\s+|[-*]\s+)/.test(line));
+        if (isOkeyList) {
+            base = okeyText + '\n' + matchSentences.join(' ');
+        } else {
+            base = sentences.concat(matchSentences).slice(0, 5).join(' ');
+        }
     }
 
     let result = base;
+    // Ensure prompt entities are included if missing
     if (promptEntities.length > 0 && !result.toLowerCase().includes(promptEntities[0].toLowerCase())) {
-        result = prompt + ': ' + result;
+        result = `${promptEntities[0]}: ${result}`;
     }
 
-    if (result.split(' ').length < 20 && sentences.length > 1) {
-        result = sentences.slice(0, 2).join(' ');
+    // Ensure minimum length and coherence
+    if (result.split(' ').length < 20 && sentences.length > 2) {
+        result = sentences.slice(0, 3).join(' ');
     }
 
-    if (!/[.!?]$/.test(result.trim())) result = result.trim() + '.';
-
-    result = result.replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
+    // Final cleaning
+    result = result.replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1'); // Remove duplicate words
     result = result.replace(/\s{2,}/g, ' ').trim();
-
-    result = result.charAt(0).toUpperCase() + result.slice(1);
+    if (!result.split('\n').some(line => /^\s*(\d+\.\s+|[-*]\s+)/.test(line))) {
+        result = result.charAt(0).toUpperCase() + result.slice(1);
+        if (!/[.!?]$/.test(result)) result += '.';
+    }
 
     return result;
 }
@@ -205,37 +279,38 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             await loadPatternsAndTrainModels();
         }
 
-        const okeyText = await fetchOkeyAIResponse(prompt);
+        const cleanedPrompt = preprocessPrompt(prompt);
+        const okeyText = await fetchOkeyAIResponse(cleanedPrompt);
         let synthesized = '';
         if (okeyText) {
-            synthesized = synthesizeFromOkeyAI(okeyText, prompt, patternsCache);
+            synthesized = synthesizeFromOkeyAI(okeyText, cleanedPrompt, patternsCache);
             await client.connect();
             const db = client.db('CASIDB');
             const patternsCol = db.collection('patterns');
             await patternsCol.insertOne({
-                concept: prompt,
+                concept: cleanedPrompt,
                 content: zlib.gzipSync(okeyText).toString('base64'),
                 entities: [],
                 sentiment: 0,
                 updatedAt: new Date(),
                 confidence: 0.97,
                 source: 'OkeyMetaAI',
-                title: `OkeyMetaAI: ${prompt}`
+                title: `OkeyMetaAI: ${cleanedPrompt.slice(0, 50)}`
             });
             learningEmitter.emit('newPattern', {
-                concept: prompt,
+                concept: cleanedPrompt,
                 content: zlib.gzipSync(okeyText).toString('base64')
             });
             console.log('[CASI] Learned from OkeyAI:', okeyText);
         }
 
-        const nlpResult = await nlpManager.process('en', prompt);
+        const nlpResult = await nlpManager.process('en', cleanedPrompt);
 
         let fallbackText = '';
         if (patterns && patterns.length > 0) {
             const best = patterns.find(p =>
                 (nlpResult.intent && p.concept === nlpResult.intent) ||
-                (p.concept && prompt.toLowerCase().includes(p.concept.toLowerCase()))
+                (p.concept && cleanedPrompt.toLowerCase().includes(p.concept.toLowerCase()))
             );
             if (best) {
                 try {
@@ -256,18 +331,18 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
         const db = client.db('CASIDB');
         const patternsCol = db.collection('patterns');
         await patternsCol.insertOne({
-            concept: prompt,
+            concept: cleanedPrompt,
             content: zlib.gzipSync(outputText).toString('base64'),
             entities: [],
             sentiment: 0,
             updatedAt: new Date(),
             confidence,
             source: 'CASI',
-            title: `Response to: ${prompt.slice(0, 50)}`
+            title: `Response to: ${cleanedPrompt.slice(0, 50)}`
         });
 
         learningEmitter.emit('newPattern', {
-            concept: prompt,
+            concept: cleanedPrompt,
             content: zlib.gzipSync(outputText).toString('base64')
         });
 
