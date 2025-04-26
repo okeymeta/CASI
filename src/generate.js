@@ -123,12 +123,16 @@ function correctTypos(prompt) {
         .join(' ');
 }
 
-function distillOkeyAIResponse(okeyText, patterns, prompt) {
+function synthesizeFromOkeyAI(okeyText, prompt, patterns) {
+    const doc = nlp(okeyText);
+    const sentences = doc.sentences().out('array');
+    const entities = doc.topics().out('array').concat(doc.people().out('array'), doc.places().out('array'));
+    const promptDoc = nlp(prompt);
+    const promptEntities = promptDoc.topics().out('array').concat(promptDoc.people().out('array'), promptDoc.places().out('array'));
+
     tfidf.addDocument(okeyText);
     let keywords = [];
-    tfidf.listTerms(tfidf.documents.length - 1).slice(0, 10).forEach(item => {
-        keywords.push(item.term);
-    });
+    tfidf.listTerms(tfidf.documents.length - 1).slice(0, 10).forEach(item => keywords.push(item.term));
     tfidf.documents.pop();
 
     let bestMatch = null;
@@ -144,20 +148,27 @@ function distillOkeyAIResponse(okeyText, patterns, prompt) {
         }
     }
 
-    let base = prompt;
-    if (bestMatch && bestMatch.text) {
-        base = bestMatch.text;
+    let base = okeyText;
+    if (bestMatch && bestMatch.text && bestScore > 0) {
+        base = okeyText + ' ' + bestMatch.text;
     }
-    let summary = '';
-    if (keywords.length > 0) {
-        summary = keywords.slice(0, 5).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(', ') + '. ';
+
+    let result = base;
+    if (promptEntities.length > 0 && !result.toLowerCase().includes(promptEntities[0].toLowerCase())) {
+        result = prompt + ': ' + result;
     }
-    let doc = nlp(base);
-    let sentences = doc.sentences().out('array');
-    let chosen = sentences.length > 0 ? sentences[0] : base;
-    let result = summary + chosen;
+
+    if (result.split(' ').length < 20 && sentences.length > 1) {
+        result = sentences.slice(0, 2).join(' ');
+    }
+
+    if (!/[.!?]$/.test(result.trim())) result = result.trim() + '.';
+
+    result = result.replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
     result = result.replace(/\s{2,}/g, ' ').trim();
-    if (!/[.!?]$/.test(result)) result += '.';
+
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+
     return result;
 }
 
@@ -195,9 +206,9 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
         }
 
         const okeyText = await fetchOkeyAIResponse(prompt);
-        let distilled = '';
+        let synthesized = '';
         if (okeyText) {
-            distilled = distillOkeyAIResponse(okeyText, patternsCache, prompt);
+            synthesized = synthesizeFromOkeyAI(okeyText, prompt, patternsCache);
             await client.connect();
             const db = client.db('CASIDB');
             const patternsCol = db.collection('patterns');
@@ -235,7 +246,7 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             }
         }
 
-        let outputText = distilled || fallbackText || "I'm not sure, but let's explore this together!";
+        let outputText = synthesized || fallbackText || "I'm not sure, but let's explore this together!";
         outputText = formatResponse(outputText, maxWords, mood);
 
         const confidence = okeyText ? 0.98 : 0.9;
