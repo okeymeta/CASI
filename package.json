@@ -14,18 +14,21 @@
     "intelligence"
   ],
   "dependencies": {
-    "express": "^4.17.1",
     "axios": "^1.8.4",
     "cheerio": "^1.0.0",
     "compromise": "^14.13.0",
     "crypto": "^1.0.1",
+    "express": "^4.17.1",
     "graphlib": "^2.1.8",
     "handlebars": "^4.7.8",
     "lodash": "^4.17.21",
     "mongodb": "^6.15.0",
     "natural": "^6.12.0",
+    "node-nlp": "^5.0.0-alpha.5",
+    "node-tfidf": "^0.0.2",
     "sentiment": "^5.0.2",
     "sharp": "^0.33.2",
+    "synonyms": "^1.0.1",
     "typo-js": "^1.2.4",
     "winston": "^3.17.0",
     "xml2js": "^0.6.2"

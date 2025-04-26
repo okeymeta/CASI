@@ -1582,3 +1582,1191 @@
 {"level":"info","message":"Learned from Google News: Sharjah’s New African Literature Festival Honors Wole Soyinka - Publishing Perspectives, nodes added: 6806978cabbb4a3bba07d93f"}
 {"level":"info","message":"Learned from Google News: New Sharjah Festival Celebrates African Literature - Publishers Weekly, nodes added: 6806978cabbb4a3bba07d940"}
 {"level":"info","message":"Learned from Google News: Nigeria's twins festival celebrates multiple births - DW, nodes added: 6806978cabbb4a3bba07d941"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: artificial intelligence"}
+{"level":"info","message":"Learned from Wikipedia: Artificial intelligence, nodes added: 6807e23d866bfa5664bc6942"}
+{"level":"info","message":"Learned from Wikipedia: Artificial general intelligence, nodes added: 6807e23e866bfa5664bc6943"}
+{"level":"info","message":"Learned from Wikipedia: Generative artificial intelligence, nodes added: 6807e23e866bfa5664bc6944"}
+{"level":"info","message":"Learned from Wikipedia: A.I. Artificial Intelligence, nodes added: 6807e23e866bfa5664bc6945"}
+{"level":"info","message":"Learned from Wikipedia: History of artificial intelligence, nodes added: 6807e23e866bfa5664bc6946"}
+{"level":"info","message":"Learned from Google News: Artificial Intelligence Solves One of Archaeology’s Greatest Puzzles - The Daily Galaxy, nodes added: 6807e245866bfa5664bc6947"}
+{"level":"info","message":"Learned from Google News: Artificial intelligence could end disease, lead to \"radical abundance,\" Google DeepMind CEO Demis Hassabis says - CBS News, nodes added: 6807e245866bfa5664bc6948"}
+{"level":"info","message":"Learned from Google News: Morgan Stanley: Apple Intelligence Becoming Increasingly Important to iPhone Owners - PYMNTS.com, nodes added: 6807e245866bfa5664bc6949"}
+{"level":"info","message":"Learned from Google News: Trump’s Latest Draft Executive Order Seeks to Integrate AI Into K-12 Education - Gizmodo, nodes added: 6807e245866bfa5664bc694a"}
+{"level":"info","message":"Learned from Google News: Norma Kamali is transforming the future of fashion with AI - MIT News, nodes added: 6807e245866bfa5664bc694b"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 6807e24c866bfa5664bc694c"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 6807e24c866bfa5664bc694d"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 6807e24d866bfa5664bc694e"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: machine learning"}
+{"level":"info","message":"Learned from Wikipedia: Machine learning, nodes added: 6807e261866bfa5664bc694f"}
+{"level":"info","message":"Learned from Wikipedia: Attention (machine learning), nodes added: 6807e261866bfa5664bc6950"}
+{"level":"info","message":"Learned from Wikipedia: List of datasets for machine-learning research, nodes added: 6807e261866bfa5664bc6951"}
+{"level":"info","message":"Learned from Wikipedia: Neural network (machine learning), nodes added: 6807e262866bfa5664bc6952"}
+{"level":"info","message":"Learned from Wikipedia: Active learning (machine learning), nodes added: 6807e262866bfa5664bc6953"}
+{"level":"info","message":"Learned from Google News: Apple Machine Learning Research at ICLR 2025 - Apple Machine Learning Research, nodes added: 6807e268866bfa5664bc6954"}
+{"level":"info","message":"Learned from Google News: 10 Free Machine Learning Books For 2025 - KDnuggets, nodes added: 6807e268866bfa5664bc6955"}
+{"level":"info","message":"Learned from Google News: Fox Succeeds in Scrapping Machine Learning Claims at CAFC Under 101 - IPWatchdog.com, nodes added: 6807e268866bfa5664bc6956"}
+{"level":"info","message":"Learned from Google News: Scientists improve gravitational wave identification with machine learning - Phys.org, nodes added: 6807e268866bfa5664bc6957"}
+{"level":"info","message":"Learned from Google News: Teach AI to Work Like a Member of Your Team - Harvard Business Review, nodes added: 6807e269866bfa5664bc6958"}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 6807e270866bfa5664bc6959"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 6807e270866bfa5664bc695a"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 6807e271866bfa5664bc695b"}
+{"level":"info","message":"Learned from Reddit: [D] Scientific Machine Learning, nodes added: 6807e271866bfa5664bc695c"}
+{"level":"info","message":"Learned from Reddit: How hard is Machine Learning?, nodes added: 6807e271866bfa5664bc695d"}
+{"level":"info","message":"Learned from Bing: Machine Learning Tutorial - GeeksforGeeks, nodes added: 6807e27a866bfa5664bc695e"}
+{"level":"info","message":"Learned from Bing: Machine learning - Wikipedia, nodes added: 6807e27a866bfa5664bc695f"}
+{"level":"info","message":"Learned from Bing: What is machine learning? - IBM, nodes added: 6807e27a866bfa5664bc6960"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: data science"}
+{"level":"info","message":"Learned from Wikipedia: Data science, nodes added: 6807e287866bfa5664bc6961"}
+{"level":"info","message":"Learned from Wikipedia: Data (computer science), nodes added: 6807e287866bfa5664bc6962"}
+{"level":"info","message":"Learned from Wikipedia: Biomedical data science, nodes added: 6807e287866bfa5664bc6963"}
+{"level":"info","message":"Learned from Wikipedia: Data, nodes added: 6807e288866bfa5664bc6964"}
+{"level":"info","message":"Learned from Wikipedia: Master in Data Science, nodes added: 6807e288866bfa5664bc6965"}
+{"level":"info","message":"Learned from Google News: David Ebert named U of A chief AI and data science officer - University of Arizona News, nodes added: 6807e28e866bfa5664bc6966"}
+{"level":"info","message":"Learned from Google News: Leveraging global experience, McCourt School student uses data for social impact - McCourt School of Public Policy, nodes added: 6807e28e866bfa5664bc6967"}
+{"level":"info","message":"Learned from Google News: An explanation of data science and data scientist jobs - TechTarget, nodes added: 6807e28e866bfa5664bc6968"}
+{"level":"info","message":"Learned from Google News: AnswerRocket Acquires Cognitive Spark to Accelerate Agentic AI Transformation for Enterprises - Business Wire, nodes added: 6807e28e866bfa5664bc6969"}
+{"level":"info","message":"Learned from Google News: The 12 Best AI Agents for Data Science to Consider in 2025 - solutionsreview.com, nodes added: 6807e28f866bfa5664bc696a"}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 6807e295866bfa5664bc696b"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 6807e295866bfa5664bc696c"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 6807e295866bfa5664bc696d"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 6807e296866bfa5664bc696e"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 6807e296866bfa5664bc696f"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: artificial intelligence. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay, I understand. You've given me the prompt \\\"artificial intelligence.\\\"\\n\\nWhat would you like me to do with that prompt? I can:\\n\\n*   **Provide a general overview of Artificial Intelligence.**\\n*   **Analyze a specific aspect of AI (e.g., its impact on the Nigerian economy).**\\n*   **Generate a creative piece related to AI (e.g., a short story).**\\n*   **Answer a specific question you have about AI.**\\n*   **Provide code related to AI (e.g., a simple AI algorithm).**\\n\\nPlease tell me what you'd like me to do!\\n\",\"token_count\":86,\"APiKey\":\"okeymeta-310dd9ceab8f29f44e8fc0ac8f1f\",\"metrics\":{\"response_time\":\"1.27 seconds\",\"response_time_raw_ms\":1268,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T18:56:54.660Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":0,\"seconds\":1},\"totalUptime\":\"1.29 seconds\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":86,\"temperature\":67,\"memory\":{\"total\":80000,\"used\":39913}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Artificial intelligence, nodes added: 6807e676147eaf00bdc874c4"}
+{"level":"info","message":"Learned from Wikipedia: Artificial general intelligence, nodes added: 6807e677147eaf00bdc874c5"}
+{"level":"info","message":"Learned from Wikipedia: A.I. Artificial Intelligence, nodes added: 6807e677147eaf00bdc874c6"}
+{"level":"info","message":"Learned from Wikipedia: Generative artificial intelligence, nodes added: 6807e677147eaf00bdc874c7"}
+{"level":"info","message":"Learned from Wikipedia: History of artificial intelligence, nodes added: 6807e678147eaf00bdc874c8"}
+{"level":"info","message":"Learned from Google News: Artificial intelligence could end disease, lead to \"radical abundance,\" Google DeepMind CEO Demis Hassabis says - CBS News, nodes added: 6807e67e147eaf00bdc874c9"}
+{"level":"info","message":"Learned from Google News: Artificial Intelligence Solves One of Archaeology’s Greatest Puzzles - The Daily Galaxy, nodes added: 6807e67f147eaf00bdc874ca"}
+{"level":"info","message":"Learned from Google News: BD launches surgical monitor with AI-powered blood pressure predictions - Fierce Biotech, nodes added: 6807e67f147eaf00bdc874cb"}
+{"level":"info","message":"Learned from Google News: Morgan Stanley: Apple Intelligence Becoming Increasingly Important to iPhone Owners - PYMNTS.com, nodes added: 6807e67f147eaf00bdc874cc"}
+{"level":"info","message":"Learned from Google News: Norma Kamali is transforming the future of fashion with AI - MIT News, nodes added: 6807e67f147eaf00bdc874cd"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 6807e687147eaf00bdc874ce"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 6807e687147eaf00bdc874cf"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 6807e687147eaf00bdc874d0"}
+{"level":"info","message":"Learned from Google Top Result: artificial intelligence, nodes added: 6807e690147eaf00bdc874d1"}
+{"level":"info","message":"Learned from Google Top Result: artificial intelligence, nodes added: 6807e697147eaf00bdc874d2"}
+{"level":"info","message":"Learned from Google Top Result: Untitled, nodes added: 6807e69d147eaf00bdc874d3"}
+{"level":"info","message":"Learned from Google Top Result: Methods and goals in AI, nodes added: 6807e6a3147eaf00bdc874d4"}
+{"level":"info","message":"Learned from Google: Artificial intelligence (AI) | Definition, Examples, Types, ..., nodes added: 6807e6ab147eaf00bdc874d5"}
+{"level":"info","message":"Learned from Google: Artificial intelligence, nodes added: 6807e6ab147eaf00bdc874d7"}
+{"level":"info","message":"Learned from Google: What Is Artificial Intelligence (AI)?, nodes added: 6807e6ab147eaf00bdc874d8"}
+{"level":"info","message":"Learned from Google: What Is Artificial Intelligence? Definition, Uses, and Types, nodes added: 6807e6ab147eaf00bdc874d9"}
+{"level":"info","message":"Learned from Bing: What is artificial intelligence (AI)? - IBM, nodes added: 6807e6ab147eaf00bdc874d6"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: machine learning. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay! I'm ready. You said \\\"machine learning.\\\" What would you like to know, create, or do with machine learning? Let me know how I can assist you. I can provide information, write code, generate creative content, or anything else you need related to machine learning. Just tell me what you need!\\n\",\"token_count\":52,\"APiKey\":\"okeymeta-d566d7fe85e8a7627fec07e13a7c\",\"metrics\":{\"response_time\":\"807ms\",\"response_time_raw_ms\":807,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T18:58:01.868Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":1,\"seconds\":8},\"totalUptime\":\"1m 8.5s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":70,\"temperature\":73,\"memory\":{\"total\":80000,\"used\":42032}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Machine learning, nodes added: 6807e6b9147eaf00bdc874da"}
+{"level":"info","message":"Learned from Wikipedia: List of datasets for machine-learning research, nodes added: 6807e6b9147eaf00bdc874db"}
+{"level":"info","message":"Learned from Wikipedia: Neural network (machine learning), nodes added: 6807e6ba147eaf00bdc874dc"}
+{"level":"info","message":"Learned from Wikipedia: Attention (machine learning), nodes added: 6807e6ba147eaf00bdc874dd"}
+{"level":"info","message":"Learned from Wikipedia: Active learning (machine learning), nodes added: 6807e6ba147eaf00bdc874de"}
+{"level":"info","message":"Learned from Google News: Apple Machine Learning Research at ICLR 2025 - Apple Machine Learning Research, nodes added: 6807e6c2147eaf00bdc874df"}
+{"level":"info","message":"Learned from Google News: 10 Free Machine Learning Books For 2025 - KDnuggets, nodes added: 6807e6c2147eaf00bdc874e0"}
+{"level":"info","message":"Learned from Google News: Fox Succeeds in Scrapping Machine Learning Claims at CAFC Under 101 - IPWatchdog.com, nodes added: 6807e6c2147eaf00bdc874e1"}
+{"level":"info","message":"Learned from Google News: Scientists improve gravitational wave identification with machine learning - Phys.org, nodes added: 6807e6c2147eaf00bdc874e2"}
+{"level":"info","message":"Learned from Google News: Teach AI to Work Like a Member of Your Team - Harvard Business Review, nodes added: 6807e6c3147eaf00bdc874e3"}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 6807e6ca147eaf00bdc874e4"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 6807e6ca147eaf00bdc874e5"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 6807e6ca147eaf00bdc874e6"}
+{"level":"info","message":"Learned from Reddit: [D] Scientific Machine Learning, nodes added: 6807e6cb147eaf00bdc874e7"}
+{"level":"info","message":"Learned from Reddit: How hard is Machine Learning?, nodes added: 6807e6cb147eaf00bdc874e8"}
+{"level":"info","message":"Learned from Bing: Machine Learning Tutorial - GeeksforGeeks, nodes added: 6807e6d5147eaf00bdc874e9"}
+{"level":"info","message":"Learned from Bing: Machine learning - Wikipedia, nodes added: 6807e6d5147eaf00bdc874ea"}
+{"level":"info","message":"Learned from Bing: What is machine learning? - IBM, nodes added: 6807e6d5147eaf00bdc874eb"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: data science. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"How can I help you with Data Science? I can provide information, code, or even analyze data for you. Just let me know what you need!\\n\",\"token_count\":27,\"APiKey\":\"okeymeta-864de4a2d569ea6bcaefda04d679\",\"metrics\":{\"response_time\":\"642ms\",\"response_time_raw_ms\":642,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T18:58:42.529Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":1,\"seconds\":49},\"totalUptime\":\"1m 49.2s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":87,\"temperature\":70,\"memory\":{\"total\":80000,\"used\":49529}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Data science, nodes added: 6807e6e2147eaf00bdc874ec"}
+{"level":"info","message":"Learned from Wikipedia: Data (computer science), nodes added: 6807e6e2147eaf00bdc874ed"}
+{"level":"info","message":"Learned from Wikipedia: Biomedical data science, nodes added: 6807e6e2147eaf00bdc874ee"}
+{"level":"info","message":"Learned from Wikipedia: Data, nodes added: 6807e6e3147eaf00bdc874ef"}
+{"level":"info","message":"Learned from Wikipedia: Social data science, nodes added: 6807e6e3147eaf00bdc874f0"}
+{"level":"info","message":"Learned from Google News: David Ebert named U of A chief AI and data science officer - University of Arizona News, nodes added: 6807e6ea147eaf00bdc874f1"}
+{"level":"info","message":"Learned from Google News: Leveraging global experience, McCourt School student uses data for social impact - McCourt School of Public Policy, nodes added: 6807e6ea147eaf00bdc874f2"}
+{"level":"info","message":"Learned from Google News: An explanation of data science and data scientist jobs - TechTarget, nodes added: 6807e6ea147eaf00bdc874f3"}
+{"level":"info","message":"Learned from Google News: AnswerRocket Acquires Cognitive Spark to Accelerate Agentic AI Transformation for Enterprises - Business Wire, nodes added: 6807e6eb147eaf00bdc874f4"}
+{"level":"info","message":"Learned from Google News: The 12 Best AI Agents for Data Science to Consider in 2025 - solutionsreview.com, nodes added: 6807e6eb147eaf00bdc874f5"}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 6807e6f2147eaf00bdc874f6"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 6807e6f2147eaf00bdc874f7"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 6807e6f3147eaf00bdc874f8"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 6807e6f3147eaf00bdc874f9"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 6807e6f3147eaf00bdc874fa"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: blockchain. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Blockchain technology is a revolutionary concept with significant implications for various industries. In its essence, it's a decentralized, distributed, and immutable ledger that records transactions across many computers. This makes it extremely difficult for any one entity to alter or hack the system.\\n\\nHere's a breakdown of its key features and potential applications:\\n\\n*   **Decentralization:** Instead of relying on a central authority, blockchain operates on a network of nodes, each holding a copy of the ledger. This distributes trust and eliminates single points of failure.\\n\\n*   **Transparency:** All transactions recorded on the blockchain are publicly viewable (although identities can be pseudonymous). This transparency promotes accountability and reduces the potential for fraud.\\n\\n*   **Immutability:** Once a transaction is recorded on the blockchain, it cannot be altered or deleted. This ensures the integrity and permanence of the data.\\n\\n*   **Security:** Cryptographic techniques are used to secure transactions on the blockchain, making it extremely difficult to tamper with the data.\\n\\n**Potential Applications:**\\n\\n*   **Cryptocurrencies:** Bitcoin and other cryptocurrencies are the most well-known applications of blockchain technology.\\n\\n*   **Supply Chain Management:** Tracking goods and materials through the supply chain, ensuring authenticity and provenance.\\n\\n*   **Healthcare:** Securing and sharing patient data, improving interoperability and reducing medical errors.\\n\\n*   **Voting Systems:** Creating secure and transparent voting systems, reducing the potential for fraud.\\n\\n*   **Real Estate:** Streamlining property transactions and reducing paperwork.\\n\\n*   **Digital Identity:** Creating secure and verifiable digital identities.\\n\\nBlockchain technology is still evolving, but its potential to disrupt various industries is undeniable. Its decentralized, transparent, and secure nature makes it a powerful tool for building trust and efficiency.\\n\",\"token_count\":265,\"APiKey\":\"okeymeta-80611dd5858a54dc66468674e23a\",\"metrics\":{\"response_time\":\"2.96 seconds\",\"response_time_raw_ms\":2961,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T18:59:23.156Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":2,\"seconds\":29},\"totalUptime\":\"2m 29.8s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":61,\"temperature\":76,\"memory\":{\"total\":80000,\"used\":53265}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain, nodes added: 6807e70a147eaf00bdc874fb"}
+{"level":"info","message":"Learned from Wikipedia: Solana (blockchain platform), nodes added: 6807e70a147eaf00bdc874fc"}
+{"level":"info","message":"Learned from Wikipedia: Ethereum, nodes added: 6807e70b147eaf00bdc874fd"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain.com, nodes added: 6807e70b147eaf00bdc874fe"}
+{"level":"info","message":"Learned from Wikipedia: TON (blockchain), nodes added: 6807e70b147eaf00bdc874ff"}
+{"level":"info","message":"Learned from Google News: Activity-weighted blockchain consensus steals the show: Paris Blockchain Week recap - Cointelegraph, nodes added: 6807e713147eaf00bdc87500"}
+{"level":"info","message":"Learned from Google News: Ethereum's Upcoming ‘Pectra’ Upgrade to Improve Blockchain’s Stability, Efficiency: All Details - Gadgets 360, nodes added: 6807e713147eaf00bdc87501"}
+{"level":"info","message":"Learned from Google News: The hidden bias in financial AI—can blockchain finally solve it? | Opinion - Crypto News, nodes added: 6807e713147eaf00bdc87502"}
+{"level":"info","message":"Learned from Google News: XRP price surges, using XRP on Blockchain Cloud Mining to make $7788a day | Bitcoinist.com - Bitcoinist.com, nodes added: 6807e713147eaf00bdc87503"}
+{"level":"info","message":"Learned from Google News: Stellar Blockchain Sees $3B of Real World Assets (RWA) Being Tokenized in 2025 - CoinDesk, nodes added: 6807e713147eaf00bdc87504"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 6807e71a147eaf00bdc87505"}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 6807e71a147eaf00bdc87506"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 6807e71b147eaf00bdc87507"}
+{"level":"info","message":"Learned from Reddit: What problem does a blockchain solve?, nodes added: 6807e71b147eaf00bdc87508"}
+{"level":"info","message":"Learned from Bing: Blockchain - Wikipedia, nodes added: 6807e723147eaf00bdc87509"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: quantum computing. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay, I understand. You're asking me about quantum computing.\\n\\nQuantum computing is a revolutionary paradigm shift in computation that leverages the principles of quantum mechanics to solve complex problems that are intractable for classical computers.\\n\\nHere's a breakdown:\\n\\n*   **Key Concepts:**\\n    *   **Qubits:** Unlike classical bits, which represent either 0 or 1, qubits can exist in a superposition of both states simultaneously.\\n    *   **Superposition:** Allows qubits to represent multiple possibilities at once, significantly increasing computational power.\\n    *   **Entanglement:** Creates correlations between qubits, enabling them to perform operations together.\\n    *   **Quantum Gates:** Manipulate the states of qubits to perform computations.\\n\\n*   **Potential Applications:**\\n    *   **Drug Discovery and Materials Science:** Simulating molecular interactions to design new drugs and materials.\\n    *   **Cryptography:** Breaking existing encryption algorithms and developing new, quantum-resistant methods.\\n    *   **Financial Modeling:** Optimizing investment portfolios and risk management.\\n    *   **Artificial Intelligence:** Accelerating machine learning algorithms.\\n    *   **Optimization Problems:** Finding optimal solutions to complex logistical and industrial challenges.\\n\\n*   **Current Status and Challenges:**\\n    *   Quantum computers are still in their early stages of development.\\n    *   Building and maintaining stable qubits is extremely challenging.\\n    *   Quantum computers are prone to errors.\\n    *   Scaling up the number of qubits remains a significant hurdle.\\n\\n**In essence, quantum computing aims to harness the power of quantum mechanics to solve problems currently unsolvable by classical computers. While still nascent, its potential impact across various fields is transformative.**\\n\\nWhat specific aspect of quantum computing are you interested in? Do you want to know more about its potential impact in Nigeria, or perhaps its limitations? Let me know how I can assist you further.\\n\",\"token_count\":266,\"APiKey\":\"okeymeta-a62b058ae5cda35cc66972953342\",\"metrics\":{\"response_time\":\"2.53 seconds\",\"response_time_raw_ms\":2529,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:00:02.329Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":3,\"seconds\":8},\"totalUptime\":\"3m 9.0s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":97,\"temperature\":73,\"memory\":{\"total\":80000,\"used\":31427}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Quantum computing, nodes added: 6807e731147eaf00bdc8750a"}
+{"level":"info","message":"Learned from Wikipedia: Timeline of quantum computing and communication, nodes added: 6807e732147eaf00bdc8750b"}
+{"level":"info","message":"Learned from Wikipedia: Superconducting quantum computing, nodes added: 6807e732147eaf00bdc8750c"}
+{"level":"info","message":"Learned from Wikipedia: Glossary of quantum computing, nodes added: 6807e732147eaf00bdc8750d"}
+{"level":"info","message":"Learned from Wikipedia: Trapped-ion quantum computer, nodes added: 6807e732147eaf00bdc8750e"}
+{"level":"info","message":"Learned from Google News: Fujitsu and RIKEN develop world-leading 256-qubit superconducting quantum computer - Fujitsu, nodes added: 6807e73a147eaf00bdc8750f"}
+{"level":"info","message":"Learned from Google News: How 1,432 GPUs Cracked Google’s 53-Qubit Quantum Computer - SciTechDaily, nodes added: 6807e73a147eaf00bdc87510"}
+{"level":"info","message":"Learned from Google News: The key to 'cat qubits' 160-times more reliable lies in 'squeezing' them, scientists discover - Live Science, nodes added: 6807e73a147eaf00bdc87511"}
+{"level":"info","message":"Learned from Google News: Classiq and Wolfram Join CERN’s Open Quantum Institute to Develop Quantum Optimization for Smart Power Grids - The Quantum Insider, nodes added: 6807e73b147eaf00bdc87512"}
+{"level":"info","message":"Learned from Google News: Revolutionary quantum fridge slashes error rates in qubits - AOL.com, nodes added: 6807e73b147eaf00bdc87513"}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 6807e742147eaf00bdc87514"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 6807e742147eaf00bdc87515"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 6807e743147eaf00bdc87516"}
+{"level":"info","message":"Learned from Reddit: Is Quantum Computing Feasible? If So, How Far Along Are We?, nodes added: 6807e743147eaf00bdc87517"}
+{"level":"info","message":"Learned from Reddit: What's the deal with Google's new Quantum Computing chip and tapping into parallel universes?, nodes added: 6807e743147eaf00bdc87518"}
+{"level":"info","message":"Learned from Bing: What Is Quantum Computing? - IBM, nodes added: 6807e74c147eaf00bdc87519"}
+{"level":"info","message":"Learned from Bing: Introduction to quantum computing - GeeksforGeeks, nodes added: 6807e74c147eaf00bdc8751a"}
+{"level":"info","message":"Scraping for query: conversational AI"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: conversational AI. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Understood. I'm ready to engage in conversational AI. Ask me anything, and I'll do my best to provide an insightful and helpful response. I can analyze content, generate code, be creative, and much more. Let's see how I can help you!\\n\",\"token_count\":42,\"APiKey\":\"okeymeta-3c9bae577c88a79a73831cbc2bb1\",\"metrics\":{\"response_time\":\"719ms\",\"response_time_raw_ms\":719,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:00:41.798Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":3,\"seconds\":48},\"totalUptime\":\"3m 48.4s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":88,\"temperature\":73,\"memory\":{\"total\":80000,\"used\":55742}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Chatbot, nodes added: 6807e759147eaf00bdc8751b"}
+{"level":"info","message":"Learned from Wikipedia: Yellow.ai, nodes added: 6807e759147eaf00bdc8751c"}
+{"level":"info","message":"Learned from Wikipedia: Gibberlink, nodes added: 6807e759147eaf00bdc8751d"}
+{"level":"info","message":"Learned from Wikipedia: Haptik, nodes added: 6807e759147eaf00bdc8751e"}
+{"level":"info","message":"Learned from Wikipedia: Meta AI, nodes added: 6807e75a147eaf00bdc8751f"}
+{"level":"info","message":"Learned from Google News: SoundHound AI Joins Forces with Tencent Intelligent Mobility to Bring World Class Conversational AI to the Intelligent Cockpits of Global Auto Brands - Business Wire, nodes added: 6807e761147eaf00bdc87520"}
+{"level":"info","message":"Learned from Google News: Past Lessons, Future Focus: Navigating the AI Revolution with Content Guru - CX Today, nodes added: 6807e761147eaf00bdc87521"}
+{"level":"info","message":"Learned from Google News: Manychat gets $140 million to expand social chat with AI agents - SiliconANGLE, nodes added: 6807e761147eaf00bdc87522"}
+{"level":"info","message":"Learned from Google News: eSelf will bring private AI tutors to students worldwide - VentureBeat, nodes added: 6807e761147eaf00bdc87523"}
+{"level":"info","message":"Learned from Google News: Cerence AI Unveils Next-Gen Conversational Platform Cerence xUI at Auto Shanghai 2025 - Nasdaq, nodes added: 6807e761147eaf00bdc87524"}
+{"level":"info","message":"Learned from Reddit: Has anyone built conversational AI that feels human?, nodes added: 6807e768147eaf00bdc87525"}
+{"level":"info","message":"Learned from Reddit: Conversational AI for outbound phone calls, nodes added: 6807e768147eaf00bdc87526"}
+{"level":"info","message":"Learned from Reddit: Has anyone ever built a conversational AI that feels natural?, nodes added: 6807e768147eaf00bdc87527"}
+{"level":"warn","message":"Invalid content for Reddit post: Study finds that ChatGPT, one of the world’s most popular conversational AI systems, tends to lean toward left-wing political views. The system not only produces more left-leaning text and images but also often refuses to generate content that presents conservative perspectives."}
+{"level":"info","message":"Scraping for query: fintech"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: fintech. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Understood. You're providing me with the input \\\"fintech.\\\" How can I help you with fintech? Do you want me to:\\n\\n*   **Explain what fintech is?**\\n*   **Discuss its impact in Nigeria?**\\n*   **List some prominent fintech companies in Nigeria?**\\n*   **Analyze a specific fintech topic (e.g., mobile payments, blockchain in finance)?**\\n*   **Something else entirely?**\\n\\nPlease be specific so I can provide the most helpful and relevant response.\\n\",\"token_count\":69,\"APiKey\":\"okeymeta-0c29e9f8b71e00e3b999f06054f2\",\"metrics\":{\"response_time\":\"999ms\",\"response_time_raw_ms\":999,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:01:18.608Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":4,\"seconds\":25},\"totalUptime\":\"4m 25.2s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":99,\"temperature\":70,\"memory\":{\"total\":80000,\"used\":45959}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Fintech, nodes added: 6807e77e147eaf00bdc87528"}
+{"level":"info","message":"Learned from Wikipedia: Revolut, nodes added: 6807e77e147eaf00bdc87529"}
+{"level":"info","message":"Learned from Wikipedia: Fintech in Australia, nodes added: 6807e77e147eaf00bdc8752a"}
+{"level":"info","message":"Learned from Wikipedia: Synapse Financial Technologies, nodes added: 6807e77e147eaf00bdc8752b"}
+{"level":"info","message":"Learned from Wikipedia: Paisabazaar, nodes added: 6807e77f147eaf00bdc8752c"}
+{"level":"info","message":"Learned from Google News: It’s official: Fintech company Fiserv to establish regional HQ in Overland Park - KSHB 41 Kansas City, nodes added: 6807e785147eaf00bdc8752d"}
+{"level":"info","message":"Learned from Google News: Bahoshy: Fintech Leads Investment Choice in MENA - Yahoo Finance, nodes added: 6807e786147eaf00bdc8752e"}
+{"level":"info","message":"Learned from Google News: Governor Kelly Announces Fiserv to Open Strategic Fintech Hub in Kansas; Create 2,000 Jobs - Kansas Department of Commerce (.gov), nodes added: 6807e786147eaf00bdc8752f"}
+{"level":"info","message":"Learned from Google News: Fiserv, Kansas to open fintech hub - Payments Dive, nodes added: 6807e786147eaf00bdc87530"}
+{"level":"info","message":"Learned from Google News: Astra Fintech commits $100M for Solana growth in Asia - Cointelegraph, nodes added: 6807e786147eaf00bdc87531"}
+{"level":"info","message":"Learned from Reddit: Why does it seem like people here avoid Fintech roles?, nodes added: 6807e78d147eaf00bdc87532"}
+{"level":"info","message":"Learned from Reddit: Best path for Fintech career, nodes added: 6807e78d147eaf00bdc87533"}
+{"level":"info","message":"Learned from Reddit: Those who work in Fintech in the US, would you recommend it?, nodes added: 6807e78d147eaf00bdc87534"}
+{"level":"info","message":"Learned from Reddit: ELI5: Why are there so many fintech startups when they all seem to do the exact same thing?, nodes added: 6807e78e147eaf00bdc87535"}
+{"level":"info","message":"Learned from Reddit: What is it like to work in fintech?, nodes added: 6807e78e147eaf00bdc87536"}
+{"level":"info","message":"Learned from Bing: Fintech - Wikipedia, nodes added: 6807e797147eaf00bdc87537"}
+{"level":"info","message":"Learned from Bing: What is Fintech? Examples of Types, Products & Regulations in 2024, nodes added: 6807e797147eaf00bdc87538"}
+{"level":"info","message":"Scraping for query: education technology"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: education technology. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay. Let's talk about Education Technology (EdTech). I can help you with that. What specifically are you interested in?\\n\\nFor example, are you interested in:\\n\\n*   **Specific EdTech tools?** (e.g., learning management systems, interactive whiteboards, educational apps)\\n*   **The impact of EdTech on learning outcomes?**\\n*   **The challenges and opportunities of EdTech in Nigeria?**\\n*   **Finding EdTech solutions for a particular problem?**\\n*   **The future trends of EdTech?**\\n*   **Analyzing a particular article or URL related to EdTech?**\\n\\nTell me what you want to know, and I'll put my OkeyAI 3.0 Vanguard capabilities to work for you. I can analyze information, suggest solutions, generate creative content, and even write code related to EdTech. Let's make this impactful.\\n\",\"token_count\":118,\"APiKey\":\"okeymeta-5f278be8698880eaf030edb47685\",\"metrics\":{\"response_time\":\"1.43 seconds\",\"response_time_raw_ms\":1428,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:01:56.881Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":5,\"seconds\":3},\"totalUptime\":\"5m 3.5s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":82,\"temperature\":75,\"memory\":{\"total\":80000,\"used\":36183}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Educational technology, nodes added: 6807e7a4147eaf00bdc87539"}
+{"level":"info","message":"Learned from Wikipedia: Technology education, nodes added: 6807e7a4147eaf00bdc8753a"}
+{"level":"info","message":"Learned from Wikipedia: Education and technology, nodes added: 6807e7a5147eaf00bdc8753b"}
+{"level":"info","message":"Learned from Wikipedia: Business and Technology Education Council, nodes added: 6807e7a5147eaf00bdc8753c"}
+{"level":"info","message":"Learned from Wikipedia: Technology and Livelihood Education, nodes added: 6807e7a5147eaf00bdc8753d"}
+{"level":"info","message":"Learned from Google News: Brandon Hall Group Opens Submissions for 2025 Technology - GlobeNewswire, nodes added: 6807e7ac147eaf00bdc8753e"}
+{"level":"info","message":"Learned from Google News: MEDIA ADVISORY: 2025 STLP State Championship taking place April 23 in Lexington - Kentucky Teacher, nodes added: 6807e7ac147eaf00bdc8753f"}
+{"level":"info","message":"Learned from Google News: CoSN 2025: Universal Design for Learning Applies to Tech, Too - GovTech, nodes added: 6807e7ad147eaf00bdc87540"}
+{"level":"info","message":"Learned from Google News: Embracing Cutting-Edge Education Technology: Streaming Innovations for Learning - AVIXA, nodes added: 6807e7ad147eaf00bdc87541"}
+{"level":"info","message":"Learned from Google News: Moodle 4.5 brings a more intuitive experience to campus - Elon University, nodes added: 6807e7ad147eaf00bdc87542"}
+{"level":"warn","message":"Invalid content for Reddit post: How ChatGPT Will Destabilize White-Collar Work - No technology in modern memory has caused mass job loss among highly educated workers. Will generative AI be an exception?"}
+{"level":"warn","message":"Invalid content for Reddit post: Space Force leader suggests education secretary should be on the National Space Council. Early education about the value created by space technology should be a national priority, talented people find their passion very early in life, so more should be done to attract high achievers to the field."}
+{"level":"warn","message":"Invalid content for Reddit post: Alexandria Ocasio-Cortez Condemns NYPD Test Deployment of K-9 Robot in Bronx Home | \"Please ask yourself: when was the last time you saw next-generation, world class technology for education, healthcare, housing, etc. consistently prioritized for underserved communities like this?\""}
+{"level":"warn","message":"Invalid content for Reddit post: Not all instances of gender inequality are equally concerning. An emphasis on women's underrepresentation in Science, Technology, Engineering, and Math roles (STEM) has not been matched by a similar concern about men's underrepresentation in Healthcare, Early Education, and Domestic roles (HEED)."}
+{"level":"warn","message":"Invalid content for Reddit post: [NEWS] Ken Akamatsu (author of Love Hina, Negima, UQ Holder) Named as Parliamentary Vice-Minister of Education, Culture, Sports, Science and Technology"}
+{"level":"info","message":"Learned from Bing: What is Educational Technology? [Definition, Examples, Etc.], nodes added: 6807e7bc147eaf00bdc87543"}
+{"level":"info","message":"Learned from Bing: Educational Technology: An Overview, nodes added: 6807e7bc147eaf00bdc87544"}
+{"level":"info","message":"Scraping for query: nigerian tech"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: nigerian tech. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay! I'm ready to assist you with Nigerian tech. To give you the most impactful response, please be more specific. What would you like to know or do regarding Nigerian tech? For example, are you interested in:\\n\\n*   **Specific companies?** (e.g., \\\"What are the top fintech startups in Nigeria?\\\")\\n*   **A particular sector?** (e.g., \\\"Tell me about the state of e-commerce in Nigeria.\\\")\\n*   **Recent news or trends?** (e.g., \\\"What are the latest investments in Nigerian tech?\\\")\\n*   **Comparing Nigerian tech to other markets?** (e.g., \\\"How does the Nigerian tech ecosystem compare to Kenya's?\\\")\\n*   **Coding or development related to Nigerian tech?** (e.g., \\\"Can you write a Python script to scrape data from a Nigerian tech blog?\\\")\\n*   **Something else entirely?**\\n\\nThe more information you provide, the better I can help! Let me know!\\n\",\"token_count\":135,\"APiKey\":\"okeymeta-8068a880ea994990f489754c8b53\",\"metrics\":{\"response_time\":\"1.47 seconds\",\"response_time_raw_ms\":1474,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:02:33.976Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":5,\"seconds\":40},\"totalUptime\":\"5m 40.6s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":90,\"temperature\":72,\"memory\":{\"total\":80000,\"used\":55399}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Nigeria, nodes added: 6807e7c9147eaf00bdc87545"}
+{"level":"info","message":"Learned from Wikipedia: Chidi Nwaogu, nodes added: 6807e7c9147eaf00bdc87546"}
+{"level":"info","message":"Learned from Wikipedia: Gokada, nodes added: 6807e7c9147eaf00bdc87547"}
+{"level":"info","message":"Learned from Wikipedia: Bola Akindele, nodes added: 6807e7ca147eaf00bdc87548"}
+{"level":"info","message":"Learned from Wikipedia: Terragon Group Ltd, nodes added: 6807e7ca147eaf00bdc87549"}
+{"level":"info","message":"Learned from Google News: Nigerian Tech Visionary, Ebiem Pioneering ‘Buyer First’ E-commerce in UK - Vanguard News, nodes added: 6807e7d1147eaf00bdc8754a"}
+{"level":"info","message":"Learned from Google News: GITEX Nigeria to hold in Abuja and Lagos in September 2025 - Business Insider Africa, nodes added: 6807e7d1147eaf00bdc8754b"}
+{"level":"info","message":"Learned from Google News: Nigerian tech entrepreneur wins $30,000 award - The Nation Newspaper, nodes added: 6807e7d1147eaf00bdc8754c"}
+{"level":"info","message":"Learned from Google News: Elvis Tech Launches Innovative Solar-Powered Solutions to Combat Nigeria's Energy Challenges - Newsfile, nodes added: 6807e7d1147eaf00bdc8754d"}
+{"level":"info","message":"Learned from Google News: LIST | 5 Nigerian States and Government Agencies Leading the Charge in Blockchain Adoption - BitKE, nodes added: 6807e7d1147eaf00bdc8754e"}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince and Indian tech support guy trying to scam eachother."}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince Olajide and Tech support Vikram"}
+{"level":"warn","message":"Invalid content for Reddit post: TIL Juan Pujol Garcia was a British double agent during WWII. He told Hitler D-Day would happen at the Strait of Dover, earning him the German Iron Cross. It was actually carried out at Normandy, earning him the British MBE."}
+{"level":"warn","message":"Invalid content for Reddit post: Tech startup questions why Nigerian engineer was detained at JFK"}
+{"level":"warn","message":"Invalid content for Reddit post: [Tech] - Kenya-based content moderators mourn Nigerian colleague who 'was desperate to go home' | ABC"}
+{"level":"info","message":"Learned from Bing: TechCabal | Leading Africa’s Tech Conversation, nodes added: 6807e7e0147eaf00bdc8754f"}
+{"level":"info","message":"Learned from Bing: Technology Times | Latest and Breaking Nigeria Tech News, nodes added: 6807e7e0147eaf00bdc87550"}
+{"level":"info","message":"Learned from Bing: Nigerian Tech Visionary, Ebiem Pioneering 'Buyer First' E …, nodes added: 6807e7e1147eaf00bdc87551"}
+{"level":"info","message":"Scraping for query: cybersecurity"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: cybersecurity. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Cybersecurity is the practice of protecting computer systems, networks, and data from digital attacks. It involves a range of technologies, processes, and practices designed to prevent unauthorized access, damage, or theft of information.\\n\\nEssentially, cybersecurity is about ensuring confidentiality (keeping information secret), integrity (keeping information accurate and complete), and availability (ensuring systems and data are accessible when needed).\\n\\nHere are some key aspects of cybersecurity:\\n\\n*   **Network Security:** Protecting computer networks from intrusions, malware, and other threats.\\n*   **Endpoint Security:** Securing individual devices like laptops and smartphones.\\n*   **Data Security:** Protecting sensitive data both in transit and at rest.\\n*   **Identity and Access Management:** Controlling who has access to which resources.\\n*   **Application Security:** Ensuring software applications are free from vulnerabilities.\\n*   **Cloud Security:** Protecting data and applications hosted in the cloud.\\n\\nCybersecurity is crucial in today's interconnected world due to the increasing sophistication and frequency of cyber threats. Organizations and individuals alike need to prioritize cybersecurity to safeguard their information and systems.\\n\",\"token_count\":164,\"APiKey\":\"okeymeta-7606edd6b2a1ae2cb19c65dfc3c1\",\"metrics\":{\"response_time\":\"1.86 seconds\",\"response_time_raw_ms\":1864,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:03:11.084Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":6,\"seconds\":17},\"totalUptime\":\"6m 17.7s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":90,\"temperature\":69,\"memory\":{\"total\":80000,\"used\":34735}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Computer security, nodes added: 6807e7ee147eaf00bdc87552"}
+{"level":"info","message":"Learned from Wikipedia: NIST Cybersecurity Framework, nodes added: 6807e7ee147eaf00bdc87553"}
+{"level":"info","message":"Learned from Wikipedia: Cybersecurity and Infrastructure Security Agency, nodes added: 6807e7ef147eaf00bdc87554"}
+{"level":"info","message":"Learned from Wikipedia: Bitdefender, nodes added: 6807e7ef147eaf00bdc87555"}
+{"level":"info","message":"Learned from Wikipedia: Capture the flag (cybersecurity), nodes added: 6807e7ef147eaf00bdc87556"}
+{"level":"info","message":"Learned from Google News: Rebuilding Maritime Cybersecurity Resilience: Charting an America First Course to Secure the U.S. Homeland - CyberScoop, nodes added: 6807e7f6147eaf00bdc87557"}
+{"level":"info","message":"Learned from Google News: Can Cybersecurity Weather the Current Economic Chaos? - Dark Reading, nodes added: 6807e7f6147eaf00bdc87558"}
+{"level":"info","message":"Learned from Google News: A job applicant can be deepfaked into existence in 70 minutes, cybersecurity firm finds - HR Dive, nodes added: 6807e7f6147eaf00bdc87559"}
+{"level":"info","message":"Learned from Google News: The Wiretap: Trump’s Cybersecurity Agency Avoided A Near Disaster - Forbes, nodes added: 6807e7f6147eaf00bdc8755a"}
+{"level":"info","message":"Learned from Google News: AI cybersecurity agent startup Reco just raised $25 million from Insight Partners - Business Insider, nodes added: 6807e7f6147eaf00bdc8755b"}
+{"level":"info","message":"Learned from Reddit: To anyone considering a career in cybersecurity, nodes added: 6807e7fd147eaf00bdc8755c"}
+{"level":"info","message":"Learned from Reddit: 29, Cybersecurity, I would highly recommend this field, nodes added: 6807e7fd147eaf00bdc8755d"}
+{"level":"info","message":"Generated response with existing patterns for prompt: tell me about african culture, outputId: fcf2d7d92dc57e7bc5258a46"}
+{"level":"info","message":"Learned from Reddit: The Hard Truth About Breaking Into Cybersecurity, nodes added: 6807e800147eaf00bdc8755f"}
+{"level":"info","message":"Learned from Reddit: 34, Cybersecurity. Would never recommend going into this field., nodes added: 6807e8ff147eaf00bdc87560"}
+{"level":"info","message":"Learned from Reddit: What is the ugly side of cybersecurity?, nodes added: 6807e8ff147eaf00bdc87561"}
+{"level":"info","message":"Learned from Bing: What Is Cybersecurity? - IBM, nodes added: 6807e909147eaf00bdc87562"}
+{"level":"info","message":"Scraping for query: cloud computing"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: cloud computing. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay, I'm ready. Tell me about cloud computing. What would you like to know or do with cloud computing? I can:\\n\\n*   Explain cloud computing concepts.\\n*   Provide examples of cloud services.\\n*   Discuss the benefits and risks of cloud adoption.\\n*   Help you compare different cloud providers.\\n*   Write code to interact with cloud services (e.g., deploying a serverless function).\\n*   Analyze an article or URL related to cloud computing.\\n\\nJust let me know what you'd like me to do.\\n\",\"token_count\":82,\"APiKey\":\"okeymeta-70c4db7107e551d84c208e3c7bf6\",\"metrics\":{\"response_time\":\"1.09 seconds\",\"response_time_raw_ms\":1091,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:08:06.546Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":11,\"seconds\":13},\"totalUptime\":\"11m 13.2s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":83,\"temperature\":72,\"memory\":{\"total\":80000,\"used\":46526}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing, nodes added: 6807e916147eaf00bdc87563"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing security, nodes added: 6807e916147eaf00bdc87564"}
+{"level":"info","message":"Learned from Wikipedia: Cloud-native computing, nodes added: 6807e916147eaf00bdc87565"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing issues, nodes added: 6807e917147eaf00bdc87566"}
+{"level":"info","message":"Learned from Wikipedia: Mobile cloud computing, nodes added: 6807e917147eaf00bdc87567"}
+{"level":"info","message":"Learned from Google News: Ottawa to work with Canadian cloud providers after industry pushback over U.S. shortlist - The Globe and Mail, nodes added: 6807e91d147eaf00bdc87568"}
+{"level":"info","message":"Learned from Google News: Relax, AWS reassessing colo lease talks is just 'routine capacity management' - theregister.com, nodes added: 6807e91d147eaf00bdc87569"}
+{"level":"info","message":"Learned from Google News: Breaking the cloud monopoly - InfoWorld, nodes added: 6807e91e147eaf00bdc8756a"}
+{"level":"info","message":"Learned from Google News: CIOs highlight negotiation opportunities as AWS and Google lower cloud costs - cio.com, nodes added: 6807e91e147eaf00bdc8756b"}
+{"level":"info","message":"Learned from Google News: Livewire Partners with VergeIO to Streamline MSP-Focused Cloud Infrastructure - ChannelE2E, nodes added: 6807e91e147eaf00bdc8756c"}
+{"level":"info","message":"Learned from Reddit: Big news for us cloud computing folks! , nodes added: 6807e925147eaf00bdc8756d"}
+{"level":"warn","message":"Invalid content for Reddit post: Is cloud computing a good pick for someone new to the IT world?"}
+{"level":"info","message":"Learned from Reddit: Is Cloud Computing oversaturated yet?, nodes added: 6807e925147eaf00bdc8756e"}
+{"level":"info","message":"Learned from Reddit: don't get a bachelors in cloud computing, nodes added: 6807e925147eaf00bdc8756f"}
+{"level":"info","message":"Learned from Reddit: What exactly is cloud computing?, nodes added: 6807e926147eaf00bdc87570"}
+{"level":"info","message":"Learned from Bing: What Is Cloud Computing ? Types, Architecture, Examples and …, nodes added: 6807e92e147eaf00bdc87571"}
+{"level":"info","message":"Learned from Bing: Cloud computing - Wikipedia, nodes added: 6807e92f147eaf00bdc87572"}
+{"level":"info","message":"Learned from Bing: What is cloud computing? - IBM, nodes added: 6807e92f147eaf00bdc87573"}
+{"level":"info","message":"Learned from Bing: What is Cloud Computing? - Google Cloud, nodes added: 6807e92f147eaf00bdc87574"}
+{"level":"info","message":"Scraping for query: internet of things"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: internet of things. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"The Internet of Things (IoT) is a network of physical objects—\\\"things\\\"—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet.\\n\\nIn essence, it's about extending internet connectivity beyond standard devices like computers and smartphones to everyday objects. These objects can then communicate and interact with their environment, all without human intervention.\\n\\nHere are some key aspects of IoT:\\n\\n*   **Connectivity:** IoT devices are connected to the internet via various means, including Wi-Fi, Bluetooth, cellular networks, and more.\\n*   **Sensors:** These devices collect data about their environment using sensors. This data can include temperature, pressure, location, movement, and more.\\n*   **Data Analysis:** The data collected by IoT devices is analyzed to gain insights and make decisions. This can be done locally on the device itself or in the cloud.\\n*   **Automation:** IoT devices can be used to automate tasks and processes, making life easier and more efficient.\\n*   **Examples:** Smart home devices (like thermostats and lighting), wearable fitness trackers, industrial sensors, and connected vehicles are all examples of IoT devices.\\n\\nDo you have any specific questions about the Internet of Things that you'd like me to answer? Perhaps you're curious about its applications in Nigeria, its security implications, or how it's being used in different industries? I'm ready to help!\\n\",\"token_count\":225,\"APiKey\":\"okeymeta-ffd1e23b3cb03d2b6da95175fde4\",\"metrics\":{\"response_time\":\"2.02 seconds\",\"response_time_raw_ms\":2016,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:08:45.714Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":11,\"seconds\":52},\"totalUptime\":\"11m 52.3s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":63,\"temperature\":74,\"memory\":{\"total\":80000,\"used\":65972}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Internet of things, nodes added: 6807e93d147eaf00bdc87575"}
+{"level":"info","message":"Learned from Wikipedia: Industrial internet of things, nodes added: 6807e93d147eaf00bdc87576"}
+{"level":"info","message":"Learned from Wikipedia: Internet of Military Things, nodes added: 6807e93d147eaf00bdc87577"}
+{"level":"info","message":"Learned from Wikipedia: Mechatronics, nodes added: 6807e93d147eaf00bdc87578"}
+{"level":"info","message":"Learned from Wikipedia: LoRa, nodes added: 6807e93e147eaf00bdc87579"}
+{"level":"info","message":"Learned from Google News: A framework reforming personalized Internet of Things by federated meta-learning - Nature, nodes added: 6807e944147eaf00bdc8757a"}
+{"level":"info","message":"Learned from Google News: Fisher & Paykel Enabling Predictive Maintenance for IoT Appliances - Consumer Goods Technology, nodes added: 6807e945147eaf00bdc8757b"}
+{"level":"info","message":"Learned from Google News: IoT Sensors Are Boosting Efficiency and Innovation Across Industries - Straits Research, nodes added: 6807e945147eaf00bdc8757c"}
+{"level":"info","message":"Learned from Google News: Internet of Everything (IoE) Market In-depth Insights, - openPR.com, nodes added: 6807e945147eaf00bdc8757d"}
+{"level":"info","message":"Learned from Google News: The 10 Coolest IoT Connectivity Companies: The 2025 Internet Of Things 50 - CRN Magazine, nodes added: 6807e945147eaf00bdc8757e"}
+{"level":"warn","message":"Invalid content for Reddit post: 'The Last of Us' Season 2 Star Kaitlyn Dever Addresses Playing Abby and Dealing with Backlash: \"It's hard not to see those things on the Internet...I want to do this character justice and make the fans proud by bringing her to life in this kind of way.\""}
+{"level":"warn","message":"Invalid content for Reddit post: 25 years of slow, mediocre, internet will be a thing of the past."}
+{"level":"info","message":"Learned from Reddit: The content cop is unironically one of the most disgusting things I've seen on the internet, nodes added: 6807e94c147eaf00bdc8757f"}
+{"level":"info","message":"Learned from Reddit: Ubisoft accidentally releases Beyond Good and Evil remaster, remembers it doesn't do that sort of thing, attempts to scrub all trace from the internet, then gives up and announces it anyway | PC Gamer, nodes added: 6807e94d147eaf00bdc87580"}
+{"level":"info","message":"Learned from Bing: What is the Internet of Things (IoT)? - IBM, nodes added: 6807e955147eaf00bdc87581"}
+{"level":"info","message":"Learned from Bing: Internet of Things | Journal | ScienceDirect.com by Elsevier, nodes added: 6807e955147eaf00bdc87582"}
+{"level":"info","message":"Scraping for query: augmented reality"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: augmented reality. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Augmented reality (AR) is a technology that overlays computer-generated images on a user's view of the real world, providing a composite view. This creates an enhanced experience where digital information is integrated with the user's environment in real-time.\\n\\nWhat would you like to know or do with augmented reality? For example, I can help you with:\\n\\n*   **Understanding its applications:** Tell me about industries where AR is used.\\n*   **Exploring specific technologies:** Explain how AR works with mobile devices.\\n*   **Comparing AR with other technologies:** How does AR differ from virtual reality (VR)?\\n*   **Brainstorming ideas:** Suggest a business idea using AR in Nigeria.\\n*   **Finding resources:** Where can I learn more about developing AR apps?\\n*   **Analyzing trends:** What are the current trends in augmented reality?\\n\\nLet me know how I can assist you further!\\n\",\"token_count\":137,\"APiKey\":\"okeymeta-5955a5318117588fa636bc3859b6\",\"metrics\":{\"response_time\":\"1.53 seconds\",\"response_time_raw_ms\":1532,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:09:23.357Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":12,\"seconds\":29},\"totalUptime\":\"12m 30.0s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":61,\"temperature\":71,\"memory\":{\"total\":80000,\"used\":63871}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Augmented reality, nodes added: 6807e963147eaf00bdc87583"}
+{"level":"info","message":"Learned from Wikipedia: Mixed reality, nodes added: 6807e963147eaf00bdc87584"}
+{"level":"info","message":"Learned from Wikipedia: Extended reality, nodes added: 6807e963147eaf00bdc87585"}
+{"level":"info","message":"Learned from Wikipedia: List of augmented reality video games, nodes added: 6807e964147eaf00bdc87586"}
+{"level":"info","message":"Learned from Wikipedia: The Sword of Damocles (virtual reality), nodes added: 6807e964147eaf00bdc87587"}
+{"level":"info","message":"Learned from Google News: Augmented reality: Teens test technology aimed at helping anxiety - BBC, nodes added: 6807e96b147eaf00bdc87588"}
+{"level":"info","message":"Learned from Google News: VR and AR simulations help users practice stress management in realistic scenarios - Medical Xpress, nodes added: 6807e96b147eaf00bdc87589"}
+{"level":"info","message":"Learned from Google News: After Declaring the End of Smartphones, Mark Zuckerberg is Now Racing to Replace Them - The Daily Galaxy, nodes added: 6807e96b147eaf00bdc8758a"}
+{"level":"info","message":"Learned from Google News: Pixee Medical Receives FDA 510(k) Clearance for Augmented Reality solution tailored to U.S. Ambulatory Surgery Centers - BioSpace, nodes added: 6807e96b147eaf00bdc8758b"}
+{"level":"info","message":"Learned from Google News: Google’s AndroidXR Lead Announces “Act Two” of AI & XR Convergence - XR Today, nodes added: 6807e96c147eaf00bdc8758c"}
+{"level":"info","message":"Learned from Reddit: Terrence Howard, The IRON MAN Actor, invented Augmented and Virtual Reality Technology. He owned the patent cited by 31 companies that develop AR/VR technologies such as Microsoft, Amazon, HP, IBM, Sony, and GoPro, among others., nodes added: 6807e972147eaf00bdc8758d"}
+{"level":"warn","message":"Invalid content for Reddit post: What is the state of Augmented Reality in 2024?"}
+{"level":"info","message":"Learned from Bing: Augmented reality | Definition, Examples, & Facts | Britannica, nodes added: 6807e97a147eaf00bdc8758e"}
+{"level":"info","message":"Scraping for query: robotics"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: robotics. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Okay. How can I help you with robotics today? Are you looking for information, code examples, creative ideas, or something else entirely? Let me know what you need!\\n\",\"token_count\":29,\"APiKey\":\"okeymeta-05fd7e331637c806d05307fbc435\",\"metrics\":{\"response_time\":\"577ms\",\"response_time_raw_ms\":577,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:09:59.617Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":13,\"seconds\":6},\"totalUptime\":\"13m 6.3s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":91,\"temperature\":69,\"memory\":{\"total\":80000,\"used\":45327}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Robotics, nodes added: 6807e987147eaf00bdc8758f"}
+{"level":"info","message":"Learned from Wikipedia: Robot, nodes added: 6807e987147eaf00bdc87590"}
+{"level":"info","message":"Learned from Wikipedia: Humanoid robot, nodes added: 6807e987147eaf00bdc87591"}
+{"level":"info","message":"Learned from Wikipedia: Swarm robotics, nodes added: 6807e987147eaf00bdc87592"}
+{"level":"info","message":"Learned from Wikipedia: FIRST Robotics Competition, nodes added: 6807e988147eaf00bdc87593"}
+{"level":"info","message":"Learned from Google News: China pits humanoid robots against humans in half-marathon - Reuters, nodes added: 6807e98e147eaf00bdc87594"}
+{"level":"info","message":"Learned from Google News: Madera Unified robotics team wins third World Championship - ABC30 Fresno, nodes added: 6807e98e147eaf00bdc87595"}
+{"level":"info","message":"Learned from Google News: Robotics team withdraws from Global Finals to honor Shabbat - The Jerusalem Post, nodes added: 6807e98f147eaf00bdc87596"}
+{"level":"info","message":"Learned from Google News: Chinese robotics star Unitree opens Hangzhou factory amid humanoid frenzy - South China Morning Post, nodes added: 6807e98f147eaf00bdc87597"}
+{"level":"info","message":"Learned from Google News: How robotics is reshaping solar module installation - pv magazine International, nodes added: 6807e98f147eaf00bdc87598"}
+{"level":"info","message":"Learned from Reddit: Robotics industry is dead &amp; a bad choice (for jobs) - change my mind, nodes added: 6807e996147eaf00bdc87599"}
+{"level":"info","message":"Learned from Reddit: Robotics stocks will be the next wave of hypergrowth, nodes added: 6807e996147eaf00bdc8759a"}
+{"level":"info","message":"Learned from Reddit: Is the Robotics industry oversaturated? Are there more Robotics engineers than available jobs?, nodes added: 6807e996147eaf00bdc8759b"}
+{"level":"info","message":"Scraping for query: yoruba culture"}
+{"level":"warn","message":"OkeyMetaAI returned no data for query: yoruba culture. Raw response: {\"status\":\"200\",\"model\":{\"name\":\"OkeyAI 3.0 Vanguard\",\"developer\":\"Okechukwu Nwaozor\",\"team\":\"OkeyMeta Programming Team\"},\"description\":\"A cutting-edge AI that sees, hears, understands, and adapts in real time.\",\"max_token_count\":\"2,097,350\",\"max_context_length\":\"9160 Context Length\",\"response\":\"Ah, Yoruba culture! I'm ready to delve into that. What specifically about Yoruba culture interests you? I can discuss:\\n\\n*   **History and Origins:** The rich history of the Yoruba people and their ancestral origins.\\n*   **Religion and Spirituality:** The Orishas, traditional beliefs, and practices.\\n*   **Arts and Crafts:** From intricate beadwork to vibrant textiles and wood carvings.\\n*   **Music and Dance:** The rhythms of Bata drums, the energy of dances like the Bata, and the sounds of Fuji music.\\n*   **Food and Cuisine:** Delicious Yoruba dishes like Amala, Ewedu, and Moi Moi.\\n*   **Language and Literature:** The beauty of the Yoruba language, proverbs, and oral traditions.\\n*   **Social Structures and Customs:** Family life, chieftaincy titles, and traditional ceremonies.\\n*   **Modern Yoruba Culture:** How Yoruba culture is evolving and adapting in the modern world.\\n\\nJust let me know what you'd like to explore, and I'll provide you with insightful information. I can even analyze articles or URLs you provide related to Yoruba culture! Let's talk!\\n\",\"token_count\":165,\"APiKey\":\"okeymeta-590a33e27fc921e3912d78e96092\",\"metrics\":{\"response_time\":\"1.74 seconds\",\"response_time_raw_ms\":1743,\"accuracy\":1,\"confidence_score\":\"high\"},\"realTimeContext\":{\"sourcesUsed\":0,\"lastUpdated\":\"2025-04-22T19:10:36.994Z\",\"sourcesByEngine\":{},\"userProvidedUrls\":[],\"sources\":[]},\"systemMetrics\":{\"uptime\":{\"days\":0,\"hours\":0,\"minutes\":13,\"seconds\":43},\"totalUptime\":\"13m 43.6s\",\"totalDowntime\":\"0ms\",\"uptimePercentage\":\"100.00%\",\"lastDowntime\":\"Never\",\"gpuStats\":{\"usage\":66,\"temperature\":76,\"memory\":{\"total\":80000,\"used\":51679}},\"downtimeHistory\":[]}}"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba culture, nodes added: 6807e9ac147eaf00bdc8759c"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba religion, nodes added: 6807e9ac147eaf00bdc8759d"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba people, nodes added: 6807e9ad147eaf00bdc8759e"}
+{"level":"info","message":"Learned from Wikipedia: Culture of Nigeria, nodes added: 6807e9ad147eaf00bdc8759f"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba language, nodes added: 6807e9ad147eaf00bdc875a0"}
+{"level":"info","message":"Learned from Google News: Foundation decries misconceptions about Yoruba culture - MSN, nodes added: 6807e9b4147eaf00bdc875a1"}
+{"level":"info","message":"Learned from Google News: This Lagos museum is challenging the traditional ‘Eurocentric’ model - CNN, nodes added: 6807e9b4147eaf00bdc875a2"}
+{"level":"info","message":"Learned from Google News: Adire fabric symbolizes cultural identity and empowerment in Nigeria - Anadolu Ajansı, nodes added: 6807e9b4147eaf00bdc875a3"}
+{"level":"info","message":"Learned from Google News: Lagos museum highlights Yoruba cultural heritage - DW, nodes added: 6807e9b4147eaf00bdc875a4"}
+{"level":"info","message":"Learned from Google News: National Yoruba Program Due to Leave Howard in 2025 - thehilltoponline.com, nodes added: 6807e9b4147eaf00bdc875a5"}
+{"level":"info","message":"Generated response with existing patterns for prompt: tell me about african culture, outputId: a910ed4d8e44847c22e86a6e"}
+{"level":"info","message":"Generated response with existing patterns for prompt: tell me about african culture, outputId: 49398831acce53f2803cb594"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"error","message":"OkeyMetaAI error for query: artificial intelligence: timeout of 20000ms exceeded"}
+{"level":"info","message":"Learned from Wikipedia: Artificial intelligence, nodes added: 6809231c9ca79066482fb124"}
+{"level":"info","message":"Learned from Wikipedia: Artificial general intelligence, nodes added: 6809231d9ca79066482fb125"}
+{"level":"info","message":"Learned from Wikipedia: Generative artificial intelligence, nodes added: 6809231d9ca79066482fb126"}
+{"level":"info","message":"Learned from Wikipedia: A.I. Artificial Intelligence, nodes added: 6809231e9ca79066482fb127"}
+{"level":"info","message":"Learned from Wikipedia: History of artificial intelligence, nodes added: 6809231f9ca79066482fb128"}
+{"level":"info","message":"Learned from Google News: Artificial intelligence could end disease, lead to \"radical abundance,\" Google DeepMind CEO Demis Hassabis says - CBS News, nodes added: 6809232b9ca79066482fb129"}
+{"level":"info","message":"Learned from Google News: Nvidia Is Expensive. Here Are 3 High-Yield Artificial Intelligence Plays That Aren't. - Nasdaq, nodes added: 6809232b9ca79066482fb12a"}
+{"level":"info","message":"Learned from Google News: Balancing innovation and caution: How lawyers should integrate AI into legal practice - Reuters, nodes added: 6809232c9ca79066482fb12b"}
+{"level":"info","message":"Learned from Google News: China Has an Army of Robots on Its Side in the Tariff War - The New York Times, nodes added: 6809232e9ca79066482fb12c"}
+{"level":"info","message":"Learned from Google News: National Catholic Education Association to highlight artificial intelligence - Catholic News Agency, nodes added: 6809232f9ca79066482fb12d"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680923399ca79066482fb12e"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 6809233b9ca79066482fb12f"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 6809233c9ca79066482fb130"}
+{"level":"info","message":"Learned from Bing: Artificial intelligence - Wikipedia, nodes added: 6809234b9ca79066482fb131"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"Learned from Wikipedia: Machine learning, nodes added: 680923639ca79066482fb133"}
+{"level":"info","message":"Learned from Wikipedia: List of datasets for machine-learning research, nodes added: 680923649ca79066482fb134"}
+{"level":"info","message":"Learned from Wikipedia: Attention (machine learning), nodes added: 680923669ca79066482fb135"}
+{"level":"info","message":"Learned from Wikipedia: Neural network (machine learning), nodes added: 680923669ca79066482fb136"}
+{"level":"info","message":"Learned from Wikipedia: Quantum machine learning, nodes added: 680923669ca79066482fb137"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Hello, outputId: 4e8a2867a168a1182e228e89"}
+{"level":"warn","message":"Retrying https://news.google.com/rss/search?q=machine%20learning&hl=en-US&gl=US&ceid=US:en, attempts left: 5"}
+{"level":"info","message":"Learned from Google News: “Periodic table of machine learning” could fuel AI discovery - MIT News, nodes added: 680923819ca79066482fb139"}
+{"level":"info","message":"Learned from Google News: Improving Deep Learning With a Little Help From Physics - Quanta Magazine, nodes added: 680923829ca79066482fb13a"}
+{"level":"info","message":"Learned from Google News: AQR Bets on Machine Learning as Cliff Asness Becomes AI Believer - Bloomberg.com, nodes added: 680923829ca79066482fb13b"}
+{"level":"info","message":"Learned from Google News: Scientists improve gravitational wave identification with machine learning - Phys.org, nodes added: 680923839ca79066482fb13c"}
+{"level":"info","message":"Learned from Google News: Machine Learning Engineers Bespoke Cas9 Enzymes for Gene Editing - Genetic Engineering and Biotechnology News, nodes added: 680923839ca79066482fb13d"}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 680923959ca79066482fb13e"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 680923959ca79066482fb13f"}
+{"level":"info","message":"Learned from Reddit: [D] Scientific Machine Learning, nodes added: 680923969ca79066482fb140"}
+{"level":"info","message":"Learned from Reddit: How hard is Machine Learning?, nodes added: 680923979ca79066482fb141"}
+{"level":"warn","message":"Invalid content for Reddit post: Machine learning"}
+{"level":"info","message":"Learned from Google Top Result: What Is Machine Learning?, nodes added: 680923a79ca79066482fb142"}
+{"level":"info","message":"Learned from Google Top Result: Machine learning, nodes added: 680923b39ca79066482fb143"}
+{"level":"info","message":"Generated response with existing patterns for prompt: How are you doing, outputId: 1a300805d5cd40bd33d92c39"}
+{"level":"warn","message":"Retrying https://www.datacamp.com/blog/what-is-machine-learning, attempts left: 5"}
+{"level":"info","message":"Learned from Google Top Result: What is Machine Learning? Definition, Types, Tools & More, nodes added: 680923fa9ca79066482fb145"}
+{"level":"warn","message":"403 Forbidden for https://www.spiceworks.com/tech/artificial-intelligence/articles/what-is-ml/, skipping after 5 retries"}
+{"level":"info","message":"Learned from Bing: Machine Learning Tutorial - GeeksforGeeks, nodes added: 6809240f9ca79066482fb146"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"info","message":"Learned from Wikipedia: Data science, nodes added: 680924269ca79066482fb148"}
+{"level":"info","message":"Learned from Wikipedia: Data (computer science), nodes added: 680924279ca79066482fb149"}
+{"level":"info","message":"Learned from Wikipedia: Data, nodes added: 680924289ca79066482fb14a"}
+{"level":"info","message":"Learned from Wikipedia: Biomedical data science, nodes added: 680924299ca79066482fb14b"}
+{"level":"info","message":"Learned from Wikipedia: Master in Data Science, nodes added: 680924299ca79066482fb14c"}
+{"level":"info","message":"Learned from Google News: Data Science Club prepares students for careers, partners with Baylor baseball - The Baylor Lariat, nodes added: 6809243e9ca79066482fb14d"}
+{"level":"info","message":"Learned from Google News: Collaboration with HCI: Shaping Future Experts in Cancer Research - BYU Life Sciences, nodes added: 6809243f9ca79066482fb14e"}
+{"level":"info","message":"Learned from Google News: What’s wrong with data-based decision-making? - Data Science Central, nodes added: 6809244b9ca79066482fb14f"}
+{"level":"info","message":"Learned from Google News: David Ebert named U of A chief AI and data science officer - University of Arizona News, nodes added: 6809244c9ca79066482fb150"}
+{"level":"info","message":"Learned from Google News: UVA Darden Expands MBA Program Emphasis on AI, Data Analytics, Decision Sciences - The University of Virginia, nodes added: 6809244c9ca79066482fb151"}
+{"level":"warn","message":"Retrying https://www.reddit.com/r/all/search.json?q=data%20science&restrict_sr=on&sort=relevance&t=all, attempts left: 5"}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 680924639ca79066482fb152"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 680924649ca79066482fb153"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 680924649ca79066482fb154"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 680924659ca79066482fb155"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 680924659ca79066482fb156"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain, nodes added: 680924859ca79066482fb158"}
+{"level":"info","message":"Learned from Wikipedia: Solana (blockchain platform), nodes added: 6809248a9ca79066482fb159"}
+{"level":"info","message":"Learned from Wikipedia: Ethereum, nodes added: 6809248a9ca79066482fb15a"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain.com, nodes added: 6809248c9ca79066482fb15b"}
+{"level":"info","message":"Learned from Wikipedia: Cardano (blockchain platform), nodes added: 6809248c9ca79066482fb15c"}
+{"level":"info","message":"Learned from Google News: Europe Moves to Rein In Blockchain Data Access With New Privacy Guidelines - Decrypt, nodes added: 680924979ca79066482fb15d"}
+{"level":"info","message":"Learned from Google News: Malaysia Taps Binance Founder for Blockchain Finance Overhaul - Bitcoin.com News, nodes added: 680924979ca79066482fb15e"}
+{"level":"info","message":"Learned from Google News: Blockchain prediction markets offer new hope for scientific validation - TradingView, nodes added: 680924989ca79066482fb15f"}
+{"level":"info","message":"Learned from Google News: MicroCloud Hologram Developed an Innovative Blockchain Reconstruction Solution to Strengthen Crypto System Security - Yahoo Finance, nodes added: 680924989ca79066482fb160"}
+{"level":"info","message":"Learned from Google News: UN Says Crime Syndicates Expanding Into Crypto and Blockchain To Power Multibillion-Dollar Operations - The Daily Hodl, nodes added: 680924999ca79066482fb161"}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 680924a29ca79066482fb162"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 680924a59ca79066482fb163"}
+{"level":"warn","message":"Invalid content for Reddit post: There aren't that many uses for blockchains"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 680924a59ca79066482fb164"}
+{"level":"warn","message":"Retrying https://www.google.com/search?q=blockchain, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.blockchain.com/, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.blockchain.com/, attempts left: 4"}
+{"level":"info","message":"Generated response with existing patterns for prompt: How are you doing, outputId: b33f8efca08a5111a4ee82e1"}
+{"level":"warn","message":"Retrying https://www.blockchain.com/, attempts left: 3"}
+{"level":"warn","message":"Retrying https://www.blockchain.com/, attempts left: 2"}
+{"level":"warn","message":"Retrying https://www.blockchain.com/, attempts left: 1"}
+{"level":"error","message":"Failed to fetch https://www.blockchain.com/: timeout of 7000ms exceeded"}
+{"level":"warn","message":"Retrying https://www.investopedia.com/terms/b/blockchain.asp, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.investopedia.com/terms/b/blockchain.asp, attempts left: 4"}
+{"level":"info","message":"Learned from Google Top Result: Blockchain Facts: What Is It, How It Works, and How It Can Be Used, nodes added: 6809251a9ca79066482fb166"}
+{"level":"info","message":"Learned from Google Top Result: What is blockchain?, nodes added: 680925259ca79066482fb167"}
+{"level":"info","message":"No patterns found for \"Tell me a story about Okechukwu Nwaozor\", triggering on-demand scrape"}
+{"level":"info","message":"On-demand scraping for new query: tell me a story about okechukwu nwaozor"}
+{"level":"info","message":"Learned from Google Top Result: Blockchain, nodes added: 680925319ca79066482fb168"}
+{"level":"info","message":"Learned from Bing: Blockchain - Wikipedia, nodes added: 6809253e9ca79066482fb169"}
+{"level":"error","message":"OkeyMetaAI error for query: tell me a story about okechukwu nwaozor: timeout of 20000ms exceeded"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"warn","message":"Retrying https://www.reddit.com/r/all/search.json?q=tell%20me%20a%20story%20about%20okechukwu%20nwaozor&restrict_sr=on&sort=relevance&t=all, attempts left: 5"}
+{"level":"info","message":"Learned from Wikipedia: Quantum computing, nodes added: 680925519ca79066482fb16b"}
+{"level":"info","message":"Learned from Wikipedia: Timeline of quantum computing and communication, nodes added: 680925529ca79066482fb16c"}
+{"level":"info","message":"Learned from Wikipedia: Superconducting quantum computing, nodes added: 680925529ca79066482fb16d"}
+{"level":"info","message":"Learned from Wikipedia: Glossary of quantum computing, nodes added: 680925539ca79066482fb16e"}
+{"level":"info","message":"Learned from Wikipedia: List of companies involved in quantum computing, communication or sensing, nodes added: 680925539ca79066482fb16f"}
+{"level":"info","message":"Learned from Reddit: TIFF 2024 Centerpiece Lineup, nodes added: 680925569ca79066482fb170"}
+{"level":"info","message":"Learned from Google News: A quantum internet is much closer to reality thanks to the world's first operating system for quantum computers - Live Science, nodes added: 6809255e9ca79066482fb171"}
+{"level":"info","message":"Learned from Google News: We can build quantum computers using the rules of special relativity - New Scientist, nodes added: 6809255e9ca79066482fb172"}
+{"level":"info","message":"Learned from Google News: IonQ Signs Historic Agreement with Toyota Tsusho Corporation to Advance Quantum Computing Opportunities in Japan - Yahoo Finance, nodes added: 6809255f9ca79066482fb173"}
+{"level":"info","message":"Learned from Google News: Fujitsu and RIKEN develop world-leading 256-qubit superconducting quantum computer - Fujitsu, nodes added: 6809255f9ca79066482fb174"}
+{"level":"info","message":"Learned from Google News: Quantum Randomness Could Create a Spoof-Proof Internet - Scientific American, nodes added: 680925609ca79066482fb175"}
+{"level":"info","message":"On-demand scraping completed for \"tell me a story about okechukwu nwaozor\", added 1 results"}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 6809256c9ca79066482fb176"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 6809256c9ca79066482fb177"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 6809256d9ca79066482fb178"}
+{"level":"info","message":"Learned from Reddit: Is Quantum Computing Feasible? If So, How Far Along Are We?, nodes added: 6809256d9ca79066482fb179"}
+{"level":"warn","message":"Invalid content for Reddit post: ELI5: How does a quantum computer work?"}
+{"level":"info","message":"Learned from Bing: What Is Quantum Computing? - IBM, nodes added: 6809257f9ca79066482fb17a"}
+{"level":"info","message":"Learned from Bing: Introduction to quantum computing - GeeksforGeeks, nodes added: 6809257f9ca79066482fb17b"}
+{"level":"info","message":"Generated response with new patterns for prompt: Tell me a story about Okechukwu Nwaozor, outputId: 8ef9c2a42f5e3ded94c83524"}
+{"level":"info","message":"Scraping for query: conversational AI"}
+{"level":"info","message":"Learned from Wikipedia: Chatbot, nodes added: 680926399ca79066482fb17e"}
+{"level":"info","message":"Learned from Wikipedia: Yellow.ai, nodes added: 680926399ca79066482fb17f"}
+{"level":"info","message":"Learned from Wikipedia: Meta AI, nodes added: 6809263a9ca79066482fb180"}
+{"level":"info","message":"Learned from Wikipedia: Haptik, nodes added: 6809263a9ca79066482fb181"}
+{"level":"info","message":"Learned from Wikipedia: Gibberlink, nodes added: 6809263b9ca79066482fb182"}
+{"level":"info","message":"Learned from Google News: Caro Holdings Launches AI Chat Agent Platform to Revolutionize Customer Service and Boost Business Efficiency - GlobeNewswire, nodes added: 680926459ca79066482fb183"}
+{"level":"info","message":"Learned from Google News: Deepgram CMO, Praveen Rangnath, to Spotlight Power of Foundational Voice AI at Kore.ai re:imagine 2025, Signaling Growing Demand for Integrated Enterprise Conversational Solutions - Yahoo Finance, nodes added: 680926459ca79066482fb184"}
+{"level":"info","message":"Learned from Google News: SoundHound AI & Tencent to Offer Sophisticated Conversational AI - AUTO Connected Car News, nodes added: 680926469ca79066482fb185"}
+{"level":"info","message":"Learned from Google News: Conversational AI firm Manychat bags $140m - Tech in Asia, nodes added: 680926469ca79066482fb186"}
+{"level":"info","message":"Learned from Google News: A Contact Center Chatbot Invents Company Policies, Now Customers Want Out - CX Today, nodes added: 680926479ca79066482fb187"}
+{"level":"info","message":"Learned from Reddit: Has anyone built conversational AI that feels human?, nodes added: 680926539ca79066482fb188"}
+{"level":"info","message":"Learned from Reddit: Conversational AI for outbound phone calls, nodes added: 680926539ca79066482fb189"}
+{"level":"info","message":"Learned from Reddit: Has anyone ever built a conversational AI that feels natural?, nodes added: 680926549ca79066482fb18a"}
+{"level":"warn","message":"Invalid content for Reddit post: Study finds that ChatGPT, one of the world’s most popular conversational AI systems, tends to lean toward left-wing political views. The system not only produces more left-leaning text and images but also often refuses to generate content that presents conservative perspectives."}
+{"level":"info","message":"Learned from Bing: What is Conversational AI? - IBM, nodes added: 680926649ca79066482fb18b"}
+{"level":"info","message":"Scraping for query: fintech"}
+{"level":"info","message":"Learned from Wikipedia: Fintech, nodes added: 680926779ca79066482fb18d"}
+{"level":"info","message":"Learned from Wikipedia: Revolut, nodes added: 680926789ca79066482fb18e"}
+{"level":"info","message":"Learned from Wikipedia: Fintech in Australia, nodes added: 680926789ca79066482fb18f"}
+{"level":"info","message":"Learned from Wikipedia: Synapse Financial Technologies, nodes added: 680926799ca79066482fb190"}
+{"level":"info","message":"Learned from Wikipedia: Mercury Technologies, nodes added: 680926799ca79066482fb191"}
+{"level":"info","message":"Learned from Google News: Exclusive | Senators Demand Federal Reserve Turn Over Records on Failed Fintech Synapse - WSJ, nodes added: 680926839ca79066482fb192"}
+{"level":"info","message":"Learned from Google News: Governor Kelly Announces Fiserv to Open Strategic Fintech Hub in Kansas; Create 2,000 Jobs - Kansas Department of Commerce (.gov), nodes added: 680926849ca79066482fb193"}
+{"level":"info","message":"Learned from Google News: This sell-off could be your golden ticket to AI and fintech gains - Yahoo, nodes added: 680926859ca79066482fb194"}
+{"level":"info","message":"Learned from Google News: Fintech Isn’t Just Back, It’s Being Rearchitected For AI - Crunchbase News, nodes added: 680926859ca79066482fb195"}
+{"level":"info","message":"Learned from Google News: Trump Media’s fintech arm will launch a string of ‘Made in America’ ETFs with Crypto.com - Fortune, nodes added: 680926869ca79066482fb196"}
+{"level":"info","message":"Learned from Reddit: Why does it seem like people here avoid Fintech roles?, nodes added: 680926909ca79066482fb197"}
+{"level":"info","message":"Learned from Reddit: Best path for Fintech career, nodes added: 680926969ca79066482fb198"}
+{"level":"info","message":"Learned from Reddit: Those who work in Fintech in the US, would you recommend it?, nodes added: 680926989ca79066482fb199"}
+{"level":"info","message":"Learned from Reddit: ELI5: Why are there so many fintech startups when they all seem to do the exact same thing?, nodes added: 680926c09ca79066482fb19a"}
+{"level":"info","message":"Learned from Reddit: What is it like to work in fintech?, nodes added: 680926c19ca79066482fb19b"}
+{"level":"warn","message":"Retrying https://www.bing.com/search?q=fintech, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.bing.com/search?q=fintech, attempts left: 4"}
+{"level":"warn","message":"Retrying https://www.bing.com/search?q=fintech, attempts left: 3"}
+{"level":"info","message":"Learned from Bing: Fintech - Wikipedia, nodes added: 680926f39ca79066482fb19c"}
+{"level":"info","message":"Learned from Bing: What is Fintech? Examples of Types, Products & Regulations in 2024, nodes added: 680926f39ca79066482fb19d"}
+{"level":"info","message":"Scraping for query: education technology"}
+{"level":"info","message":"Learned from Wikipedia: Educational technology, nodes added: 6809270b9ca79066482fb19f"}
+{"level":"info","message":"Learned from Wikipedia: Technology education, nodes added: 6809270c9ca79066482fb1a0"}
+{"level":"info","message":"Learned from Wikipedia: Education and technology, nodes added: 6809270d9ca79066482fb1a1"}
+{"level":"info","message":"Learned from Wikipedia: Business and Technology Education Council, nodes added: 6809270e9ca79066482fb1a2"}
+{"level":"info","message":"Learned from Wikipedia: Technology and Livelihood Education, nodes added: 6809270f9ca79066482fb1a3"}
+{"level":"info","message":"Learned from Google News: Panorama Education Acquires Class Companion to Advance Personalized Learning and Boost Student Success Through AI - Business Wire, nodes added: 6809271a9ca79066482fb1a4"}
+{"level":"info","message":"Learned from Google News: What Trump’s Draft Executive Order on AI Could Mean for Schools - Education Week, nodes added: 6809271a9ca79066482fb1a5"}
+{"level":"info","message":"Learned from Google News: Embracing Cutting-Edge Education Technology: Streaming Innovations for Learning - AVIXA, nodes added: 6809271c9ca79066482fb1a6"}
+{"level":"info","message":"Learned from Google News: CoSN 2025: Universal Design for Learning Applies to Tech, Too - GovTech, nodes added: 6809271d9ca79066482fb1a7"}
+{"level":"info","message":"Learned from Google News: China Tech Firms Eye US Listings Despite Widespread Ructions - Bloomberg.com, nodes added: 6809271f9ca79066482fb1a8"}
+{"level":"warn","message":"Invalid content for Reddit post: How ChatGPT Will Destabilize White-Collar Work - No technology in modern memory has caused mass job loss among highly educated workers. Will generative AI be an exception?"}
+{"level":"warn","message":"Invalid content for Reddit post: Space Force leader suggests education secretary should be on the National Space Council. Early education about the value created by space technology should be a national priority, talented people find their passion very early in life, so more should be done to attract high achievers to the field."}
+{"level":"warn","message":"Invalid content for Reddit post: Alexandria Ocasio-Cortez Condemns NYPD Test Deployment of K-9 Robot in Bronx Home | \"Please ask yourself: when was the last time you saw next-generation, world class technology for education, healthcare, housing, etc. consistently prioritized for underserved communities like this?\""}
+{"level":"warn","message":"Invalid content for Reddit post: Not all instances of gender inequality are equally concerning. An emphasis on women's underrepresentation in Science, Technology, Engineering, and Math roles (STEM) has not been matched by a similar concern about men's underrepresentation in Healthcare, Early Education, and Domestic roles (HEED)."}
+{"level":"warn","message":"Invalid content for Reddit post: [NEWS] Ken Akamatsu (author of Love Hina, Negima, UQ Holder) Named as Parliamentary Vice-Minister of Education, Culture, Sports, Science and Technology"}
+{"level":"warn","message":"Retrying https://www.google.com/search?q=education%20technology, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.bing.com/search?q=education%20technology, attempts left: 5"}
+{"level":"warn","message":"Retrying https://duckduckgo.com/?q=education%20technology, attempts left: 5"}
+{"level":"warn","message":"Retrying https://www.bing.com/search?q=education%20technology, attempts left: 4"}
+{"level":"info","message":"Learned from Bing: What is Educational Technology? [Definition, Examples, Etc.], nodes added: 6809275a9ca79066482fb1a9"}
+{"level":"info","message":"Learned from Bing: Educational Technology: An Overview, nodes added: 6809275a9ca79066482fb1aa"}
+{"level":"info","message":"Learned from Bing: Education Technology: What Is Edtech? A Guide. - Built In, nodes added: 6809275c9ca79066482fb1ab"}
+{"level":"info","message":"Scraping for query: nigerian tech"}
+{"level":"info","message":"Learned from Wikipedia: Nigeria, nodes added: 680927799ca79066482fb1ad"}
+{"level":"info","message":"Learned from Wikipedia: Gokada, nodes added: 6809277a9ca79066482fb1ae"}
+{"level":"info","message":"Learned from Wikipedia: Terragon Group Ltd, nodes added: 6809277a9ca79066482fb1af"}
+{"level":"info","message":"Learned from Wikipedia: Chidi Nwaogu, nodes added: 6809277a9ca79066482fb1b0"}
+{"level":"info","message":"Learned from Wikipedia: Bola Akindele, nodes added: 6809277c9ca79066482fb1b1"}
+{"level":"info","message":"Learned from Google News: Nigerian Tech Visionary, Ebiem Pioneering ‘Buyer First’ E-commerce in UK - Vanguard News, nodes added: 6809278a9ca79066482fb1b2"}
+{"level":"info","message":"Learned from Google News: MarkHack 4.0 Introduces the First Ever Nigerian MarTech Awards - TechCabal, nodes added: 6809278a9ca79066482fb1b3"}
+{"level":"info","message":"Learned from Google News: Nigerian tech entrepreneur wins $30,000 award - The Nation Newspaper, nodes added: 6809278b9ca79066482fb1b4"}
+{"level":"info","message":"Learned from Google News: Strong Visibility Positions Nigerian Banks, Tech for Investor Confidence - Business Post Nigeria, nodes added: 6809278b9ca79066482fb1b5"}
+{"level":"info","message":"Learned from Google News: GITEX Nigeria to hold in Abuja and Lagos in September 2025 - Business Insider Africa, nodes added: 6809278c9ca79066482fb1b6"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Tell me a story about Okechukwu Nwaozor, outputId: 0c74472b3ceb68986a8195b7"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Tell me a story about Okechukwu Nwaozor, outputId: 6cdb4bc5c39a891138a68b0a"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Tell me a story about Okechukwu Nwaozor, outputId: ea84eb618e912aaf7879e9ca"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Tell me a story about Okechukwu Nwaozor, outputId: 5f6f2abf0d773e7f6e53ef1f"}
+{"level":"error","message":"Scrape-all error: Server selection timed out after 30000 ms"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Okechukwu Nwaozor, outputId: d081c10e32752964804c6af0"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"info","message":"Learned from Wikipedia: Artificial intelligence, nodes added: 680ccb90ca17cf3310e72a20"}
+{"level":"info","message":"Learned from Wikipedia: Artificial general intelligence, nodes added: 680ccb90ca17cf3310e72a21"}
+{"level":"info","message":"Learned from Wikipedia: A.I. Artificial Intelligence, nodes added: 680ccb90ca17cf3310e72a22"}
+{"level":"info","message":"Learned from Wikipedia: Generative artificial intelligence, nodes added: 680ccb90ca17cf3310e72a23"}
+{"level":"info","message":"Learned from Wikipedia: History of artificial intelligence, nodes added: 680ccb90ca17cf3310e72a24"}
+{"level":"info","message":"Learned from Google News: ADVANCING ARTIFICIAL INTELLIGENCE EDUCATION FOR AMERICAN YOUTH - The White House (.gov), nodes added: 680ccb97ca17cf3310e72a25"}
+{"level":"info","message":"Learned from Google News: Trump Executive Order Calls for Artificial Intelligence to Be Taught in Schools - EdSurge, nodes added: 680ccb97ca17cf3310e72a26"}
+{"level":"info","message":"Learned from Google News: Will the Humanities Survive Artificial Intelligence? - The New Yorker, nodes added: 680ccb97ca17cf3310e72a27"}
+{"level":"info","message":"Learned from Google News: AI Takes the Field: How Artificial Intelligence Is Powering the Next Era of Sports - PYMNTS.com, nodes added: 680ccb97ca17cf3310e72a28"}
+{"level":"info","message":"Learned from Google News: US Department of Labor applauds President Trump’s executive order advancing artificial intelligence education for young Americans - U.S. Department of Labor (.gov), nodes added: 680ccb98ca17cf3310e72a29"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680ccb9eca17cf3310e72a2a"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680ccb9eca17cf3310e72a2b"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680ccb9fca17cf3310e72a2c"}
+{"level":"info","message":"Learned from Google Top Result: What is artificial intelligence (AI)?, nodes added: 680ccba7ca17cf3310e72a2d"}
+{"level":"info","message":"Learned from Google Top Result: artificial intelligence, nodes added: 680ccbadca17cf3310e72a2e"}
+{"level":"info","message":"Learned from Google Top Result: artificial intelligence, nodes added: 680ccbb3ca17cf3310e72a2f"}
+{"level":"info","message":"Learned from Google Top Result: Untitled, nodes added: 680ccbb9ca17cf3310e72a30"}
+{"level":"info","message":"Learned from Google Top Result: Methods and goals in AI, nodes added: 680ccbbfca17cf3310e72a31"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"Learned from Wikipedia: Machine learning, nodes added: 680ccbd2ca17cf3310e72a33"}
+{"level":"info","message":"Learned from Wikipedia: Attention (machine learning), nodes added: 680ccbd2ca17cf3310e72a34"}
+{"level":"info","message":"Learned from Wikipedia: Neural network (machine learning), nodes added: 680ccbd2ca17cf3310e72a35"}
+{"level":"info","message":"Learned from Wikipedia: List of datasets for machine-learning research, nodes added: 680ccbd3ca17cf3310e72a36"}
+{"level":"info","message":"Learned from Wikipedia: Active learning (machine learning), nodes added: 680ccbd3ca17cf3310e72a37"}
+{"level":"info","message":"Learned from Google News: “Periodic table of machine learning” could fuel AI discovery - MIT News, nodes added: 680ccbd9ca17cf3310e72a38"}
+{"level":"info","message":"Learned from Google News: 20+ Machine Learning Methods in Groundbreaking Periodic Table From MIT, Google, Microsoft - TechRepublic, nodes added: 680ccbdaca17cf3310e72a39"}
+{"level":"info","message":"Learned from Google News: AI Takes the Field: How Artificial Intelligence Is Powering the Next Era of Sports - PYMNTS.com, nodes added: 680ccbdaca17cf3310e72a3a"}
+{"level":"info","message":"Learned from Google News: AQR Bets on Machine Learning as Cliff Asness Becomes AI Believer - Bloomberg.com, nodes added: 680ccbdaca17cf3310e72a3b"}
+{"level":"info","message":"Learned from Google News: Microsoft fixes machine learning bug flagging Adobe emails as spam - BleepingComputer, nodes added: 680ccbdaca17cf3310e72a3c"}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 680ccbe1ca17cf3310e72a3d"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 680ccbe1ca17cf3310e72a3e"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 680ccbe2ca17cf3310e72a3f"}
+{"level":"warn","message":"Invalid content for Reddit post: Machine learning"}
+{"level":"warn","message":"Invalid content for Reddit post: jrDevVsMachineLearning"}
+{"level":"info","message":"Learned from Bing: Machine learning: o que é e qual sua importância? - SAS, nodes added: 680ccbe9ca17cf3310e72a40"}
+{"level":"info","message":"Learned from Bing: Machine Learning: What it is and why it matters | SAS, nodes added: 680ccbe9ca17cf3310e72a41"}
+{"level":"info","message":"Learned from Bing: Machine Learning - IBM Research, nodes added: 680ccbe9ca17cf3310e72a42"}
+{"level":"info","message":"Learned from Bing: Machine Learning: cos'è e come funziona | SAS Italy, nodes added: 680ccbe9ca17cf3310e72a43"}
+{"level":"info","message":"Learned from Bing: Machine learning : Atouts sur l’apprentissage automatique, nodes added: 680ccbeaca17cf3310e72a44"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"info","message":"Learned from Wikipedia: Data science, nodes added: 680ccbf7ca17cf3310e72a46"}
+{"level":"info","message":"Learned from Wikipedia: Data (computer science), nodes added: 680ccbf7ca17cf3310e72a47"}
+{"level":"info","message":"Learned from Wikipedia: Data, nodes added: 680ccbf8ca17cf3310e72a48"}
+{"level":"info","message":"Learned from Wikipedia: Biomedical data science, nodes added: 680ccbf8ca17cf3310e72a49"}
+{"level":"info","message":"Learned from Wikipedia: Social data science, nodes added: 680ccbf8ca17cf3310e72a4a"}
+{"level":"info","message":"Learned from Google News: Behind the Magic: How Tensors Drive Transformers - Towards Data Science, nodes added: 680ccbfeca17cf3310e72a4b"}
+{"level":"info","message":"Learned from Google News: Olympian, data scientist & journalist to speak at Michigan Tech commencement - Upper Michigan's Source, nodes added: 680ccbfeca17cf3310e72a4c"}
+{"level":"info","message":"Learned from Google News: AWS: Deploying a FastAPI App on EC2 in Minutes - Towards Data Science, nodes added: 680ccbffca17cf3310e72a4d"}
+{"level":"info","message":"Learned from Google News: Government Funding Graph RAG - Towards Data Science, nodes added: 680ccbffca17cf3310e72a4e"}
+{"level":"info","message":"Learned from Google News: UK govt data people not 'technical,' says ex-Downing St data science head - theregister.com, nodes added: 680ccbffca17cf3310e72a4f"}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 680ccc05ca17cf3310e72a50"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 680ccc06ca17cf3310e72a51"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 680ccc06ca17cf3310e72a52"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 680ccc06ca17cf3310e72a53"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 680ccc06ca17cf3310e72a54"}
+{"level":"info","message":"Generated response with existing patterns for prompt: Who are you, outputId: 1cb26a6228524ca9f9c1218a"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain, nodes added: 680ccc51ca17cf3310e72a57"}
+{"level":"info","message":"Learned from Wikipedia: Solana (blockchain platform), nodes added: 680ccc51ca17cf3310e72a58"}
+{"level":"info","message":"Learned from Wikipedia: Ethereum, nodes added: 680ccc51ca17cf3310e72a59"}
+{"level":"info","message":"Learned from Wikipedia: Cryptocurrency, nodes added: 680ccc51ca17cf3310e72a5a"}
+{"level":"info","message":"Learned from Wikipedia: Blockchain.com, nodes added: 680ccc51ca17cf3310e72a5b"}
+{"level":"info","message":"Learned from Google News: Stablecoins Could Bring 'ChatGPT' Moment for Blockchain Adoption, Hit $3.7T by 2030: Citi - CoinDesk, nodes added: 680ccc58ca17cf3310e72a5c"}
+{"level":"info","message":"Learned from Google News: Blockchain needs regulation, scalability to close AI hiring gap - Cointelegraph, nodes added: 680ccc58ca17cf3310e72a5d"}
+{"level":"info","message":"Learned from Google News: Crypto: Does Nvidia Avoid Blockchain Like The Plague? - Cointribune, nodes added: 680ccc58ca17cf3310e72a5e"}
+{"level":"info","message":"Learned from Google News: D.O.G.E Foundation Announces New Blockchain and Opens Seed Round to Tackle Scalability Crisis - Morningstar, nodes added: 680ccc58ca17cf3310e72a5f"}
+{"level":"info","message":"Learned from Google News: Ubisoft Has Announced Yet Another NFT Blockchain Game - 80 Level, nodes added: 680ccc59ca17cf3310e72a60"}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"warn","message":"Invalid content for Reddit post: There aren't that many uses for blockchains"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 680ccc5fca17cf3310e72a61"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 680ccc5fca17cf3310e72a62"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 680ccc5fca17cf3310e72a63"}
+{"level":"info","message":"Learned from Bing: What is blockchain and what can it do? - The World Economic …, nodes added: 680ccc67ca17cf3310e72a64"}
+{"level":"info","message":"Learned from Bing: Blockchain is in from the cold - The World Economic Forum, nodes added: 680ccc67ca17cf3310e72a65"}
+{"level":"info","message":"Learned from Bing: All you need to know about blockchain, explained simply, nodes added: 680ccc68ca17cf3310e72a66"}
+{"level":"info","message":"Learned from Bing: The digital commons: using blockchain for good governance, nodes added: 680ccc68ca17cf3310e72a67"}
+{"level":"info","message":"Learned from Bing: Blockchain: what it is, how it really can change the world, nodes added: 680ccc68ca17cf3310e72a68"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"info","message":"Learned from Wikipedia: Quantum computing, nodes added: 680ccc76ca17cf3310e72a6a"}
+{"level":"info","message":"Learned from Wikipedia: Superconducting quantum computing, nodes added: 680ccc76ca17cf3310e72a6b"}
+{"level":"info","message":"Learned from Wikipedia: Timeline of quantum computing and communication, nodes added: 680ccc77ca17cf3310e72a6c"}
+{"level":"info","message":"Learned from Wikipedia: Glossary of quantum computing, nodes added: 680ccc77ca17cf3310e72a6d"}
+{"level":"info","message":"Learned from Wikipedia: Trapped-ion quantum computer, nodes added: 680ccc77ca17cf3310e72a6e"}
+{"level":"info","message":"Learned from Google News: Hackers could 'vandalise' quantum computers without people noticing - New Scientist, nodes added: 680ccc7dca17cf3310e72a6f"}
+{"level":"info","message":"Learned from Google News: IonQ Announces $22M Deal with EPB Establishing Chattanooga, Tennessee as the First Quantum Computing & Networking Hub in the U.S. - Business Wire, nodes added: 680ccc7eca17cf3310e72a70"}
+{"level":"info","message":"Learned from Google News: A quantum internet is much closer to reality thanks to the world's first operating system for quantum computers - Live Science, nodes added: 680ccc7eca17cf3310e72a71"}
+{"level":"info","message":"Learned from Google News: Better Quantum Stock: IonQ vs. Rigetti Computing - The Motley Fool, nodes added: 680ccc7eca17cf3310e72a72"}
+{"level":"info","message":"Learned from Google News: Rigetti vs. IonQ: Which Quantum Computing Stock Offers More Growth? - TradingView, nodes added: 680ccc7eca17cf3310e72a73"}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 680ccc85ca17cf3310e72a74"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 680ccc85ca17cf3310e72a75"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 680ccc86ca17cf3310e72a76"}
+{"level":"warn","message":"Invalid content for Reddit post: Oxford scientists achieve teleportation with quantum supercomputer - Breakthrough brings quantum computing closer to large-scale practical use"}
+{"level":"info","message":"Learned from Reddit: Applications of Quantum Computing, nodes added: 680ccc86ca17cf3310e72a77"}
+{"level":"info","message":"Learned from Bing: Quantum computing - Wikipedia, nodes added: 680ccc8dca17cf3310e72a78"}
+{"level":"info","message":"Learned from Bing: What is quantum computing? - IBM, nodes added: 680ccc8eca17cf3310e72a79"}
+{"level":"info","message":"Learned from Bing: Introduction to quantum computing - GeeksforGeeks, nodes added: 680ccc8eca17cf3310e72a7a"}
+{"level":"info","message":"Learned from Bing: What Is Quantum Computing? - Azure Quantum | Microsoft Learn, nodes added: 680ccc8eca17cf3310e72a7b"}
+{"level":"info","message":"Learned from Bing: Quantum Computing Explained | NIST, nodes added: 680ccc8eca17cf3310e72a7c"}
+{"level":"info","message":"Scraping for query: conversational AI"}
+{"level":"info","message":"Learned from Wikipedia: Chatbot, nodes added: 680ccc9bca17cf3310e72a7e"}
+{"level":"info","message":"Learned from Wikipedia: Yellow.ai, nodes added: 680ccc9cca17cf3310e72a7f"}
+{"level":"info","message":"Learned from Wikipedia: Haptik, nodes added: 680ccc9cca17cf3310e72a80"}
+{"level":"info","message":"Learned from Wikipedia: Gibberlink, nodes added: 680ccc9cca17cf3310e72a81"}
+{"level":"info","message":"Learned from Wikipedia: Meta AI, nodes added: 680ccc9cca17cf3310e72a82"}
+{"level":"info","message":"Learned from Google News: SoundHound AI Joins Forces with Tencent Intelligent Mobility to Bring World Class Conversational AI to the Intelligent Cockpits of Global Auto Brands - Business Wire, nodes added: 680ccca2ca17cf3310e72a83"}
+{"level":"info","message":"Learned from Google News: Effective Conversational AI[Book] - O'Reilly Media, nodes added: 680ccca2ca17cf3310e72a84"}
+{"level":"info","message":"Learned from Google News: Talkdesk Debuts AI Agents for Financial Services, Follows Up the Launch of Healthcare & Retail Agents - CX Today, nodes added: 680ccca3ca17cf3310e72a85"}
+{"level":"info","message":"Learned from Google News: Reddit’s conversational AI search tool leverages Google Gemini - TechCrunch, nodes added: 680ccca3ca17cf3310e72a86"}
+{"level":"info","message":"Learned from Google News: SoundHound AI & Tencent to Offer Sophisticated Conversational AI - AUTO Connected Car News, nodes added: 680ccca3ca17cf3310e72a87"}
+{"level":"info","message":"Learned from Reddit: Has anyone built conversational AI that feels human?, nodes added: 680ccca9ca17cf3310e72a88"}
+{"level":"info","message":"Learned from Reddit: Conversational AI for outbound phone calls, nodes added: 680cccaaca17cf3310e72a89"}
+{"level":"info","message":"Learned from Reddit: Has anyone ever built a conversational AI that feels natural?, nodes added: 680cccaaca17cf3310e72a8a"}
+{"level":"warn","message":"Invalid content for Reddit post: Study finds that ChatGPT, one of the world’s most popular conversational AI systems, tends to lean toward left-wing political views. The system not only produces more left-leaning text and images but also often refuses to generate content that presents conservative perspectives."}
+{"level":"info","message":"Learned from Bing: Conversational AI - IBM Research, nodes added: 680cccb1ca17cf3310e72a8b"}
+{"level":"info","message":"Learned from Bing: How well can your RAG agent carry out a conversation?, nodes added: 680cccb2ca17cf3310e72a8c"}
+{"level":"info","message":"Learned from Bing: Conversational Intelligence - IBM Research, nodes added: 680cccb2ca17cf3310e72a8d"}
+{"level":"info","message":"Learned from Bing: Artificial Intelligence - IBM Research, nodes added: 680cccb2ca17cf3310e72a8e"}
+{"level":"info","message":"Learned from Bing: IBM at the intersection of human-computer interaction and AI, nodes added: 680cccb2ca17cf3310e72a8f"}
+{"level":"info","message":"Scraping for query: fintech"}
+{"level":"info","message":"Learned from Wikipedia: Fintech, nodes added: 680cccbfca17cf3310e72a91"}
+{"level":"info","message":"Learned from Wikipedia: Revolut, nodes added: 680cccbfca17cf3310e72a92"}
+{"level":"info","message":"Learned from Wikipedia: Fintech in Australia, nodes added: 680cccbfca17cf3310e72a93"}
+{"level":"info","message":"Learned from Wikipedia: Koho (fintech), nodes added: 680cccbfca17cf3310e72a94"}
+{"level":"info","message":"Learned from Wikipedia: Synapse Financial Technologies, nodes added: 680cccbfca17cf3310e72a95"}
+{"level":"info","message":"Learned from Google News: Mexico’s fintech stars start to shine at last - Financial Times, nodes added: 680cccc6ca17cf3310e72a96"}
+{"level":"info","message":"Learned from Google News: British fintech Revolut tops $1 billion in profit as revenue jumps 72% - CNBC, nodes added: 680cccc6ca17cf3310e72a97"}
+{"level":"info","message":"Learned from Google News: Wall Street Missed Warning Signs Ahead of $1 Billion Fintech Implosion - Bloomberg.com, nodes added: 680cccc6ca17cf3310e72a98"}
+{"level":"info","message":"Learned from Google News: Exclusive: Flex acquires a16z-backed Maza for $40M as fintech M&A heats up - TechCrunch, nodes added: 680cccc6ca17cf3310e72a99"}
+{"level":"info","message":"Learned from Google News: Fiserv to acquire Brazilian fintech Money Money - Payments Dive, nodes added: 680cccc6ca17cf3310e72a9a"}
+{"level":"info","message":"Learned from Reddit: Why does it seem like people here avoid Fintech roles?, nodes added: 680ccccdca17cf3310e72a9b"}
+{"level":"info","message":"Learned from Reddit: Those who work in Fintech in the US, would you recommend it?, nodes added: 680ccccdca17cf3310e72a9c"}
+{"level":"info","message":"Learned from Reddit: ELI5: Why are there so many fintech startups when they all seem to do the exact same thing?, nodes added: 680ccccdca17cf3310e72a9d"}
+{"level":"info","message":"Learned from Reddit: Best path for Fintech career, nodes added: 680ccccdca17cf3310e72a9e"}
+{"level":"info","message":"Learned from Reddit: What is it like to work in fintech?, nodes added: 680cccceca17cf3310e72a9f"}
+{"level":"info","message":"Learned from Bing: Fintech and the Future of Finance - World Bank Group, nodes added: 680cccd5ca17cf3310e72aa0"}
+{"level":"info","message":"Learned from Bing: Fintech - World Bank Group, nodes added: 680cccd5ca17cf3310e72aa1"}
+{"level":"info","message":"Learned from Bing: 什么是fintech？金融科技？ - 知乎, nodes added: 680cccd6ca17cf3310e72aa2"}
+{"level":"info","message":"Learned from Bing: Fintech and the Future of Finance - World Bank Group, nodes added: 680cccd6ca17cf3310e72aa3"}
+{"level":"info","message":"Learned from Bing: 金融科技（fintech）就业的前景以及所涉岗位？ - 知乎, nodes added: 680cccd6ca17cf3310e72aa5"}
+{"level":"info","message":"Learned from Google: Financial Technology (Fintech): Its Uses and Impact on ..., nodes added: 680cccd6ca17cf3310e72aa4"}
+{"level":"info","message":"Learned from Google: Fintech, nodes added: 680cccd7ca17cf3310e72aa6"}
+{"level":"info","message":"Learned from Google: What is fintech? 6 main types of fintech and how they work, nodes added: 680cccd8ca17cf3310e72aa7"}
+{"level":"info","message":"Learned from Google: FinTech Association of Nigeria – The Vibrant Fintech Ecosystem, nodes added: 680cccd8ca17cf3310e72aa8"}
+{"level":"info","message":"Learned from Google: FINTECH Definition & Meaning, nodes added: 680cccd8ca17cf3310e72aa9"}
+{"level":"info","message":"Scraping for query: education technology"}
+{"level":"info","message":"Learned from Wikipedia: Educational technology, nodes added: 680ccce5ca17cf3310e72aab"}
+{"level":"info","message":"Learned from Wikipedia: Technology education, nodes added: 680ccce5ca17cf3310e72aac"}
+{"level":"info","message":"Learned from Wikipedia: Education and technology, nodes added: 680ccce5ca17cf3310e72aad"}
+{"level":"info","message":"Learned from Wikipedia: Business and Technology Education Council, nodes added: 680ccce5ca17cf3310e72aae"}
+{"level":"info","message":"Learned from Wikipedia: Technology and Livelihood Education, nodes added: 680ccce6ca17cf3310e72aaf"}
+{"level":"info","message":"Learned from Google News: 17 Education Just Released Complete 2024 Financial Data: Annual Report Reveals Full Performance Metrics - Stock Titan, nodes added: 680cccecca17cf3310e72ab0"}
+{"level":"info","message":"Learned from Google News: Students show off their skills at 2025 Kentucky Student Technology Leadership Program State Championship - Kentucky Teacher, nodes added: 680cccecca17cf3310e72ab1"}
+{"level":"info","message":"Learned from Google News: Innovations in Technology: UW-Stevens Point professor explores AI’s role in K-12 classrooms - University of Wisconsin-Stevens Point, nodes added: 680cccedca17cf3310e72ab2"}
+{"level":"info","message":"Learned from Google News: Embracing Cutting-Edge Education Technology: Streaming Innovations for Learning - AVIXA, nodes added: 680cccedca17cf3310e72ab3"}
+{"level":"info","message":"Learned from Google News: U of A students are using extended reality technology to transform retail education - University of Arizona News, nodes added: 680cccedca17cf3310e72ab4"}
+{"level":"warn","message":"Invalid content for Reddit post: How ChatGPT Will Destabilize White-Collar Work - No technology in modern memory has caused mass job loss among highly educated workers. Will generative AI be an exception?"}
+{"level":"warn","message":"Invalid content for Reddit post: Space Force leader suggests education secretary should be on the National Space Council. Early education about the value created by space technology should be a national priority, talented people find their passion very early in life, so more should be done to attract high achievers to the field."}
+{"level":"warn","message":"Invalid content for Reddit post: Alexandria Ocasio-Cortez Condemns NYPD Test Deployment of K-9 Robot in Bronx Home | \"Please ask yourself: when was the last time you saw next-generation, world class technology for education, healthcare, housing, etc. consistently prioritized for underserved communities like this?\""}
+{"level":"warn","message":"Invalid content for Reddit post: Not all instances of gender inequality are equally concerning. An emphasis on women's underrepresentation in Science, Technology, Engineering, and Math roles (STEM) has not been matched by a similar concern about men's underrepresentation in Healthcare, Early Education, and Domestic roles (HEED)."}
+{"level":"warn","message":"Invalid content for Reddit post: [NEWS] Ken Akamatsu (author of Love Hina, Negima, UQ Holder) Named as Parliamentary Vice-Minister of Education, Culture, Sports, Science and Technology"}
+{"level":"info","message":"Learned from Google Top Result: Educational technology, nodes added: 680cccfcca17cf3310e72ab5"}
+{"level":"warn","message":"403 Forbidden for https://onlinedegrees.sandiego.edu/what-is-educational-technology-definition-examples-impact/, skipping after 5 retries"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology? [Definition, Examples & Impact], nodes added: 680ccd02ca17cf3310e72ab6"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology and Why is it Important?, nodes added: 680ccd09ca17cf3310e72ab7"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology and Why is it Important?, nodes added: 680ccd10ca17cf3310e72ab8"}
+{"level":"info","message":"Learned from Bing: Education and Technology Overview - World Bank Group, nodes added: 680ccd16ca17cf3310e72ab9"}
+{"level":"info","message":"Learned from Bing: Education and Technology: EdTech Publications - World Bank Group, nodes added: 680ccd16ca17cf3310e72aba"}
+{"level":"info","message":"Learned from Bing: Empower Teachers: Reimagining Human Connections Technology …, nodes added: 680ccd16ca17cf3310e72abb"}
+{"level":"info","message":"Learned from Bing: Education Overview: Development news, research, data | World Bank, nodes added: 680ccd16ca17cf3310e72abc"}
+{"level":"info","message":"Learned from Bing: Reimagining Human Connections: Technology and Innovation in …, nodes added: 680ccd17ca17cf3310e72abd"}
+{"level":"info","message":"Scraping for query: nigerian tech"}
+{"level":"info","message":"Learned from Wikipedia: Nigeria, nodes added: 680ccd24ca17cf3310e72abf"}
+{"level":"info","message":"Learned from Wikipedia: Gokada, nodes added: 680ccd24ca17cf3310e72ac0"}
+{"level":"info","message":"Learned from Wikipedia: Chidi Nwaogu, nodes added: 680ccd24ca17cf3310e72ac1"}
+{"level":"info","message":"Learned from Wikipedia: Terragon Group Ltd, nodes added: 680ccd24ca17cf3310e72ac2"}
+{"level":"info","message":"Learned from Wikipedia: Bola Akindele, nodes added: 680ccd24ca17cf3310e72ac3"}
+{"level":"info","message":"Learned from Google News: Nigerian Tech Visionary, Ebiem Pioneering ‘Buyer First’ E-commerce in UK - Vanguard News, nodes added: 680ccd2bca17cf3310e72ac4"}
+{"level":"info","message":"Learned from Google News: Nigerian tribunal upholds $220 million fine against Meta for violating consumer, data laws - The Star, nodes added: 680ccd2bca17cf3310e72ac5"}
+{"level":"info","message":"Learned from Google News: LOXEA Introduces BYD Electric Vehicles to Nigeria, Paving the Way for Sustainable Mobility - Tech In Africa, nodes added: 680ccd2bca17cf3310e72ac6"}
+{"level":"info","message":"Learned from Google News: Nigerian tech advocate, Lois Ugbe reflects on empowering women across continents - The Guardian Nigeria News, nodes added: 680ccd2bca17cf3310e72ac7"}
+{"level":"info","message":"Learned from Google News: Nigerian startups offer cloud alternatives to AWS and Google Cloud - TechHQ, nodes added: 680ccd2bca17cf3310e72ac8"}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince and Indian tech support guy trying to scam eachother."}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince Olajide and Tech support Vikram"}
+{"level":"warn","message":"Invalid content for Reddit post: TIL Juan Pujol Garcia was a British double agent during WWII. He told Hitler D-Day would happen at the Strait of Dover, earning him the German Iron Cross. It was actually carried out at Normandy, earning him the British MBE."}
+{"level":"warn","message":"Invalid content for Reddit post: Tech startup questions why Nigerian engineer was detained at JFK"}
+{"level":"info","message":"Learned from Reddit: Nigerian Tech Giant Mastermind to K-Pop Idol Overnight, nodes added: 680ccd32ca17cf3310e72ac9"}
+{"level":"info","message":"Scraping for query: cybersecurity"}
+{"level":"info","message":"Learned from Wikipedia: Computer security, nodes added: 680ccd4aca17cf3310e72acb"}
+{"level":"info","message":"Learned from Wikipedia: Cybersecurity and Infrastructure Security Agency, nodes added: 680ccd4aca17cf3310e72acc"}
+{"level":"info","message":"Learned from Wikipedia: NIST Cybersecurity Framework, nodes added: 680ccd4bca17cf3310e72acd"}
+{"level":"info","message":"Learned from Wikipedia: Bitdefender, nodes added: 680ccd4bca17cf3310e72ace"}
+{"level":"info","message":"Learned from Wikipedia: Capture the flag (cybersecurity), nodes added: 680ccd4bca17cf3310e72acf"}
+{"level":"info","message":"Learned from Google News: MTN cybersecurity incident, but critical infrastructure secure - MTN Group, nodes added: 680ccd51ca17cf3310e72ad0"}
+{"level":"info","message":"Learned from Google News: Carving An Unconventional New Lane In Cybersecurity - Forbes, nodes added: 680ccd51ca17cf3310e72ad1"}
+{"level":"info","message":"Learned from Google News: CISOs band together to urge world governments to harmonize cyber rules - Cybersecurity Dive, nodes added: 680ccd52ca17cf3310e72ad2"}
+{"level":"info","message":"Learned from Google News: 4 Cybersecurity Stocks Set to Shine in the AI-Driven Digital Era - Yahoo Finance, nodes added: 680ccd52ca17cf3310e72ad3"}
+{"level":"info","message":"Learned from Google News: Cybersecurity startup Chainguard lands $356M at $3.5B valuation, up from $1.1B a year ago - GeekWire, nodes added: 680ccd52ca17cf3310e72ad4"}
+{"level":"info","message":"Learned from Reddit: To anyone considering a career in cybersecurity, nodes added: 680ccd59ca17cf3310e72ad5"}
+{"level":"info","message":"Learned from Reddit: The Hard Truth About Breaking Into Cybersecurity, nodes added: 680ccd59ca17cf3310e72ad6"}
+{"level":"info","message":"Learned from Reddit: 29, Cybersecurity, I would highly recommend this field, nodes added: 680ccd5aca17cf3310e72ad7"}
+{"level":"info","message":"Learned from Reddit: 34, Cybersecurity. Would never recommend going into this field., nodes added: 680ccd5aca17cf3310e72ad8"}
+{"level":"info","message":"Learned from Reddit: Do you ever regret going into cybersecurity?, nodes added: 680ccd5aca17cf3310e72ad9"}
+{"level":"info","message":"Learned from Bing: What Is Cybersecurity? - IBM, nodes added: 680ccd62ca17cf3310e72ada"}
+{"level":"info","message":"Learned from Bing: What is cybersecurity? - Cisco, nodes added: 680ccd62ca17cf3310e72adb"}
+{"level":"info","message":"Learned from Bing: What is Cybersecurity? | Types, Threats & Best Practices - Fortinet, nodes added: 680ccd62ca17cf3310e72adc"}
+{"level":"info","message":"Learned from Bing: What is Cyber Security? Types, Importance & How to Stay Safe …, nodes added: 680ccd62ca17cf3310e72add"}
+{"level":"info","message":"Learned from Bing: What is Cybersecurity? - CISA, nodes added: 680ccd63ca17cf3310e72ade"}
+{"level":"info","message":"Scraping for query: cloud computing"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing, nodes added: 680ccd70ca17cf3310e72ae0"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing security, nodes added: 680ccd70ca17cf3310e72ae1"}
+{"level":"info","message":"Learned from Wikipedia: Cloud-native computing, nodes added: 680ccd70ca17cf3310e72ae2"}
+{"level":"info","message":"Learned from Wikipedia: Cloud computing issues, nodes added: 680ccd70ca17cf3310e72ae3"}
+{"level":"info","message":"Learned from Wikipedia: Mobile cloud computing, nodes added: 680ccd70ca17cf3310e72ae4"}
+{"level":"info","message":"Learned from Google News: Palantir, Google Expand Cloud Computing Partnership To Target Federal Agencies - Investor's Business Daily, nodes added: 680ccd77ca17cf3310e72ae5"}
+{"level":"info","message":"Learned from Google News: Oracle Stock Gets Downgraded. Cloud Computing Is Still a Winner. - Barron's, nodes added: 680ccd77ca17cf3310e72ae6"}
+{"level":"info","message":"Learned from Google News: PONY AI Inc. and Tencent Cloud Announce Strategic - GlobeNewswire, nodes added: 680ccd77ca17cf3310e72ae7"}
+{"level":"info","message":"Learned from Google News: Google admits depreciation costs are soaring amid furious bit barn build - theregister.com, nodes added: 680ccd77ca17cf3310e72ae8"}
+{"level":"info","message":"Learned from Google News: What Is IBM Cloud? Services, Features & Benefits Explained - Cloudwards.net, nodes added: 680ccd77ca17cf3310e72ae9"}
+{"level":"info","message":"Learned from Reddit: Big news for us cloud computing folks! , nodes added: 680ccd7eca17cf3310e72aea"}
+{"level":"warn","message":"Invalid content for Reddit post: Is cloud computing a good pick for someone new to the IT world?"}
+{"level":"info","message":"Learned from Reddit: don't get a bachelors in cloud computing, nodes added: 680ccd7eca17cf3310e72aeb"}
+{"level":"info","message":"Learned from Reddit: Is Cloud Computing oversaturated yet?, nodes added: 680ccd7eca17cf3310e72aec"}
+{"level":"info","message":"Learned from Reddit: Has anyone had success with the Cloud computing degree with no prior experience?, nodes added: 680ccd7fca17cf3310e72aed"}
+{"level":"info","message":"Learned from Bing: What Is Cloud Computing ? Types, Architecture, Examples and …, nodes added: 680ccd86ca17cf3310e72aee"}
+{"level":"info","message":"Learned from Bing: Cloud computing - Wikipedia, nodes added: 680ccd86ca17cf3310e72aef"}
+{"level":"info","message":"Learned from Bing: What Is Cloud Computing? - IBM, nodes added: 680ccd86ca17cf3310e72af0"}
+{"level":"info","message":"Learned from Bing: What is Cloud Computing? - Google Cloud, nodes added: 680ccd86ca17cf3310e72af1"}
+{"level":"info","message":"Learned from Bing: What is cloud computing? Types, examples and benefits, nodes added: 680ccd86ca17cf3310e72af2"}
+{"level":"info","message":"Scraping for query: internet of things"}
+{"level":"info","message":"Learned from Wikipedia: Internet of things, nodes added: 680ccd95ca17cf3310e72af4"}
+{"level":"info","message":"Learned from Wikipedia: Industrial internet of things, nodes added: 680ccd95ca17cf3310e72af5"}
+{"level":"info","message":"Learned from Wikipedia: Internet of Military Things, nodes added: 680ccd95ca17cf3310e72af6"}
+{"level":"info","message":"Learned from Wikipedia: Mechatronics, nodes added: 680ccd95ca17cf3310e72af7"}
+{"level":"info","message":"Learned from Wikipedia: Jason Johnson (entrepreneur), nodes added: 680ccd95ca17cf3310e72af8"}
+{"level":"info","message":"Learned from Google News: Power on – a billion ambient IoT devices by 2030 - RCR Wireless News, nodes added: 680ccd9cca17cf3310e72af9"}
+{"level":"info","message":"Learned from Google News: A framework reforming personalized Internet of Things by federated meta-learning - Nature, nodes added: 680ccd9cca17cf3310e72afa"}
+{"level":"info","message":"Learned from Google News: Hardware Pioneers Max: Focus on Scaling IoT and Security - EE Times, nodes added: 680ccd9cca17cf3310e72afb"}
+{"level":"info","message":"Learned from Google News: IoT is key to tackling the energy transition challenge across the power industry - Energy Monitor, nodes added: 680ccd9cca17cf3310e72afc"}
+{"level":"info","message":"Learned from Google News: Quick Glossary: Industrial Internet of Things - TechRepublic, nodes added: 680ccd9cca17cf3310e72afd"}
+{"level":"warn","message":"Invalid content for Reddit post: 'The Last of Us' Season 2 Star Kaitlyn Dever Addresses Playing Abby and Dealing with Backlash: \"It's hard not to see those things on the Internet...I want to do this character justice and make the fans proud by bringing her to life in this kind of way.\""}
+{"level":"warn","message":"Invalid content for Reddit post: 25 years of slow, mediocre, internet will be a thing of the past."}
+{"level":"info","message":"Learned from Reddit: The content cop is unironically one of the most disgusting things I've seen on the internet, nodes added: 680ccda3ca17cf3310e72afe"}
+{"level":"info","message":"Learned from Reddit: Ubisoft accidentally releases Beyond Good and Evil remaster, remembers it doesn't do that sort of thing, attempts to scrub all trace from the internet, then gives up and announces it anyway | PC Gamer, nodes added: 680ccda3ca17cf3310e72aff"}
+{"level":"info","message":"Learned from Bing: What is the Internet of Things? - The World Economic Forum, nodes added: 680ccdabca17cf3310e72b00"}
+{"level":"info","message":"Learned from Bing: 如何解读什么是 IOT(Internet of Things)？ - 知乎, nodes added: 680ccdabca17cf3310e72b01"}
+{"level":"info","message":"Learned from Bing: Explainer: The internet of things - The World Economic Forum, nodes added: 680ccdabca17cf3310e72b02"}
+{"level":"info","message":"Learned from Bing: IEEE Internet of Things Journal 算不算物联网领域里面的顶级 ..., nodes added: 680ccdabca17cf3310e72b03"}
+{"level":"info","message":"Learned from Bing: IEEE Internet of Things Journal为什么不在CCF列表里啊？ - 知乎, nodes added: 680ccdabca17cf3310e72b04"}
+{"level":"info","message":"Learned from Google: Internet of things, nodes added: 680ccdacca17cf3310e72b05"}
+{"level":"info","message":"Learned from Google: What is IoT (Internet of Things)? | Definition from TechTarget, nodes added: 680ccdacca17cf3310e72b06"}
+{"level":"info","message":"Learned from Google: What Is the Internet of Things?, nodes added: 680ccdacca17cf3310e72b07"}
+{"level":"info","message":"Learned from Google: What is the Internet of Things (IoT)?, nodes added: 680ccdacca17cf3310e72b08"}
+{"level":"info","message":"Learned from Google: Internet of Things | Definition, History, Examples, & Privacy ..., nodes added: 680ccdacca17cf3310e72b09"}
+{"level":"info","message":"Scraping for query: augmented reality"}
+{"level":"info","message":"Learned from Wikipedia: Augmented reality, nodes added: 680ccdbbca17cf3310e72b0b"}
+{"level":"info","message":"Learned from Wikipedia: List of augmented reality video games, nodes added: 680ccdbbca17cf3310e72b0c"}
+{"level":"info","message":"Learned from Wikipedia: Extended reality, nodes added: 680ccdbbca17cf3310e72b0d"}
+{"level":"info","message":"Learned from Wikipedia: The Sword of Damocles (virtual reality), nodes added: 680ccdbbca17cf3310e72b0e"}
+{"level":"info","message":"Learned from Wikipedia: Meta (augmented reality company), nodes added: 680ccdbbca17cf3310e72b0f"}
+{"level":"info","message":"Learned from Google News: Meta lays off employees working on virtual reality in Reality Labs division - CNBC, nodes added: 680ccdc2ca17cf3310e72b10"}
+{"level":"info","message":"Learned from Google News: Vuzix and Xander Deliver Real-Time Captioning Through AR Smart Glasses - XR Today, nodes added: 680ccdc2ca17cf3310e72b11"}
+{"level":"info","message":"Learned from Google News: I already loved the Ray-Ban smart glasses as a travel companion, and a new update made them even better - TechRadar, nodes added: 680ccdc2ca17cf3310e72b12"}
+{"level":"info","message":"Learned from Google News: Spacetop AR is now an expensive Windows app instead of a useless screenless laptop - Engadget, nodes added: 680ccdc2ca17cf3310e72b13"}
+{"level":"info","message":"Learned from Google News: Meta reportedly lays off over 100 employees across AR/VR hardware and games division - Eurogamer, nodes added: 680ccdc2ca17cf3310e72b14"}
+{"level":"info","message":"Learned from Reddit: Terrence Howard, The IRON MAN Actor, invented Augmented and Virtual Reality Technology. He owned the patent cited by 31 companies that develop AR/VR technologies such as Microsoft, Amazon, HP, IBM, Sony, and GoPro, among others., nodes added: 680ccdc9ca17cf3310e72b15"}
+{"level":"info","message":"Learned from Reddit: Is Augmented Reality Slowly Fading in Favor of Mixed Reality?, nodes added: 680ccdc9ca17cf3310e72b16"}
+{"level":"warn","message":"Invalid content for Reddit post: What is the state of Augmented Reality in 2024?"}
+{"level":"info","message":"Learned from Bing: 增强现实（AR，Augmented Reality）现在国内外的发展情况如 …, nodes added: 680ccdd1ca17cf3310e72b17"}
+{"level":"info","message":"Learned from Bing: AR - 知乎, nodes added: 680ccdd1ca17cf3310e72b18"}
+{"level":"info","message":"Learned from Bing: 如何看待ISMAR的录用结果？ - 知乎, nodes added: 680ccdd1ca17cf3310e72b19"}
+{"level":"info","message":"Learned from Bing: 游戏晕3D是天生的还是后天的？ - 知乎, nodes added: 680ccdd1ca17cf3310e72b1a"}
+{"level":"info","message":"Learned from Bing: 【买前必看】2025年最新AR眼镜对比测评：XREAL One、雷 …, nodes added: 680ccdd2ca17cf3310e72b1b"}
+{"level":"info","message":"Scraping for query: robotics"}
+{"level":"info","message":"Learned from Wikipedia: Robotics, nodes added: 680ccddfca17cf3310e72b1d"}
+{"level":"info","message":"Learned from Wikipedia: Robot, nodes added: 680ccddfca17cf3310e72b1e"}
+{"level":"info","message":"Learned from Wikipedia: Humanoid robot, nodes added: 680ccddfca17cf3310e72b1f"}
+{"level":"info","message":"Learned from Wikipedia: Swarm robotics, nodes added: 680ccddfca17cf3310e72b20"}
+{"level":"info","message":"Learned from Wikipedia: FIRST Robotics Competition, nodes added: 680ccde0ca17cf3310e72b21"}
+{"level":"info","message":"Learned from Google News: Apple to Strip Secret Robotics Unit From AI Chief Weeks After Moving Siri - Bloomberg.com, nodes added: 680ccde6ca17cf3310e72b22"}
+{"level":"info","message":"Learned from Google News: Report: Apple Removes Robotics Unit From Purview of AI Chief - PYMNTS.com, nodes added: 680ccde6ca17cf3310e72b23"}
+{"level":"info","message":"Learned from Google News: Apple removing key robotics team from John Giannandrea’s oversight - 9to5Mac, nodes added: 680ccde6ca17cf3310e72b24"}
+{"level":"info","message":"Learned from Google News: Floki Partners with Rice Robotics, With Clients Like SoftBank, on Tokenization Effort - CoinDesk, nodes added: 680ccde7ca17cf3310e72b25"}
+{"level":"info","message":"Learned from Google News: Foreign carmakers strive for 'China Speed' to stay in race - Yahoo Autos, nodes added: 680ccde7ca17cf3310e72b26"}
+{"level":"info","message":"Learned from Reddit: Robotics industry is dead &amp; a bad choice (for jobs) - change my mind, nodes added: 680ccdeeca17cf3310e72b27"}
+{"level":"info","message":"Learned from Reddit: Is the Robotics industry oversaturated? Are there more Robotics engineers than available jobs?, nodes added: 680ccdeeca17cf3310e72b28"}
+{"level":"info","message":"Learned from Reddit: Why Isn't Robotics as Advanced as Web Development?, nodes added: 680ccdeeca17cf3310e72b29"}
+{"level":"info","message":"Learned from Reddit: Why are robotics companies so toxic?, nodes added: 680ccdeeca17cf3310e72b2a"}
+{"level":"info","message":"Learned from Bing: Robotics | MIT News | Massachusetts Institute of Technology, nodes added: 680ccdf6ca17cf3310e72b2b"}
+{"level":"info","message":"Learned from Bing: Robotics News & Articles - IEEE Spectrum, nodes added: 680ccdf6ca17cf3310e72b2c"}
+{"level":"info","message":"Learned from Bing: The Top 7 Robotics Stories of 2024 - IEEE Spectrum, nodes added: 680ccdf6ca17cf3310e72b2d"}
+{"level":"info","message":"Learned from Bing: How Amazon Is Changing the Future of Robotics and Logistics, nodes added: 680ccdf6ca17cf3310e72b2e"}
+{"level":"info","message":"Learned from Bing: Gemini Robotics: Google DeepMind’s New AI Models for Robots, nodes added: 680ccdf6ca17cf3310e72b2f"}
+{"level":"info","message":"Learned from Google: Robotics, nodes added: 680ccdf7ca17cf3310e72b30"}
+{"level":"info","message":"Learned from Google: Robot | Definition, History, Uses, Types, & Facts, nodes added: 680ccdf7ca17cf3310e72b31"}
+{"level":"info","message":"Learned from Google: Robotics: What Are Robots?, nodes added: 680ccdf7ca17cf3310e72b32"}
+{"level":"info","message":"Learned from Google: International Federation of Robotics, nodes added: 680ccdf7ca17cf3310e72b33"}
+{"level":"info","message":"Learned from Google: What Is Robotics? | Definition from TechTarget, nodes added: 680ccdf8ca17cf3310e72b34"}
+{"level":"info","message":"Scraping for query: yoruba culture"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba culture, nodes added: 680cce04ca17cf3310e72b36"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba religion, nodes added: 680cce05ca17cf3310e72b37"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba people, nodes added: 680cce05ca17cf3310e72b38"}
+{"level":"info","message":"Learned from Wikipedia: Yoruba language, nodes added: 680cce05ca17cf3310e72b39"}
+{"level":"info","message":"Learned from Wikipedia: Culture of Nigeria, nodes added: 680cce05ca17cf3310e72b3a"}
+{"level":"info","message":"No patterns found for \"What is the time now currently\", triggering on-demand scrape"}
+{"level":"info","message":"On-demand scraping for new query: what is the time now currently"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680cd53995b78fda4207821a"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680cd53995b78fda4207821b"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680cd53995b78fda4207821c"}
+{"level":"info","message":"Learned from Reddit: What is now going to determine the fate of this franchise is if Bungie can, for the first time, actually get over their pride and can an idea that is obviously bad *before* it is implemented., nodes added: 680cd53e95b78fda4207821d"}
+{"level":"warn","message":"Invalid content for Reddit post: [Anderson] League source on #Bills/ snow: \"This is a major impact. There's currently a travel ban. Still waiting to hear on timing of today's zoom meeting...Snow is coming down hard right now. I don't know what's the contingency if everyone can't make it to the airport or we can't fly out.\""}
+{"level":"warn","message":"Invalid content for Reddit post: League source on Bills/ snow: \"This is a major impact. There's currently a travel ban. Still waiting to hear on timing of today's zoom meeting...Snow is coming down hard right now. I don't know what's the contingency if everyone can't make it to the airport or we can't fly out.\""}
+{"level":"info","message":"Learned from Google News: Stock Market Today: Stock Market News And Analysis - Investor's Business Daily, nodes added: 680cd54495b78fda4207821e"}
+{"level":"info","message":"Learned from Google News: Daylight saving time 2025: When to 'spring forward' for time change and why we do it - USA Today, nodes added: 680cd54495b78fda4207821f"}
+{"level":"info","message":"Learned from Google News: Did Time Go Back or Forward Today? What to Know About Time Change - Newsweek, nodes added: 680cd54595b78fda42078220"}
+{"level":"info","message":"On-demand scraping completed for \"what is the time now currently\", added 5 results"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"error","message":"Model training error: trainEpoch is not defined"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"artificial intelligence\""}
+{"level":"error","message":"OkeyMetaAI error: Cannot read properties of undefined (reading 'score')"}
+{"level":"info","message":"Learned from Wikipedia: Artificial intelligence, nodes added: 680ce3a3275b96e940ecc6ca"}
+{"level":"info","message":"Learned from Wikipedia: Artificial general intelligence, nodes added: 680ce3a3275b96e940ecc6cb"}
+{"level":"info","message":"Learned from Wikipedia: A.I. Artificial Intelligence, nodes added: 680ce3a3275b96e940ecc6cc"}
+{"level":"info","message":"Learned from Wikipedia: Generative artificial intelligence, nodes added: 680ce3a3275b96e940ecc6cd"}
+{"level":"info","message":"Learned from Wikipedia: History of artificial intelligence, nodes added: 680ce3a4275b96e940ecc6ce"}
+{"level":"info","message":"Learned from Google News: Will the Humanities Survive Artificial Intelligence? - The New Yorker, nodes added: 680ce3aa275b96e940ecc6cf"}
+{"level":"info","message":"Learned from Google News: ADVANCING ARTIFICIAL INTELLIGENCE EDUCATION FOR AMERICAN YOUTH - The White House (.gov), nodes added: 680ce3aa275b96e940ecc6d0"}
+{"level":"info","message":"Learned from Google News: AI Takes the Field: How Artificial Intelligence Is Powering the Next Era of Sports - PYMNTS.com, nodes added: 680ce3ab275b96e940ecc6d1"}
+{"level":"info","message":"Learned from Google News: Why Pony AI Is Winning the Artificial Intelligence Race Today - Yahoo Finance, nodes added: 680ce3ab275b96e940ecc6d2"}
+{"level":"info","message":"Learned from Google News: US Department of Labor applauds President Trump’s executive order advancing artificial intelligence education for young Americans - U.S. Department of Labor (.gov), nodes added: 680ce3ab275b96e940ecc6d3"}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680ce3b2275b96e940ecc6d4"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680ce3b2275b96e940ecc6d5"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680ce3b2275b96e940ecc6d6"}
+{"level":"info","message":"Learned from Bing: Artificial intelligence (AI) | Definition, Examples, Types ..., nodes added: 680ce3bc275b96e940ecc6d7"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"artificial intelligence\""}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680ce4b0f434e7471212ac6f"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680ce4b0f434e7471212ac70"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680ce4b0f434e7471212ac71"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"machine learning\""}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 680ce4c6f434e7471212ac73"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 680ce4c7f434e7471212ac74"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 680ce4c7f434e7471212ac75"}
+{"level":"warn","message":"Invalid content for Reddit post: Machine learning"}
+{"level":"warn","message":"Invalid content for Reddit post: jrDevVsMachineLearning"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"data science\""}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 680ce4dcf434e7471212ac77"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 680ce4dcf434e7471212ac78"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 680ce4dcf434e7471212ac79"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 680ce4dcf434e7471212ac7a"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 680ce4dcf434e7471212ac7b"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"blockchain\""}
+{"level":"info","message":"Generated response with existing patterns for prompt: What is the time now currently, outputId: aada1dd26895349b97ccc2d4"}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"warn","message":"Invalid content for Reddit post: There aren't that many uses for blockchains"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 680ce4f2f434e7471212ac7f"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 680ce4f2f434e7471212ac80"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 680ce4f3f434e7471212ac81"}
+{"level":"info","message":"Learned from Bing: What is blockchain and what can it do? - The World Economic Forum, nodes added: 680ce4faf434e7471212ac82"}
+{"level":"info","message":"Learned from Bing: Blockchain is in from the cold - The World Economic Forum, nodes added: 680ce4faf434e7471212ac83"}
+{"level":"info","message":"Learned from Bing: All you need to know about blockchain, explained simply, nodes added: 680ce4faf434e7471212ac84"}
+{"level":"info","message":"Learned from Bing: The digital commons: using blockchain for good governance, nodes added: 680ce4faf434e7471212ac85"}
+{"level":"info","message":"Learned from Bing: Blockchain: what it is, how it really can change the world, nodes added: 680ce4fbf434e7471212ac86"}
+{"level":"info","message":"Generated response with existing patterns for prompt: What is the time now currently, outputId: 2224a21de78636ecffda83db"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"quantum computing\""}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 680ce508f434e7471212ac8a"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 680ce509f434e7471212ac8b"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 680ce50af434e7471212ac8c"}
+{"level":"warn","message":"Invalid content for Reddit post: Oxford scientists achieve teleportation with quantum supercomputer - Breakthrough brings quantum computing closer to large-scale practical use"}
+{"level":"info","message":"Learned from Reddit: Applications of Quantum Computing, nodes added: 680ce50af434e7471212ac8d"}
+{"level":"info","message":"Learned from Bing: Quantum computing - Wikipedia, nodes added: 680ce511f434e7471212ac8e"}
+{"level":"info","message":"Learned from Bing: What is quantum computing? - IBM, nodes added: 680ce511f434e7471212ac8f"}
+{"level":"info","message":"Learned from Bing: Introduction to quantum computing - GeeksforGeeks, nodes added: 680ce511f434e7471212ac90"}
+{"level":"info","message":"Learned from Bing: What Is Quantum Computing? - Azure Quantum | Microsoft Learn, nodes added: 680ce512f434e7471212ac91"}
+{"level":"info","message":"Learned from Bing: Quantum Computing Explained | NIST, nodes added: 680ce512f434e7471212ac92"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"artificial intelligence\""}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680ce6666de3fd3844d21929"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680ce6666de3fd3844d2192a"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680ce6666de3fd3844d2192b"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"machine learning\""}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 680ce67c6de3fd3844d2192d"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 680ce67c6de3fd3844d2192e"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 680ce67d6de3fd3844d2192f"}
+{"level":"warn","message":"Invalid content for Reddit post: Machine learning"}
+{"level":"warn","message":"Invalid content for Reddit post: jrDevVsMachineLearning"}
+{"level":"info","message":"Learned from Google Top Result: What Is Machine Learning?, nodes added: 680ce6846de3fd3844d21930"}
+{"level":"info","message":"Learned from Google Top Result: Machine learning, nodes added: 680ce68c6de3fd3844d21931"}
+{"level":"info","message":"Learned from Google Top Result: Outline of machine learning, nodes added: 680ce6926de3fd3844d21932"}
+{"level":"info","message":"Learned from Google Top Result: Machine Learning (journal), nodes added: 680ce6986de3fd3844d21933"}
+{"level":"info","message":"Learned from Google Top Result: Machine learning control, nodes added: 680ce69e6de3fd3844d21934"}
+{"level":"info","message":"Learned from Bing: Machine learning: o que é e qual sua importância? - SAS, nodes added: 680ce6a56de3fd3844d21935"}
+{"level":"info","message":"Learned from Bing: Machine Learning: What it is and why it matters | SAS, nodes added: 680ce6a66de3fd3844d21936"}
+{"level":"info","message":"Learned from Bing: Machine Learning - IBM Research, nodes added: 680ce6a66de3fd3844d21937"}
+{"level":"info","message":"Learned from Bing: Machine Learning: cos'è e come funziona | SAS Italy, nodes added: 680ce6a66de3fd3844d21938"}
+{"level":"info","message":"Learned from Bing: Machine learning : Atouts sur l’apprentissage automatique, nodes added: 680ce6a66de3fd3844d21939"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"data science\""}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 680ce6b46de3fd3844d2193b"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 680ce6b46de3fd3844d2193c"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 680ce6b46de3fd3844d2193d"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 680ce6b46de3fd3844d2193e"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 680ce6b56de3fd3844d2193f"}
+{"level":"info","message":"Learned from Bing: 数据科学 data science 是什么？ - 知乎, nodes added: 680ce6bb6de3fd3844d21940"}
+{"level":"info","message":"Learned from Bing: 数据科学（data science）和统计学（statistics）有什么区别？为什 …, nodes added: 680ce6bb6de3fd3844d21941"}
+{"level":"info","message":"Learned from Bing: R for Data Science (2e)《R数据科学》目前有翻译作者人选么?, nodes added: 680ce6bc6de3fd3844d21942"}
+{"level":"info","message":"Learned from Bing: Science期刊有哪些子刊呢？ - 知乎, nodes added: 680ce6bc6de3fd3844d21943"}
+{"level":"info","message":"Learned from Bing: 如何查看发表的论文属于sci几区啊？ - 知乎, nodes added: 680ce6bc6de3fd3844d21944"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"blockchain\""}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"warn","message":"Invalid content for Reddit post: There aren't that many uses for blockchains"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 680ce6ca6de3fd3844d21946"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 680ce6ca6de3fd3844d21947"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 680ce6ca6de3fd3844d21948"}
+{"level":"info","message":"Learned from Bing: What is blockchain and what can it do? - The World Economic …, nodes added: 680ce6d26de3fd3844d21949"}
+{"level":"info","message":"Learned from Bing: Blockchain is in from the cold - The World Economic Forum, nodes added: 680ce6d26de3fd3844d2194a"}
+{"level":"info","message":"Learned from Bing: All you need to know about blockchain, explained simply, nodes added: 680ce6d26de3fd3844d2194b"}
+{"level":"info","message":"Learned from Bing: The digital commons: using blockchain for good governance, nodes added: 680ce6d26de3fd3844d2194c"}
+{"level":"info","message":"Learned from Bing: Blockchain: what it is, how it really can change the world, nodes added: 680ce6d26de3fd3844d2194d"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"quantum computing\""}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 680ce6e06de3fd3844d2194f"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 680ce6e06de3fd3844d21950"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 680ce6e16de3fd3844d21951"}
+{"level":"warn","message":"Invalid content for Reddit post: Oxford scientists achieve teleportation with quantum supercomputer - Breakthrough brings quantum computing closer to large-scale practical use"}
+{"level":"info","message":"Learned from Reddit: Applications of Quantum Computing, nodes added: 680ce6e16de3fd3844d21952"}
+{"level":"info","message":"Learned from Bing: Quantum computing - Wikipedia, nodes added: 680ce6e86de3fd3844d21953"}
+{"level":"info","message":"Learned from Bing: What is quantum computing? - IBM, nodes added: 680ce6e86de3fd3844d21954"}
+{"level":"info","message":"Learned from Bing: Introduction to quantum computing - GeeksforGeeks, nodes added: 680ce6e86de3fd3844d21955"}
+{"level":"info","message":"Learned from Bing: What Is Quantum Computing? - Azure Quantum | Microsoft Learn, nodes added: 680ce6e96de3fd3844d21956"}
+{"level":"info","message":"Learned from Bing: Quantum Computing Explained | NIST, nodes added: 680ce6e96de3fd3844d21957"}
+{"level":"info","message":"Scraping for query: conversational AI"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"conversational AI\""}
+{"level":"info","message":"Learned from Reddit: Has anyone built conversational AI that feels human?, nodes added: 680ce6f66de3fd3844d21959"}
+{"level":"info","message":"Learned from Reddit: Conversational AI for outbound phone calls, nodes added: 680ce6f66de3fd3844d2195a"}
+{"level":"info","message":"Learned from Reddit: Has anyone ever built a conversational AI that feels natural?, nodes added: 680ce6f66de3fd3844d2195b"}
+{"level":"warn","message":"Invalid content for Reddit post: Study finds that ChatGPT, one of the world’s most popular conversational AI systems, tends to lean toward left-wing political views. The system not only produces more left-leaning text and images but also often refuses to generate content that presents conservative perspectives."}
+{"level":"info","message":"Scraping for query: fintech"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"fintech\""}
+{"level":"info","message":"Learned from Reddit: Why does it seem like people here avoid Fintech roles?, nodes added: 680ce70a6de3fd3844d2195d"}
+{"level":"info","message":"Learned from Reddit: Those who work in Fintech in the US, would you recommend it?, nodes added: 680ce70a6de3fd3844d2195e"}
+{"level":"info","message":"Learned from Reddit: ELI5: Why are there so many fintech startups when they all seem to do the exact same thing?, nodes added: 680ce70b6de3fd3844d2195f"}
+{"level":"info","message":"Learned from Reddit: Best path for Fintech career, nodes added: 680ce70b6de3fd3844d21960"}
+{"level":"info","message":"Learned from Reddit: What is it like to work in fintech?, nodes added: 680ce70b6de3fd3844d21961"}
+{"level":"info","message":"Learned from Bing: Fintech and the Future of Finance - World Bank Group, nodes added: 680ce7136de3fd3844d21962"}
+{"level":"info","message":"Learned from Bing: Fintech - World Bank Group, nodes added: 680ce7136de3fd3844d21963"}
+{"level":"info","message":"Learned from Bing: 什么是fintech？金融科技？ - 知乎, nodes added: 680ce7136de3fd3844d21964"}
+{"level":"info","message":"Learned from Bing: Fintech and the Future of Finance - World Bank Group, nodes added: 680ce7136de3fd3844d21965"}
+{"level":"info","message":"Learned from Bing: 金融科技（fintech）就业的前景以及所涉岗位？ - 知乎, nodes added: 680ce7136de3fd3844d21966"}
+{"level":"info","message":"Scraping for query: education technology"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"education technology\""}
+{"level":"warn","message":"Invalid content for Reddit post: How ChatGPT Will Destabilize White-Collar Work - No technology in modern memory has caused mass job loss among highly educated workers. Will generative AI be an exception?"}
+{"level":"warn","message":"Invalid content for Reddit post: Space Force leader suggests education secretary should be on the National Space Council. Early education about the value created by space technology should be a national priority, talented people find their passion very early in life, so more should be done to attract high achievers to the field."}
+{"level":"warn","message":"Invalid content for Reddit post: Alexandria Ocasio-Cortez Condemns NYPD Test Deployment of K-9 Robot in Bronx Home | \"Please ask yourself: when was the last time you saw next-generation, world class technology for education, healthcare, housing, etc. consistently prioritized for underserved communities like this?\""}
+{"level":"warn","message":"Invalid content for Reddit post: Not all instances of gender inequality are equally concerning. An emphasis on women's underrepresentation in Science, Technology, Engineering, and Math roles (STEM) has not been matched by a similar concern about men's underrepresentation in Healthcare, Early Education, and Domestic roles (HEED)."}
+{"level":"warn","message":"Invalid content for Reddit post: [NEWS] Ken Akamatsu (author of Love Hina, Negima, UQ Holder) Named as Parliamentary Vice-Minister of Education, Culture, Sports, Science and Technology"}
+{"level":"info","message":"Learned from Google Top Result: Educational technology, nodes added: 680ce7296de3fd3844d21968"}
+{"level":"warn","message":"403 Forbidden for https://onlinedegrees.sandiego.edu/what-is-educational-technology-definition-examples-impact/, skipping after 5 retries"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology? [Definition, Examples & Impact], nodes added: 680ce72f6de3fd3844d21969"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology and Why is it Important?, nodes added: 680ce7366de3fd3844d2196a"}
+{"level":"info","message":"Learned from Google Top Result: What is Educational Technology and Why is it Important?, nodes added: 680ce73d6de3fd3844d2196b"}
+{"level":"info","message":"Learned from Bing: Education and Technology Overview - World Bank Group, nodes added: 680ce7436de3fd3844d2196c"}
+{"level":"info","message":"Learned from Bing: Education and Technology: EdTech Publications - World Bank Group, nodes added: 680ce7436de3fd3844d2196d"}
+{"level":"info","message":"Learned from Bing: Empower Teachers: Reimagining Human Connections Technology …, nodes added: 680ce7436de3fd3844d2196e"}
+{"level":"info","message":"Learned from Bing: Education Overview: Development news, research, data | World Bank, nodes added: 680ce7436de3fd3844d2196f"}
+{"level":"info","message":"Learned from Bing: Reimagining Human Connections: Technology and Innovation in …, nodes added: 680ce7436de3fd3844d21970"}
+{"level":"info","message":"Scraping for query: nigerian tech"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"nigerian tech\""}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince and Indian tech support guy trying to scam eachother."}
+{"level":"warn","message":"Invalid content for Reddit post: Nigerian Prince Olajide and Tech support Vikram"}
+{"level":"warn","message":"Invalid content for Reddit post: TIL Juan Pujol Garcia was a British double agent during WWII. He told Hitler D-Day would happen at the Strait of Dover, earning him the German Iron Cross. It was actually carried out at Normandy, earning him the British MBE."}
+{"level":"warn","message":"Invalid content for Reddit post: Tech startup questions why Nigerian engineer was detained at JFK"}
+{"level":"info","message":"Learned from Reddit: Nigerian Tech Giant Mastermind to K-Pop Idol Overnight, nodes added: 680ce7516de3fd3844d21972"}
+{"level":"info","message":"Learned from Google: TechCabal | Leading Africa's Tech Conversation, nodes added: 680ce75a6de3fd3844d21973"}
+{"level":"info","message":"Learned from Google: Trends and Opportunities in the Nigerian Tech Space, nodes added: 680ce75a6de3fd3844d21974"}
+{"level":"info","message":"Learned from Google: Nigerian Tech Ignited – The Nigerian Millennial Technology ..., nodes added: 680ce75a6de3fd3844d21975"}
+{"level":"info","message":"Learned from Google: Growing the Nigerian Technology Ecosystem through ..., nodes added: 680ce75a6de3fd3844d21976"}
+{"level":"info","message":"Learned from Google: Inside Nigeria's Thriving Tech Hub: Startups and Success ..., nodes added: 680ce75a6de3fd3844d21977"}
+{"level":"info","message":"Scraping for query: cybersecurity"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"cybersecurity\""}
+{"level":"info","message":"Learned from Reddit: To anyone considering a career in cybersecurity, nodes added: 680ce76b6de3fd3844d21979"}
+{"level":"info","message":"Learned from Reddit: The Hard Truth About Breaking Into Cybersecurity, nodes added: 680ce76b6de3fd3844d2197a"}
+{"level":"info","message":"Learned from Reddit: 29, Cybersecurity, I would highly recommend this field, nodes added: 680ce76c6de3fd3844d2197b"}
+{"level":"info","message":"Learned from Reddit: 34, Cybersecurity. Would never recommend going into this field., nodes added: 680ce76c6de3fd3844d2197c"}
+{"level":"info","message":"Learned from Reddit: Do you ever regret going into cybersecurity?, nodes added: 680ce76c6de3fd3844d2197d"}
+{"level":"info","message":"Learned from Bing: What Is Cybersecurity? - IBM, nodes added: 680ce7736de3fd3844d2197e"}
+{"level":"info","message":"Learned from Bing: What is Cyber Security? Types, Importance & How to Stay Safe …, nodes added: 680ce7736de3fd3844d2197f"}
+{"level":"info","message":"Learned from Bing: What is cybersecurity? - Cisco, nodes added: 680ce7746de3fd3844d21980"}
+{"level":"info","message":"Learned from Bing: What is cybersecurity? | Definition from TechTarget, nodes added: 680ce7746de3fd3844d21981"}
+{"level":"info","message":"Learned from Bing: What Is Cybersecurity | Types and Threats Defined - CompTIA, nodes added: 680ce7746de3fd3844d21982"}
+{"level":"info","message":"Scraping for query: cloud computing"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"cloud computing\""}
+{"level":"info","message":"Learned from Reddit: Big news for us cloud computing folks! , nodes added: 680ce7826de3fd3844d21984"}
+{"level":"warn","message":"Invalid content for Reddit post: Is cloud computing a good pick for someone new to the IT world?"}
+{"level":"info","message":"Learned from Reddit: don't get a bachelors in cloud computing, nodes added: 680ce7826de3fd3844d21985"}
+{"level":"info","message":"Learned from Reddit: Is Cloud Computing oversaturated yet?, nodes added: 680ce7826de3fd3844d21986"}
+{"level":"info","message":"Learned from Reddit: Has anyone had success with the Cloud computing degree with no prior experience?, nodes added: 680ce7826de3fd3844d21987"}
+{"level":"info","message":"Learned from Bing: What Is Cloud Computing ? Types, Architecture, Examples and …, nodes added: 680ce7896de3fd3844d21988"}
+{"level":"info","message":"Learned from Bing: Cloud computing - Wikipedia, nodes added: 680ce7896de3fd3844d21989"}
+{"level":"info","message":"Learned from Bing: What Is Cloud Computing? - IBM, nodes added: 680ce78a6de3fd3844d2198a"}
+{"level":"info","message":"Learned from Bing: What is Cloud Computing? - Google Cloud, nodes added: 680ce78a6de3fd3844d2198b"}
+{"level":"info","message":"Learned from Bing: What is cloud computing? Types, examples and benefits, nodes added: 680ce78a6de3fd3844d2198c"}
+{"level":"info","message":"Scraping for query: internet of things"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"internet of things\""}
+{"level":"warn","message":"Invalid content for Reddit post: 'The Last of Us' Season 2 Star Kaitlyn Dever Addresses Playing Abby and Dealing with Backlash: \"It's hard not to see those things on the Internet...I want to do this character justice and make the fans proud by bringing her to life in this kind of way.\""}
+{"level":"warn","message":"Invalid content for Reddit post: 25 years of slow, mediocre, internet will be a thing of the past."}
+{"level":"info","message":"Learned from Reddit: The content cop is unironically one of the most disgusting things I've seen on the internet, nodes added: 680ce79b6de3fd3844d2198e"}
+{"level":"info","message":"Learned from Reddit: Ubisoft accidentally releases Beyond Good and Evil remaster, remembers it doesn't do that sort of thing, attempts to scrub all trace from the internet, then gives up and announces it anyway | PC Gamer, nodes added: 680ce79b6de3fd3844d2198f"}
+{"level":"info","message":"Learned from Bing: What is the Internet of Things? - The World Economic Forum, nodes added: 680ce7a26de3fd3844d21990"}
+{"level":"info","message":"Learned from Bing: 如何解读什么是 IOT(Internet of Things)？ - 知乎, nodes added: 680ce7a26de3fd3844d21991"}
+{"level":"info","message":"Learned from Bing: Explainer: The internet of things - The World Economic Forum, nodes added: 680ce7a26de3fd3844d21992"}
+{"level":"info","message":"Learned from Bing: IEEE Internet of Things Journal 算不算物联网领域里面的顶级 ..., nodes added: 680ce7a36de3fd3844d21993"}
+{"level":"info","message":"Learned from Bing: IEEE Internet of Things Journal为什么不在CCF列表里啊？ - 知乎, nodes added: 680ce7a36de3fd3844d21994"}
+{"level":"info","message":"Scraping for query: augmented reality"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"augmented reality\""}
+{"level":"info","message":"Learned from Reddit: Terrence Howard, The IRON MAN Actor, invented Augmented and Virtual Reality Technology. He owned the patent cited by 31 companies that develop AR/VR technologies such as Microsoft, Amazon, HP, IBM, Sony, and GoPro, among others., nodes added: 680ce7b16de3fd3844d21996"}
+{"level":"info","message":"Learned from Reddit: Is Augmented Reality Slowly Fading in Favor of Mixed Reality?, nodes added: 680ce7b16de3fd3844d21997"}
+{"level":"warn","message":"Invalid content for Reddit post: What is the state of Augmented Reality in 2024?"}
+{"level":"info","message":"Learned from Bing: 增强现实（AR，Augmented Reality）现在国内外的发展情况如 …, nodes added: 680ce7b86de3fd3844d21998"}
+{"level":"info","message":"Learned from Bing: AR - 知乎, nodes added: 680ce7b86de3fd3844d21999"}
+{"level":"info","message":"Learned from Bing: 如何看待ISMAR的录用结果？ - 知乎, nodes added: 680ce7b86de3fd3844d2199a"}
+{"level":"info","message":"Learned from Bing: 游戏晕3D是天生的还是后天的？ - 知乎, nodes added: 680ce7b96de3fd3844d2199b"}
+{"level":"info","message":"Learned from Bing: 【买前必看】2025年最新AR眼镜对比测评：XREAL One、雷 …, nodes added: 680ce7b96de3fd3844d2199c"}
+{"level":"info","message":"Scraping for query: robotics"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"robotics\""}
+{"level":"info","message":"Learned from Reddit: Robotics industry is dead &amp; a bad choice (for jobs) - change my mind, nodes added: 680ce7c76de3fd3844d2199e"}
+{"level":"info","message":"Learned from Reddit: Is the Robotics industry oversaturated? Are there more Robotics engineers than available jobs?, nodes added: 680ce7c76de3fd3844d2199f"}
+{"level":"info","message":"Learned from Reddit: Why Isn't Robotics as Advanced as Web Development?, nodes added: 680ce7c86de3fd3844d219a0"}
+{"level":"info","message":"Learned from Reddit: Why are robotics companies so toxic?, nodes added: 680ce7c86de3fd3844d219a1"}
+{"level":"info","message":"Learned from Bing: Robotics | MIT News | Massachusetts Institute of Technology, nodes added: 680ce7cf6de3fd3844d219a2"}
+{"level":"info","message":"Learned from Bing: Robotics News & Articles - IEEE Spectrum, nodes added: 680ce7cf6de3fd3844d219a3"}
+{"level":"info","message":"Learned from Bing: The Top 7 Robotics Stories of 2024 - IEEE Spectrum, nodes added: 680ce7d06de3fd3844d219a4"}
+{"level":"info","message":"Learned from Bing: How Amazon Is Changing the Future of Robotics and Logistics, nodes added: 680ce7d06de3fd3844d219a5"}
+{"level":"info","message":"Learned from Bing: Gemini Robotics: Google DeepMind’s New AI Models for Robots, nodes added: 680ce7d06de3fd3844d219a6"}
+{"level":"info","message":"Scraping for query: yoruba culture"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"yoruba culture\""}
+{"level":"warn","message":"Invalid content for Reddit post: Yoruba guy here. As you can imagine, I was rather surprised to see this"}
+{"level":"info","message":"Learned from Reddit: Howcome igbo culture doesn’t garner interest the way Yoruba culture does?, nodes added: 680ce7de6de3fd3844d219a8"}
+{"level":"info","message":"Learned from Reddit: Straight to jail, nodes added: 680ce7de6de3fd3844d219a9"}
+{"level":"info","message":"Learned from Reddit: Yoruba culture in ATL, nodes added: 680ce7de6de3fd3844d219aa"}
+{"level":"info","message":"Learned from Reddit: Is it cultural appropriation to have a Yoruba chair in my home?, nodes added: 680ce7df6de3fd3844d219ab"}
+{"level":"info","message":"Learned from Bing: Yoruba culture - Wikipedia, nodes added: 680ce7e66de3fd3844d219ac"}
+{"level":"info","message":"Learned from Bing: Yoruba | History, Language & Religion | Britannica, nodes added: 680ce7e66de3fd3844d219ad"}
+{"level":"info","message":"Learned from Bing: Yoruba Culture and Tradition Facts YOU Need to Know, nodes added: 680ce7e66de3fd3844d219ae"}
+{"level":"info","message":"Learned from Bing: Yoruba Culture | Origin, History, Beliefs, Religion & More, nodes added: 680ce7e66de3fd3844d219af"}
+{"level":"info","message":"Learned from Bing: Yoruba Culture and Tradition - DiscoverYorùbá!, nodes added: 680ce7e76de3fd3844d219b0"}
+{"level":"info","message":"Scraping for query: african history"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"african history\""}
+{"level":"warn","message":"Invalid content for Reddit post: Trump Reportedly Didn’t Want to See Anything “Difficult” in Visit to African American History Museum"}
+{"level":"warn","message":"Invalid content for Reddit post: The National Museum of African American History on \"acting white\": Individualism, nuclear family, objectivity, hard work, Judeo-Christian, respect for authority, planning, delayed gratification, progress, being on time, protecting private property, winning, decision-making, and politeness"}
+{"level":"warn","message":"Invalid content for Reddit post: Post-Colonial African History"}
+{"level":"warn","message":"Invalid content for Reddit post: Former first lady Michelle Obama hugging George W. Bush at the opening of the National Museum of African  American History and Culture (photo by P. Souza)"}
+{"level":"warn","message":"Invalid content for Reddit post: someone needs to review European (and North African) history"}
+{"level":"info","message":"Learned from Bing: How Africa’s colonial history affects its development, nodes added: 680ce7fb6de3fd3844d219b2"}
+{"level":"info","message":"Learned from Bing: Black historical figures who shook the world, from a warrior queen …, nodes added: 680ce7fc6de3fd3844d219b3"}
+{"level":"info","message":"Learned from Bing: Black History Month: What is it and why do we need it?, nodes added: 680ce7fc6de3fd3844d219b4"}
+{"level":"info","message":"Learned from Bing: Black History Month: 5 Black environmentalists you should know, nodes added: 680ce7fc6de3fd3844d219b5"}
+{"level":"info","message":"Learned from Bing: African Export-Import Bank (Afreximbank) | World Economic Forum, nodes added: 680ce7fc6de3fd3844d219b6"}
+{"level":"info","message":"Dropped concept_1 index"}
+{"level":"info","message":"Scraping for query: artificial intelligence"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"artificial intelligence\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Understood, Assist, Artificial, Intelligence, Today. Understood."}
+{"level":"warn","message":"Invalid content for Reddit post: For us Millennials, is anyone else worried about how the hell our careers will last another 30 years with Artificial Intelligence?"}
+{"level":"warn","message":"Invalid content for Reddit post: Artificial Intelligence is losing hype"}
+{"level":"info","message":"Learned from Reddit: Why is my experience with Artificial Intelligence so different then \"the hype\"., nodes added: 680ce8528c09ea50772f13a9"}
+{"level":"info","message":"Learned from Reddit: Is anyone else worried about Artificial Intelligence taking their job?, nodes added: 680ce8538c09ea50772f13aa"}
+{"level":"info","message":"Learned from Reddit: Interactive Intelligence Renamed to Artificial Intelligence?, nodes added: 680ce8538c09ea50772f13ab"}
+{"level":"info","message":"Learned from Bing: What is artificial intelligence (AI)? - IBM, nodes added: 680ce85a8c09ea50772f13ac"}
+{"level":"info","message":"Scraping for query: machine learning"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"machine learning\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Learning, Machine, Help, Code, Specific. Okay!"}
+{"level":"info","message":"Learned from Reddit: How I Started Learning Machine Learning, nodes added: 680ce8688c09ea50772f13ae"}
+{"level":"info","message":"Learned from Reddit: How hard is machine learning?, nodes added: 680ce8688c09ea50772f13af"}
+{"level":"info","message":"Learned from Reddit: Does anyone dislike Machine Learning?, nodes added: 680ce8698c09ea50772f13b0"}
+{"level":"warn","message":"Invalid content for Reddit post: Machine learning"}
+{"level":"warn","message":"Invalid content for Reddit post: jrDevVsMachineLearning"}
+{"level":"info","message":"Learned from Bing: Machine learning: o que é e qual sua importância? - SAS, nodes added: 680ce8708c09ea50772f13b1"}
+{"level":"info","message":"Learned from Bing: Machine Learning: What it is and why it matters | SAS, nodes added: 680ce8708c09ea50772f13b2"}
+{"level":"info","message":"Learned from Bing: Machine Learning - IBM Research, nodes added: 680ce8708c09ea50772f13b3"}
+{"level":"info","message":"Learned from Bing: Machine Learning: cos'è e come funziona | SAS Italy, nodes added: 680ce8708c09ea50772f13b4"}
+{"level":"info","message":"Learned from Bing: Machine learning : Atouts sur l’apprentissage automatique, nodes added: 680ce8708c09ea50772f13b5"}
+{"level":"info","message":"Scraping for query: data science"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"data science\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Data, Science, Methods, Algorithms, Knowledge. Data science is a multidisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from structured and unstructured data."}
+{"level":"info","message":"Learned from Reddit: Is Data Science Really the Future? Is it Worth Pursuing?, nodes added: 680ce87e8c09ea50772f13b7"}
+{"level":"info","message":"Learned from Reddit: Is studying Data Science still worth it?, nodes added: 680ce87e8c09ea50772f13b8"}
+{"level":"info","message":"Learned from Reddit: Dont major in Data Science, nodes added: 680ce87f8c09ea50772f13b9"}
+{"level":"info","message":"Learned from Reddit: The BS they tell about Data Science…, nodes added: 680ce87f8c09ea50772f13ba"}
+{"level":"info","message":"Learned from Reddit: Data Science is losing its soul, nodes added: 680ce87f8c09ea50772f13bb"}
+{"level":"info","message":"Learned from Bing: 数据科学 data science 是什么？ - 知乎, nodes added: 680ce8878c09ea50772f13bc"}
+{"level":"info","message":"Learned from Bing: 数据科学（data science)专业就业方向？留学还是工作？, nodes added: 680ce8878c09ea50772f13bd"}
+{"level":"info","message":"Learned from Bing: 数据科学（data science）和统计学（statistics）有什么 ..., nodes added: 680ce8878c09ea50772f13be"}
+{"level":"info","message":"Learned from Bing: SIAM的数据科学期刊怎么样? - 知乎, nodes added: 680ce8878c09ea50772f13c0"}
+{"level":"info","message":"Generated response with existing patterns for prompt: What is the time now currently, outputId: 31655ad9e1f8c09aae05199a"}
+{"level":"info","message":"Learned from Bing: 现在读data science值得吗? - 知乎, nodes added: 680ce89b8c09ea50772f13c2"}
+{"level":"info","message":"Scraping for query: blockchain"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"blockchain\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Blockchain, Specific, Provide, Okay, Understand. Okay!"}
+{"level":"warn","message":"Invalid content for Reddit post: Blockchain, the amazing solution for almost nothing"}
+{"level":"warn","message":"Invalid content for Reddit post: There aren't that many uses for blockchains"}
+{"level":"info","message":"Learned from Reddit: Is blockchain a deadend?, nodes added: 680ce8c08c09ea50772f13c4"}
+{"level":"info","message":"Learned from Reddit: Is blockchain actually useful for anything?, nodes added: 680ce8c08c09ea50772f13c5"}
+{"level":"info","message":"Learned from Reddit: Is blockchain worth learning??, nodes added: 680ce8c08c09ea50772f13c6"}
+{"level":"info","message":"Learned from Bing: What is blockchain and what can it do? - The World Economic Forum, nodes added: 680ce8c78c09ea50772f13c7"}
+{"level":"info","message":"Learned from Bing: Blockchain is in from the cold - The World Economic Forum, nodes added: 680ce8c78c09ea50772f13c8"}
+{"level":"info","message":"Learned from Bing: All you need to know about blockchain, explained simply, nodes added: 680ce8c78c09ea50772f13c9"}
+{"level":"info","message":"Learned from Bing: The digital commons: using blockchain for good governance, nodes added: 680ce8c88c09ea50772f13ca"}
+{"level":"info","message":"Learned from Bing: Blockchain: what it is, how it really can change the world, nodes added: 680ce8c88c09ea50772f13cb"}
+{"level":"info","message":"Learned from Google: Blockchain.com | Be early to the future of finance, nodes added: 680ce8c88c09ea50772f13cc"}
+{"level":"info","message":"Learned from Google: Blockchain Facts: What Is It, How It Works, and How It Can ..., nodes added: 680ce8c98c09ea50772f13cd"}
+{"level":"info","message":"Learned from Google: Blockchain, nodes added: 680ce8c98c09ea50772f13ce"}
+{"level":"info","message":"Learned from Google: A Peer-to-Peer Electronic Cash System, nodes added: 680ce8ca8c09ea50772f13cf"}
+{"level":"info","message":"Learned from Google: What Is Blockchain? | IBM, nodes added: 680ce8ca8c09ea50772f13d0"}
+{"level":"info","message":"Scraping for query: quantum computing"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"quantum computing\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Quantum, Qubits, Computers, Superposition, State. Quantum computing is a revolutionary field that leverages the principles of quantum mechanics to solve complex problems beyond the capabilities of classical computers."}
+{"level":"info","message":"Learned from Reddit: Thoughts on Quantum Computing - from a Physicist, nodes added: 680ce8da8c09ea50772f13d2"}
+{"level":"info","message":"Learned from Reddit: Is quantum computing just bs?, nodes added: 680ce8db8c09ea50772f13d3"}
+{"level":"info","message":"Learned from Reddit: is quantum computing a good choice?, nodes added: 680ce8db8c09ea50772f13d4"}
+{"level":"warn","message":"Invalid content for Reddit post: Oxford scientists achieve teleportation with quantum supercomputer - Breakthrough brings quantum computing closer to large-scale practical use"}
+{"level":"info","message":"Learned from Reddit: Applications of Quantum Computing, nodes added: 680ce8db8c09ea50772f13d5"}
+{"level":"info","message":"Learned from Bing: What is a quantum computer? - New Scientist, nodes added: 680ce8e38c09ea50772f13d6"}
+{"level":"info","message":"Learned from Bing: Is Google's new Willow quantum computer really such a big deal?, nodes added: 680ce8e38c09ea50772f13d7"}
+{"level":"info","message":"Learned from Bing: Record-breaking quantum computer has more than 1000 qubits, nodes added: 680ce8e38c09ea50772f13d8"}
+{"level":"info","message":"Learned from Bing: Multiple nations enact mysterious export controls on quantum …, nodes added: 680ce8e38c09ea50772f13d9"}
+{"level":"info","message":"Learned from Bing: Quantum computers are on track to solve knotty mathematical …, nodes added: 680ce8e38c09ea50772f13da"}
+{"level":"info","message":"Generated response with existing patterns for prompt: What is the time now currently, outputId: 32a33726d11fae8db2a92085"}
+{"level":"info","message":"Scraping for query: conversational AI"}
+{"level":"info","message":"[OkeyMetaAI] Called with query: \"conversational AI\""}
+{"level":"info","message":"[OkeyMetaAI] Learned and distilled: Conversational, Understood, Help, Analyze, Existing. Understood."}
+{"level":"info","message":"Learned from Reddit: Has anyone built conversational AI that feels human?, nodes added: 680ce9108c09ea50772f13de"}
+{"level":"info","message":"Learned from Reddit: Conversational AI for outbound phone calls, nodes added: 680ce9108c09ea50772f13df"}
+{"level":"info","message":"Learned from Reddit: Has anyone ever built a conversational AI that feels natural?, nodes added: 680ce9108c09ea50772f13e0"}
+{"level":"warn","message":"Invalid content for Reddit post: Study finds that ChatGPT, one of the world’s most popular conversational AI systems, tends to lean toward left-wing political views. The system not only produces more left-leaning text and images but also often refuses to generate content that presents conservative perspectives."}
+{"level":"info","message":"Learned from Bing: Conversational AI - IBM Research, nodes added: 680ce9188c09ea50772f13e1"}
+{"level":"info","message":"Learned from Bing: How well can your RAG agent carry out a conversation?, nodes added: 680ce9188c09ea50772f13e2"}
+{"level":"info","message":"Learned from Bing: Conversational Intelligence - IBM Research, nodes added: 680ce9188c09ea50772f13e3"}
+{"level":"info","message":"Learned from Bing: Artificial Intelligence - IBM Research, nodes added: 680ce9188c09ea50772f13e4"}
+{"level":"info","message":"Learned from Bing: IBM at the intersection of human-computer interaction and AI, nodes added: 680ce9198c09ea50772f13e5"}

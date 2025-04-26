@@ -10,21 +10,27 @@ const zlib = require('zlib');
 const Typo = require('typo-js');
 const { NlpManager } = require('node-nlp');
 const EventEmitter = require('events');
+const TfIdf = require('node-tfidf');
 
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/CASIDB?retryWrites=true&w=majority';
 const client = new MongoClient(mongoUri);
 
 let nlpManager = new NlpManager({ languages: ['en'], forceNER: true });
 const learningEmitter = new EventEmitter();
+let tfidf = new TfIdf();
+let patternsCache = [];
 
-async function loadPatternsAndTrainModels() {
+async function loadPatternsAndTrainModels(maxDocs = 300) {
     await client.connect();
     const db = client.db('CASIDB');
     const patterns = db.collection('patterns');
-    const allPatterns = await patterns.find({}).toArray();
+    const allPatterns = await patterns.find({}).limit(maxDocs).toArray();
 
     nlpManager = new NlpManager({ languages: ['en'], forceNER: true });
+    tfidf = new TfIdf();
+    patternsCache = [];
 
+    let count = 0;
     for (const pattern of allPatterns) {
         let text;
         try {
@@ -35,9 +41,12 @@ async function loadPatternsAndTrainModels() {
         if (text && pattern.concept) {
             nlpManager.addDocument('en', text, pattern.concept);
             nlpManager.addAnswer('en', pattern.concept, text);
+            tfidf.addDocument(text);
+            patternsCache.push({ concept: pattern.concept, text, pattern });
+            count++;
+            if (count >= maxDocs) break;
         }
     }
-
     await nlpManager.train();
 }
 
@@ -51,6 +60,8 @@ learningEmitter.on('newPattern', async (pattern) => {
     if (text && pattern.concept) {
         nlpManager.addDocument('en', text, pattern.concept);
         nlpManager.addAnswer('en', pattern.concept, text);
+        tfidf.addDocument(text);
+        patternsCache.push({ concept: pattern.concept, text, pattern });
         await nlpManager.train();
     }
 });
@@ -73,17 +84,14 @@ function formatResponse(text, maxWords, mood) {
         .replace(/\s+/g, ' ')
         .replace(/[^\w\s.,!?]/g, '')
         .trim();
-    
     const doc = nlp(text);
     let sentences = doc.sentences().out('array').slice(0, 3);
     if (sentences.length === 0) sentences = ['Let’s explore this topic together.'];
-    
     if (mood === 'enthusiastic') {
         sentences = sentences.map(s => s.replace(/[.!?]$/, '!'));
     } else if (mood === 'empathetic') {
         sentences = sentences.map(s => s.replace(/[.!?]$/, '.'));
     }
-    
     let wordCount = 0;
     const selectedSentences = [];
     for (const sentence of sentences) {
@@ -95,12 +103,9 @@ function formatResponse(text, maxWords, mood) {
             break;
         }
     }
-    
     let finalText = selectedSentences.join(' ');
     finalText = finalText.charAt(0).toUpperCase() + finalText.slice(1);
-    
     if (!/[.!?]/.test(finalText.slice(-1))) finalText += '.';
-    
     return finalText;
 }
 
@@ -118,26 +123,65 @@ function correctTypos(prompt) {
         .join(' ');
 }
 
-function synthesizeResponse(prompt, nlpResult, fallbackText) {
-    let response = '';
-    if (nlpResult.answer) {
-        response = nlpResult.answer;
-    } else if (fallbackText) {
-        response = fallbackText;
-    } else {
-        response = "I'm not sure, but let's explore this together!";
+function distillOkeyAIResponse(okeyText, patterns, prompt) {
+    tfidf.addDocument(okeyText);
+    let keywords = [];
+    tfidf.listTerms(tfidf.documents.length - 1).slice(0, 10).forEach(item => {
+        keywords.push(item.term);
+    });
+    tfidf.documents.pop();
+
+    let bestMatch = null;
+    let bestScore = 0;
+    for (const p of patterns) {
+        let score = 0;
+        for (const kw of keywords) {
+            if (p.text.toLowerCase().includes(kw)) score++;
+        }
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = p;
+        }
     }
 
-    if (nlpResult.sentiment && nlpResult.sentiment.vote === 'negative') {
-        response += " I understand this might be tough. I'm here to help.";
-    } else if (nlpResult.sentiment && nlpResult.sentiment.vote === 'positive') {
-        response += " That's great to hear!";
+    let base = prompt;
+    if (bestMatch && bestMatch.text) {
+        base = bestMatch.text;
     }
+    let summary = '';
+    if (keywords.length > 0) {
+        summary = keywords.slice(0, 5).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(', ') + '. ';
+    }
+    let doc = nlp(base);
+    let sentences = doc.sentences().out('array');
+    let chosen = sentences.length > 0 ? sentences[0] : base;
+    let result = summary + chosen;
+    result = result.replace(/\s{2,}/g, ' ').trim();
+    if (!/[.!?]$/.test(result)) result += '.';
+    return result;
+}
 
-    if (!/[.!?]$/.test(response)) response += '.';
-    response = response.charAt(0).toUpperCase() + response.slice(1);
-
-    return response;
+async function fetchOkeyAIResponse(prompt) {
+    const apiUrl = 'https://api.okeymeta.com.ng/api/ssailm/model/okeyai3.0-vanguard/okeyai';
+    const params = { input: prompt };
+    try {
+        const response = await axios.get(apiUrl, { params, timeout: 60000 });
+        let aiData = response.data;
+        if (typeof aiData === 'string') {
+            try {
+                aiData = JSON.parse(aiData);
+            } catch {
+                return '';
+            }
+        }
+        const contentRaw = aiData && (aiData.response || aiData?.model?.response);
+        if (!contentRaw || typeof contentRaw !== 'string' || contentRaw.trim().length < 5) {
+            return '';
+        }
+        return contentRaw.trim();
+    } catch {
+        return '';
+    }
 }
 
 async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, breadth = 5, maxWords = 100, mood = 'neutral', patterns }) {
@@ -146,8 +190,32 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             throw new Error('Prompt must be a non-empty string');
         }
 
-        if (!nlpManager) {
+        if (!nlpManager || !tfidf || patternsCache.length === 0) {
             await loadPatternsAndTrainModels();
+        }
+
+        const okeyText = await fetchOkeyAIResponse(prompt);
+        let distilled = '';
+        if (okeyText) {
+            distilled = distillOkeyAIResponse(okeyText, patternsCache, prompt);
+            await client.connect();
+            const db = client.db('CASIDB');
+            const patternsCol = db.collection('patterns');
+            await patternsCol.insertOne({
+                concept: prompt,
+                content: zlib.gzipSync(okeyText).toString('base64'),
+                entities: [],
+                sentiment: 0,
+                updatedAt: new Date(),
+                confidence: 0.97,
+                source: 'OkeyMetaAI',
+                title: `OkeyMetaAI: ${prompt}`
+            });
+            learningEmitter.emit('newPattern', {
+                concept: prompt,
+                content: zlib.gzipSync(okeyText).toString('base64')
+            });
+            console.log('[CASI] Learned from OkeyAI:', okeyText);
         }
 
         const nlpResult = await nlpManager.process('en', prompt);
@@ -167,27 +235,28 @@ async function generateResponse({ prompt, diversityFactor = 0.5, depth = 10, bre
             }
         }
 
-        const outputText = synthesizeResponse(prompt, nlpResult, fallbackText);
+        let outputText = distilled || fallbackText || "I'm not sure, but let's explore this together!";
+        outputText = formatResponse(outputText, maxWords, mood);
 
-        const confidence = (nlpResult.intent !== 'None' && nlpResult.intent) ? 0.98 : 0.9;
+        const confidence = okeyText ? 0.98 : 0.9;
         const outputId = crypto.randomBytes(12).toString('hex');
 
         await client.connect();
         const db = client.db('CASIDB');
         const patternsCol = db.collection('patterns');
         await patternsCol.insertOne({
-            concept: nlpResult.intent !== 'None' ? nlpResult.intent : prompt,
+            concept: prompt,
             content: zlib.gzipSync(outputText).toString('base64'),
-            entities: nlpResult.entities || [],
-            sentiment: nlpResult.sentiment ? nlpResult.sentiment.score : 0,
+            entities: [],
+            sentiment: 0,
             updatedAt: new Date(),
             confidence,
-            source: 'generated',
+            source: 'CASI',
             title: `Response to: ${prompt.slice(0, 50)}`
         });
 
         learningEmitter.emit('newPattern', {
-            concept: nlpResult.intent !== 'None' ? nlpResult.intent : prompt,
+            concept: prompt,
             content: zlib.gzipSync(outputText).toString('base64')
         });
 

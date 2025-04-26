@@ -6,6 +6,7 @@ const { MongoClient } = require('mongodb');
 const zlib = require('zlib');
 const winston = require('winston');
 const xml2js = require('xml2js');
+const TfIdf = require('node-tfidf');
 
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/CASIDB?retryWrites=true&w=majority';
 const client = new MongoClient(mongoUri);
@@ -220,6 +221,45 @@ async function dropIndexIfExists(collection, indexName) {
     }
 }
 
+// Utility: Remove personal emails and phone numbers, allow business emails
+function filterSensitiveInfo(text) {
+    // Remove phone numbers (simple patterns)
+    text = text.replace(/(\+?\d{1,3}[-.\s]?)?(\(?\d{2,4}\)?[-.\s]?)?\d{3,4}[-.\s]?\d{4,}/g, '[filtered]');
+    // Remove personal emails (gmail, yahoo, outlook, protonmail, icloud, hotmail, etc.)
+    text = text.replace(/\b[A-Za-z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|protonmail|icloud|aol|mail|zoho|gmx|yandex|qq|163|126|sina|yeah|foxmail|googlemail)\.[A-Za-z]{2,}\b/gi, '[filtered]');
+    return text;
+}
+
+// Utility: Clean up nbsp, camelCase, and punctuation issues for more human-like sentences
+function cleanAIText(text) {
+    // Replace HTML entities like nbsp and &nbsp;
+    text = text.replace(/&nbsp;|nbsp;/gi, ' ');
+    // Remove any remaining HTML entities
+    text = text.replace(/&[a-z]+;/gi, ' ');
+    // Split camelCase words (e.g., MindfulnessActivity -> Mindfulness Activity)
+    text = text.replace(/([a-z])([A-Z])/g, '$1 $2');
+    // Remove repeated words (e.g., "CancernbspnbspCancer" -> "Cancer")
+    text = text.replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
+    // Remove trailing source attributions (e.g., "Live Science", "Cancer Network") if at end
+    text = text.replace(/([A-Za-z\s]+)\s*(I understand this might be tough\. I'm here to help\.)?$/i, (match, p1, p2) => {
+        // Remove if it's a known news/magazine/network source and not a normal sentence
+        if (/network|science|news|magazine|times|journal|review|today|daily|tribune|chronicle|gazette|observer|post|reporter|herald|press|bulletin|mirror|standard|star|sun|telegraph|record|register|dispatch|globe|world|business|insider|fortune|forbes|bloomberg|reuters|cnn|bbc|al jazeera|fox|nbc|cbs|abc|ap|upi|wired|the verge|the guardian|the economist|nature|cell|lancet|sciencedaily|sciencenews|sciencemag|arxiv/i.test(p1.trim())) {
+            return p2 ? p2 : '';
+        }
+        return match;
+    });
+    // Remove double spaces
+    text = text.replace(/\s{2,}/g, ' ');
+    // Remove stray punctuation at the end
+    text = text.replace(/[,;:\-]+$/, '');
+    // Ensure proper punctuation at end
+    text = text.trim();
+    if (text && !/[.!?]$/.test(text)) text += '.';
+    // Capitalize first letter
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+    return text;
+}
+
 async function fetchWithRetry(url, retries = MAX_RETRIES) {
     try {
         new URL(url);
@@ -261,13 +301,16 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
 }
 
 function preprocessContent(content) {
-    return content
+    content = content
         .replace(/039/g, "'")
         .replace(/[\u2013\u2014]/g, '-')
         .replace(/’/g, "'")
         .replace(/[^\w\s.,!?']/g, '')
         .replace(/\.\.+/g, '.')
         .trim();
+    content = filterSensitiveInfo(content);
+    content = cleanAIText(content);
+    return content;
 }
 
 function extractEntities(content) {
@@ -731,29 +774,64 @@ async function scrapeSearchResults(query, prompt, engine, patterns, maxResults =
 }
 
 async function scrapeOkeyMetaAI(query, prompt, patterns) {
+    logger.info(`[OkeyMetaAI] Called with query: "${query}"`);
     try {
-        const apiUrl = `https://api.okeymeta.com.ng/api/ssailm/model/okeyai3.0-vanguard/okeyai?input=${encodeURIComponent(query)}`;
-        const response = await axios.get(apiUrl, { timeout: 10000 });
-        if (!response.data || typeof response.data !== 'string' || response.data.trim().length < 5) {
+        const apiUrl = 'https://api.okeymeta.com.ng/api/ssailm/model/okeyai3.0-vanguard/okeyai';
+        const params = { input: query };
+        const response = await axios.get(apiUrl, { params, timeout: 60000 });
+
+        let aiData = response.data;
+        if (typeof aiData === 'string') {
+            try {
+                aiData = JSON.parse(aiData);
+            } catch {
+                logger.warn(`OkeyMetaAI returned non-JSON string for query: ${query}. Raw: ${aiData}`);
+                return [];
+            }
+        }
+
+        const contentRaw = aiData && (aiData.response || aiData?.model?.response);
+        if (!contentRaw || typeof contentRaw !== 'string' || contentRaw.trim().length < 5) {
+            logger.warn(`OkeyMetaAI returned no usable response for query: ${query}. Raw response: ${JSON.stringify(response.data)}`);
             return [];
         }
-        const content = response.data.trim();
-        const compressedContent = zlib.gzipSync(content).toString('base64');
-        const entities = []; // Optionally extract entities if needed
 
+        let content = contentRaw.trim();
+        content = filterSensitiveInfo(content);
+        content = cleanAIText(content);
+
+        // Distill OkeyAI response using node-tfidf and nlp to create CASI's own sentence
+        const tfidf = new TfIdf();
+        tfidf.addDocument(content);
+        let keywords = [];
+        tfidf.listTerms(0).slice(0, 10).forEach(item => keywords.push(item.term));
+        let summary = '';
+        if (keywords.length > 0) {
+            summary = keywords.slice(0, 5).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(', ') + '. ';
+        }
+        const nlpDoc = nlp(content);
+        const sentences = nlpDoc.sentences().out('array');
+        let distilled = summary + (sentences[0] || content);
+        distilled = distilled.replace(/\s{2,}/g, ' ').trim();
+        if (!/[.!?]$/.test(distilled)) distilled += '.';
+
+        const compressedContent = zlib.gzipSync(content).toString('base64');
+        const compressedDistilled = zlib.gzipSync(distilled).toString('base64');
+        const entities = [];
         let sentimentScore = 0;
         try {
             const sentimentResult = sentiment(content);
             sentimentScore = sentimentResult && typeof sentimentResult.score === 'number' ? sentimentResult.score : 0;
         } catch {}
-
         try {
-            const nodesAdded = await patterns.insertOne({
-                url: apiUrl,
+            // Store both raw and distilled
+            await patterns.insertOne({
+                url: `${apiUrl}?input=${encodeURIComponent(query)}`,
                 prompt,
                 entities,
                 sentiment: sentimentScore,
                 content: compressedContent,
+                distilled: compressedDistilled,
                 concept: query,
                 source: 'OkeyMetaAI',
                 title: `OkeyMetaAI: ${query}`,
@@ -761,18 +839,33 @@ async function scrapeOkeyMetaAI(query, prompt, patterns) {
                 updatedAt: new Date(),
                 confidence: Math.min(0.97 + sentimentScore / 100, 0.99)
             });
+            logger.info(`[OkeyMetaAI] Learned and distilled: ${distilled}`);
             return [{
                 status: 'learned',
                 nodesAdded: 1,
                 confidence: Math.min(0.97 + sentimentScore / 100, 0.99),
                 source: 'OkeyMetaAI',
                 title: `OkeyMetaAI: ${query}`,
-                url: apiUrl
+                url: `${apiUrl}?input=${encodeURIComponent(query)}`,
+                distilled
             }];
         } catch (error) {
+            if (error.code === 11000) {
+                logger.info(`OkeyMetaAI duplicate for query: ${query}`);
+                return [{
+                    status: 'duplicate',
+                    nodesAdded: 0,
+                    confidence: Math.min(0.97 + sentimentScore / 100, 0.99),
+                    source: 'OkeyMetaAI',
+                    title: `OkeyMetaAI: ${query}`,
+                    url: `${apiUrl}?input=${encodeURIComponent(query)}`
+                }];
+            }
+            logger.error(`Failed to insert OkeyMetaAI result for query: ${query}: ${error.message}`);
             return [];
         }
     } catch (error) {
+        logger.error(`OkeyMetaAI error for query: ${query}: ${error.message}`);
         return [];
     }
 }
@@ -782,6 +875,10 @@ async function scrapeOnDemand(query, prompt, patterns) {
         logger.info(`On-demand scraping for new query: ${query}`);
 
         const results = [];
+
+        // Scrape from OkeyMeta AI API for conversational data FIRST
+        const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
+        results.push(...aiResults);
 
         // Scrape Google
         const googleResults = await scrapeSearchResults(query, prompt, SEARCH_ENGINES[0], patterns, ON_DEMAND_MAX_RESULTS);
@@ -798,10 +895,6 @@ async function scrapeOnDemand(query, prompt, patterns) {
         // Scrape Google Top Results
         const topResults = await scrapeGoogleTopResults(query, prompt, patterns, ON_DEMAND_MAX_RESULTS);
         results.push(...topResults);
-
-        // Scrape from OkeyMeta AI API for conversational data
-        const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
-        results.push(...aiResults);
 
         logger.info(`On-demand scraping completed for "${query}", added ${results.length} results`);
         return results;
@@ -827,13 +920,20 @@ async function scrapeAll(prompt = 'Learn about diverse topics including AI, cult
         for (const query of SEARCH_QUERIES) {
             logger.info(`Scraping for query: ${query}`);
 
-            // Scrape Wikipedia
-            const wikiResults = await scrapeWikipedia(query, prompt, patterns);
-            results.push(...wikiResults);
+            // Scrape from OkeyMeta AI API for conversational data FIRST
+            const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
+            results.push(...aiResults);
 
-            // Scrape Google News
-            const newsResults = await scrapeGoogleNews(query, prompt, patterns);
-            results.push(...newsResults);
+            // Only scrape other sources if OkeyMetaAI returned no usable result
+            if (!aiResults || aiResults.length === 0) {
+                // Scrape Wikipedia
+                const wikiResults = await scrapeWikipedia(query, prompt, patterns);
+                results.push(...wikiResults);
+
+                // Scrape Google News
+                const newsResults = await scrapeGoogleNews(query, prompt, patterns);
+                results.push(...newsResults);
+            }
 
             // Scrape Reddit
             const redditResults = await scrapeReddit(query, prompt, patterns);
@@ -853,10 +953,6 @@ async function scrapeAll(prompt = 'Learn about diverse topics including AI, cult
                 const timeResults = await scrapeTimeAndDate(query, prompt, patterns);
                 results.push(...timeResults);
             }
-
-            // Scrape from OkeyMeta AI API for conversational data
-            const aiResults = await scrapeOkeyMetaAI(query, prompt, patterns);
-            results.push(...aiResults);
 
             await delay(RATE_LIMIT_MS);
         }
