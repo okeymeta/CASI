@@ -89,16 +89,37 @@ app.post('/api/scrape-all', async (req, res) => {
 
 app.post('/api/generate', async (req, res) => {
     try {
-        const { prompt, diversityFactor = 0.7, depth = 8, breadth = 6, maxWords = 300, mood = 'neutral' } = req.body;
+        const { 
+            prompt, 
+            diversityFactor = 0.7, 
+            depth = 8, 
+            breadth = 6, 
+            maxWords = 300, 
+            mood = 'neutral',
+            top_k = 50,
+            temperature = 0.7,
+            max_tokens = 100
+        } = req.body;
 
         if (!prompt || typeof prompt !== 'string' || prompt.trim().length < 1) {
             return res.status(400).json({ error: 'Prompt is required' });
         }
 
+        // Validate new parameters
+        if (typeof top_k !== 'number' || top_k < 1 || top_k > 100) {
+            return res.status(400).json({ error: 'top_k must be a number between 1 and 100' });
+        }
+        if (typeof temperature !== 'number' || temperature < 0.1 || temperature > 2.0) {
+            return res.status(400).json({ error: 'temperature must be a number between 0.1 and 2.0' });
+        }
+        if (typeof max_tokens !== 'number' || max_tokens < 10 || max_tokens > 512) {
+            return res.status(400).json({ error: 'max_tokens must be a number between 10 and 512' });
+        }
+
         const cleanedPrompt = prompt.toLowerCase().trim();
-        if (['hello', 'hi', 'hey', 'greetings'].includes(cleanedPrompt)) {
+        if (['hello', 'hi', 'hey', 'greetings', 'how are you'].includes(cleanedPrompt)) {
             const response = {
-                text: `Hi! How can I assist you today?`,
+                text: `Hey, I’m CASI, doing great! What’s on your mind?`,
                 confidence: 0.99,
                 outputId: crypto.randomBytes(12).toString('hex'),
                 source: 'CASI'
@@ -128,7 +149,10 @@ app.post('/api/generate', async (req, res) => {
                 breadth,
                 maxWords: adjustedMaxWords,
                 mood,
-                patterns: existingPatterns
+                patterns: existingPatterns,
+                top_k,
+                temperature,
+                max_tokens
             });
             logger.info(`Generated response with existing patterns for prompt: ${prompt}, outputId: ${response.outputId}, source: ${response.source}`);
         } else {
@@ -148,7 +172,10 @@ app.post('/api/generate', async (req, res) => {
                     breadth,
                     maxWords: adjustedMaxWords,
                     mood,
-                    patterns: newPatterns
+                    patterns: newPatterns,
+                    top_k,
+                    temperature,
+                    max_tokens
                 });
                 logger.info(`Generated response with new patterns for prompt: ${prompt}, outputId: ${response.outputId}, source: ${response.source}`);
             } else {
@@ -159,7 +186,10 @@ app.post('/api/generate', async (req, res) => {
                     breadth,
                     maxWords: adjustedMaxWords,
                     mood,
-                    patterns: []
+                    patterns: [],
+                    top_k,
+                    temperature,
+                    max_tokens
                 });
                 logger.warn(`No patterns found after on-demand scraping for prompt: ${prompt}`);
             }
