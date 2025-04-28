@@ -12,7 +12,7 @@ const { NlpManager } = require('node-nlp');
 const EventEmitter = require('events');
 const { pipeline, env } = require('@xenova/transformers');
 
-// Configure transformers for CPU and local caching
+// Configure transformers for CPU
 env.allowLocalModels = true;
 env.localModelPath = './models';
 env.backends.onnx.wasm.numThreads = 1;
@@ -20,19 +20,27 @@ env.backends.onnx.wasm.numThreads = 1;
 const mongoUri = 'mongodb+srv://nwaozor:nwaozor@cluster0.rmvi7qm.mongodb.net/CASIDB?retryWrites=true&w=majority';
 const client = new MongoClient(mongoUri);
 
-// Optimize NLP manager for speed
-let nlpManager = new NlpManager({ languages: ['en'], forceNER: true, nlu: { epochs: 20, batchSize: 8 } });
+let nlpManager = new NlpManager({ languages: ['en'], forceNER: true, nlu: { epochs: 50, batchSize: 8 } });
 const learningEmitter = new EventEmitter();
 let patternsCache = [];
 let sentenceEncoder = null;
 let textGenerator = null;
 
-// K-means clustering (optimized for speed)
-function kMeansCluster(embeddings, k = 2) {
+// Cosine similarity for embedding diversity
+function cosineSimilarity(vecA, vecB) {
+    const dotProduct = lodash.sum(vecA.map((a, i) => a * vecB[i]));
+    const magnitudeA = Math.sqrt(lodash.sum(vecA.map(a => a * a)));
+    const magnitudeB = Math.sqrt(lodash.sum(vecB.map(b => b * b)));
+    return dotProduct / (magnitudeA * magnitudeB || 1);
+}
+
+// K-means clustering for diversity
+function kMeansCluster(embeddings, k = 5) {
+    if (embeddings.length < k) k = Math.max(1, embeddings.length);
     const centroids = embeddings.slice(0, k);
     const clusters = Array(k).fill().map(() => []);
     
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
         clusters.forEach(c => c.length = 0);
         embeddings.forEach((emb, idx) => {
             const distances = centroids.map(c => 
@@ -54,14 +62,66 @@ function kMeansCluster(embeddings, k = 2) {
     return clusters;
 }
 
-// Prune low-confidence patterns
-async function prunePatterns(maxDocs = 200, minConfidence = 0.9) {
+// Prune low-quality patterns
+async function prunePatterns(maxDocs = 500, minConfidence = 0.95, minDiversity = 0.3) {
     try {
         await client.connect();
         const db = client.db('CASIDB');
         const patterns = db.collection('patterns');
-        const result = await patterns.deleteMany({ confidence: { $lt: minConfidence } });
-        console.log(`[CASI] Pruned ${result.deletedCount} low-confidence patterns`);
+        // Remove low-confidence patterns
+        const lowConfidenceResult = await patterns.deleteMany({ confidence: { $lt: minConfidence } });
+        // Remove duplicates
+        const duplicates = await patterns.aggregate([
+            { $group: { _id: { concept: "$concept", content: "$content" }, count: { $sum: 1 }, ids: { $push: "$_id" } } },
+            { $match: { count: { $gt: 1 } } }
+        ]).toArray();
+        let deletedCount = lowConfidenceResult.deletedCount || 0;
+        for (const dup of duplicates) {
+            const idsToDelete = dup.ids.slice(1);
+            const dupResult = await patterns.deleteMany({ _id: { $in: idsToDelete } });
+            deletedCount += dupResult.deletedCount;
+        }
+        // Remove low-diversity patterns
+        const allPatterns = await patterns.find({}).toArray();
+        if (allPatterns.length > 0 && sentenceEncoder) {
+            const texts = allPatterns.map(p => {
+                try {
+                    return zlib.gunzipSync(Buffer.from(p.content, 'base64')).toString();
+                } catch {
+                    return '';
+                }
+            }).filter(t => t.length > 5);
+            const embeddings = await computeEmbeddings(texts);
+            const toDelete = [];
+            for (let i = 0; i < embeddings.length; i++) {
+                for (let j = i + 1; j < embeddings.length; j++) {
+                    const similarity = cosineSimilarity(embeddings[i], embeddings[j]);
+                    if (similarity > (1 - minDiversity)) {
+                        const patternI = allPatterns[i];
+                        const patternJ = allPatterns[j];
+                        const scoreI = (patternI.confidence || 0.95) + (patternI.feedbackScore || 0);
+                        const scoreJ = (patternJ.confidence || 0.95) + (patternJ.feedbackScore || 0);
+                        toDelete.push(scoreI < scoreJ ? patternI._id : patternJ._id);
+                    }
+                }
+            }
+            if (toDelete.length > 0) {
+                const diversityResult = await patterns.deleteMany({ _id: { $in: toDelete } });
+                deletedCount += diversityResult.deletedCount;
+            }
+        }
+        // Enforce maxDocs limit
+        const totalDocs = await patterns.countDocuments();
+        if (totalDocs > maxDocs) {
+            const oldestDocs = await patterns.find({})
+                .sort({ updatedAt: 1 })
+                .limit(totalDocs - maxDocs)
+                .toArray();
+            const oldestIds = oldestDocs.map(doc => doc._id);
+            const oldResult = await patterns.deleteMany({ _id: { $in: oldestIds } });
+            deletedCount += oldResult.deletedCount;
+        }
+        console.log(`[CASI] Pruned ${deletedCount} patterns`);
     } catch (error) {
         console.error('[CASI] Prune patterns error:', error.message);
     } finally {
@@ -69,66 +129,30 @@ async function prunePatterns(maxDocs = 200, minConfidence = 0.9) {
     }
 }
 
-// Check Hugging Face access
-async function checkHuggingFaceAccess() {
-    try {
-        const response = await axios.head('https://huggingface.co/Xenova/all-MiniLM-L6-v2', { timeout: 5000 });
-        console.log('[CASI] Hugging Face accessible:', response.status);
-        return true;
-    } catch (error) {
-        console.error('[CASI] Cannot access Hugging Face:', error.message);
-        return false;
-    }
-}
-
-// Initialize transformer models with fallback
+// Initialize models
 async function initializeModels() {
     try {
         console.log('[CASI] Initializing transformer models...');
-        await checkHuggingFaceAccess();
-
-        try {
-            sentenceEncoder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', { 
-                device: 'cpu',
-                cache_dir: './models',
-                quantized: true
-            });
-        } catch (error) {
-            console.warn('[CASI] Failed to load Xenova/all-MiniLM-L6-v2:', error.message);
-            console.log('[CASI] Falling back to Xenova/distilroberta-base...');
-            sentenceEncoder = await pipeline('feature-extraction', 'Xenova/distilroberta-base', { 
-                device: 'cpu',
-                cache_dir: './models',
-                quantized: true
-            });
-        }
-
-        try {
-            textGenerator = await pipeline('text-generation', 'Xenova/distilgpt2', { 
-                device: 'cpu',
-                cache_dir: './models',
-                quantized: true
-            });
-        } catch (error) {
-            console.warn('[CASI] Failed to load Xenova/distilgpt2:', error.message);
-            console.log('[CASI] Falling back to Xenova/gpt2...');
-            textGenerator = await pipeline('text-generation', 'Xenova/gpt2', { 
-                device: 'cpu',
-                cache_dir: './models',
-                quantized: true
-            });
-        }
-
+        sentenceEncoder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', { 
+            device: 'cpu',
+            cache_dir: './models',
+            quantized: true
+        });
+        textGenerator = await pipeline('text-generation', 'Xenova/distilgpt2', { 
+            device: 'cpu',
+            cache_dir: './models',
+            quantized: true
+        });
         console.log('[CASI] Transformer models initialized');
     } catch (error) {
         console.error('[CASI] Model initialization failed:', error.message);
         sentenceEncoder = null;
         textGenerator = null;
-        console.warn('[CASI] Proceeding without transformer models; using fallback mode');
+        console.warn('[CASI] Proceeding without transformer models');
     }
 }
 
-// Compute sentence embeddings with fallback
+// Compute embeddings
 async function computeEmbeddings(texts) {
     if (!sentenceEncoder) {
         console.warn('[CASI] Sentence encoder not initialized, using zero vectors');
@@ -146,50 +170,60 @@ async function computeEmbeddings(texts) {
     }
 }
 
-// Define Handlebars templates
+// Handlebars templates
 const templates = {
+    greeting: `Hi! {{message}}`,
     list: `{{#each items}}{{index}}. **{{name}}**: {{description}}\n{{/each}}`,
     explanation: `**{{topic}}**: {{description}}. Examples: {{examples}}.`,
-    comparison: `**{{item1}}** vs **{{item2}}**:\n- **{{item1}}**: {{desc1}}\n- **{{item2}}**: {{desc2}}\nSummary: {{summary}}.`,
-    definition: `**{{term}}** is defined as {{definition}}. Used in: {{context}}.`,
-    story: `**{{title}}**\n{{intro}}\n{{body}}\nConclusion: {{conclusion}}.`,
     qa: `**Question**: {{question}}\n**Answer**: {{answer}}.`,
     summary: `**Summary of {{topic}}**: {{overview}}. Key points:\n{{points}}.`,
-    table: `| **Item** | **Description** |\n|----------|-----------------|\n{{#each rows}}| {{name}} | {{description}} |\n{{/each}}`,
-    tutorial: `**Tutorial: {{topic}}**\n**Objective**: {{objective}}\n**Steps**:\n{{#each steps}}{{index}}. {{step}}\n{{/each}}\n**Tips**: {{tips}}.`,
-    pros_cons: `**Pros and Cons of {{topic}}**\n**Pros**:\n{{#each pros}}- {{.}}\n{{/each}}\n**Cons**:\n{{#each cons}}- {{.}}\n{{/each}}\n**Verdict**: {{verdict}}.`,
-    faq: `**FAQ: {{topic}}**\n{{#each questions}}{{index}}. **{{question}}**: {{answer}}\n{{/each}}`,
-    timeline: `**Timeline of {{topic}}**\n{{#each events}}{{year}}: {{event}}\n{{/each}}`,
-    code_snippet: `**{{language}} Code: {{topic}}**\n\`\`\`{{language}}\n{{code}}\n\`\`\`\n**Explanation**: {{explanation}}.`,
-    case_study: `**Case Study: {{topic}}**\n**Background**: {{background}}\n**Analysis**: {{analysis}}\n**Outcome**: {{outcome}}.`,
-    recommendation: `**Recommendations for {{topic}}**\n{{#each items}}{{index}}. {{item}}\n{{/each}}\n**Rationale**: {{rationale}}.`,
-    interview: `**Interview on {{topic}}**\n{{#each questions}}{{index}}. **{{question}}**: {{answer}}\n{{/each}}`,
-    glossary: `**Glossary: {{topic}}**\n{{#each terms}}{{term}}: {{definition}}\n{{/each}}`,
-    troubleshooting: `**Troubleshooting: {{topic}}**\n**Issues**:\n{{#each issues}}{{index}}. {{issue}}: {{solution}}\n{{/each}}\n**Tips**: {{tips}}.`,
-    roadmap: `**Roadmap for {{topic}}**\n**Phases**:\n{{#each phases}}{{index}}. {{phase}} ({{timeline}})\n{{/each}}\n**Goals**: {{goals}}.`,
-    analysis: `**Analysis of {{topic}}**\n**Overview**: {{overview}}\n**Findings**:\n{{#each findings}}- {{.}}\n{{/each}}\n**Conclusion**: {{conclusion}}.`,
+    self_description: `I'm CASI, {{description}}. {{purpose}}`,
     fallback: `I'm exploring **{{topic}}**. Here's my take: {{context}}. Let's dive deeper!`
 };
 
-async function loadPatternsAndTrainModels(maxDocs = 200) {
+async function loadPatternsAndTrainModels(maxDocs = 500) {
     try {
         await client.connect();
         const db = client.db('CASIDB');
         const patterns = db.collection('patterns');
-        const allPatterns = await patterns.find({}).limit(maxDocs).toArray();
+        const allPatterns = await patterns.find({ confidence: { $gte: 0.95 } })
+            .sort({ feedbackScore: -1, confidence: -1, updatedAt: -1 })
+            .limit(maxDocs * 2)
+            .toArray();
 
-        nlpManager = new NlpManager({ languages: ['en'], forceNER: true, nlu: { epochs: 20, batchSize: 8 } });
+        let selectedPatterns = allPatterns;
+        if (allPatterns.length > maxDocs && sentenceEncoder) {
+            const texts = allPatterns.map(p => {
+                try {
+                    return zlib.gunzipSync(Buffer.from(p.content, 'base64')).toString();
+                } catch {
+                    return '';
+                }
+            }).filter(t => t.length > 5);
+            const embeddings = await computeEmbeddings(texts);
+            const clusters = kMeansCluster(embeddings, Math.min(10, texts.length));
+            selectedPatterns = [];
+            clusters.forEach(cluster => {
+                const clusterPatterns = cluster.map(idx => allPatterns[idx]).sort((a, b) => 
+                    (b.feedbackScore || 0) + b.confidence - (a.feedbackScore || 0) - a.confidence
+                );
+                selectedPatterns.push(...clusterPatterns.slice(0, Math.ceil(maxDocs / clusters.length)));
+            });
+            selectedPatterns = selectedPatterns.slice(0, maxDocs);
+        }
+
+        nlpManager = new NlpManager({ languages: ['en'], forceNER: true, nlu: { epochs: 50, batchSize: 8 } });
         patternsCache = [];
 
         let count = 0;
-        for (const pattern of allPatterns) {
+        for (const pattern of selectedPatterns) {
             let text;
             try {
                 text = zlib.gunzipSync(Buffer.from(pattern.content, 'base64')).toString();
             } catch {
                 text = '';
             }
-            if (text && pattern.concept) {
+            if (text && pattern.concept && text.length > 5) {
                 nlpManager.addDocument('en', text, pattern.concept);
                 nlpManager.addAnswer('en', pattern.concept, text);
                 patternsCache.push({ concept: pattern.concept, text, pattern });
@@ -199,14 +233,8 @@ async function loadPatternsAndTrainModels(maxDocs = 200) {
         }
         await nlpManager.train();
 
-        if (patternsCache.length > 2 && sentenceEncoder) {
-            const texts = patternsCache.map(p => p.text);
-            const embeddings = await computeEmbeddings(texts);
-            const clusters = kMeansCluster(embeddings, 2);
-            console.log('[CASI] Clustered patterns:', clusters.map(c => c.length));
-        }
-
-        await prunePatterns(maxDocs, 0.9);
+        console.log(`[CASI] Loaded ${count} patterns and trained NLP model`);
+        await prunePatterns(maxDocs, 0.95, 0.3);
     } catch (error) {
         console.error('[CASI] Load patterns error:', error.message);
         throw error;
@@ -223,9 +251,9 @@ learningEmitter.on('newPattern', async (pattern) => {
         } catch {
             text = '';
         }
-        if (text && pattern.concept) {
+        if (text && pattern.concept && text.length > 5) {
             nlpManager.addDocument('en', text, pattern.concept);
-            nlpManager.addAnswer('en', pattern.concept, text);
+            nlpManager.addAnswer('en', text, pattern.concept);
             patternsCache.push({ concept: pattern.concept, text, pattern });
             await nlpManager.train();
         }
@@ -235,6 +263,7 @@ learningEmitter.on('newPattern', async (pattern) => {
 });
 
 function preprocessPrompt(prompt) {
+    if (!prompt || typeof prompt !== 'string') return '';
     return prompt
         .replace(/039/g, "'")
         .replace(/[\u2013\u2014]/g, '-')
@@ -264,71 +293,15 @@ async function paraphraseSentence(sentence) {
     }
     try {
         const generated = await textGenerator(`Paraphrase: ${sentence}`, { max_new_tokens: 50, do_sample: true });
-        return generated[0].generated_text.replace(/^Paraphrase: /, '').trim();
+        let paraphrased = generated[0].generated_text.replace(/^Paraphrase: /, '').trim();
+        if (!paraphrased || paraphrased.length < 5 || !/[.!?]/.test(paraphrased)) {
+            paraphrased = sentence;
+        }
+        return paraphrased;
     } catch (error) {
         console.error('[CASI] Paraphrase error:', error.message);
         return sentence;
     }
-}
-
-function formatResponse(text, maxWords, mood) {
-    text = preserveFormatting(text);
-    
-    text = text
-        .replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4}\b/g, '')
-        .replace(/[^\w\s.,!?*'\n|-]/g, '')
-        .trim();
-    
-    const doc = nlp(text);
-    let sentences = doc.sentences().out('array');
-    if (sentences.length === 0) sentences = ['Let’s explore this topic together.'];
-    
-    const lines = text.split('\n').filter(line => line.trim());
-    let isList = lines.some(line => /^\s*(\d+\.\s+|[-*]\s+)/.test(line));
-    let isTable = lines.some(line => /^\s*\|.*\|\s*$/.test(line));
-    
-    if (!isList && !isTable && mood === 'enthusiastic') {
-        sentences = sentences.map(s => s.replace(/[.!?]$/, '!'));
-    } else if (!isList && !isTable && mood === 'empathetic') {
-        sentences = sentences.map(s => s.replace(/[.!?]$/, '.'));
-    }
-    
-    let outputLines = [];
-    let wordCount = 0;
-    if (isList || isTable) {
-        for (const line of lines) {
-            const words = line.split(' ');
-            if (wordCount + words.length <= maxWords) {
-                outputLines.push(line);
-                wordCount += words.length;
-            } else {
-                break;
-            }
-        }
-    } else {
-        for (const sentence of sentences) {
-            const words = sentence.split(' ');
-            if (wordCount + words.length <= maxWords) {
-                outputLines.push(sentence);
-                wordCount += words.length;
-            } else {
-                break;
-            }
-        }
-    }
-    
-    let finalText = outputLines.join(isList || isTable ? '\n' : ' ');
-    if (!finalText) finalText = 'Let’s dive into this topic!';
-    
-    if (!isList && !isTable) {
-        finalText = finalText.charAt(0).toUpperCase() + finalText.slice(1);
-        if (!/[.!?]/.test(finalText.slice(-1))) finalText += '.';
-    }
-    
-    const finalDoc = nlp(finalText);
-    finalText = finalDoc.text();
-    
-    return finalText;
 }
 
 function correctTypos(prompt) {
@@ -345,38 +318,108 @@ function correctTypos(prompt) {
         .join(' ');
 }
 
+function formatResponse(text, maxWords, mood) {
+    text = preserveFormatting(text);
+    
+    text = text
+        .replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4}\b/g, '')
+        .replace(/[^\w\s.,!?*'\n|-]/g, '')
+        .trim();
+
+    const doc = nlp(text);
+    let sentences = doc.sentences().out('array');
+    if (sentences.length === 0) sentences = ['Let’s explore this topic together.'];
+
+    sentences = [...new Set(sentences)];
+
+    const lines = text.split('\n').filter(line => line.trim());
+    let isList = lines.some(line => /^\s*(\d+\.\s+|[-*]\s+)/.test(line));
+    let isTable = lines.some(line => /^\s*\|.*\|\s*$/.test(line));
+
+    if (!isList && !isTable && mood === 'enthusiastic') {
+        sentences = sentences.map(s => s.replace(/[.!?]$/, '!'));
+    } else if (!isList && !isTable && mood === 'empathetic') {
+        sentences = sentences.map(s => s.replace(/[.!?]$/, '.'));
+    }
+
+    if (sentences.length > 3 && !isList && !isTable) {
+        const summary = doc.sentences().slice(0, 2).out('array').join(' ');
+        sentences = [summary];
+    }
+
+    let outputLines = [];
+    let wordCount = 0;
+    if (isList || isTable) {
+        for (const line of lines) {
+            const words = line.split(/\s+/);
+            if (wordCount + words.length <= maxWords) {
+                outputLines.push(line);
+                wordCount += words.length;
+            } else {
+                break;
+            }
+        }
+    } else {
+        for (const sentence of sentences) {
+            const words = sentence.split(/\s+/);
+            if (wordCount + words.length <= maxWords) {
+                outputLines.push(sentence);
+                wordCount += words.length;
+            } else {
+                break;
+            }
+        }
+    }
+
+    let finalText = outputLines.join(isList || isTable ? '\n' : ' ');
+    if (!finalText) finalText = 'Let’s dive into this topic!';
+
+    if (!isList && !isTable) {
+        finalText = finalText.charAt(0).toUpperCase() + finalText.slice(1);
+        if (!/[.!?]/.test(finalText.slice(-1))) finalText += '.';
+    }
+
+    finalText = finalText.replace(/(\b\w+)(?:\s+\1\b)+/gi, '$1');
+    finalText = finalText.replace(/\s{2,}/g, ' ').trim();
+
+    const finalWords = finalText.split(/\s+/);
+    if (finalWords.length > maxWords) {
+        finalText = finalWords.slice(0, maxWords).join(' ') + (isList || isTable ? '' : '.');
+    }
+
+    const finalDoc = nlp(finalText);
+    finalText = finalDoc.text();
+
+    return finalText;
+}
+
 async function generateOriginalSentence(prompt, entities, keywords, templateType = 'explanation') {
     try {
         const template = handlebars.compile(templates[templateType]);
         const topic = entities[0] || keywords[0] || prompt.split(' ')[0];
         const context = keywords[1] || 'this topic';
         let data = {};
-        
-        const baseSentence = textGenerator
-            ? (await textGenerator(`Explain ${topic} in one sentence`, { max_new_tokens: 50, do_sample: true }))[0].generated_text.trim()
-            : `${topic} is a key concept in ${context}.`;
-        
+
+        let baseSentence = '';
+        if (templateType === 'self_description') {
+            baseSentence = textGenerator
+                ? (await textGenerator(`Describe CASI in one sentence`, { max_new_tokens: 50, do_sample: true }))[0].generated_text.trim()
+                : `CASI is an AI designed to provide insightful answers.`;
+        } else {
+            baseSentence = textGenerator
+                ? (await textGenerator(`Explain ${topic} in one sentence`, { max_new_tokens: 50, do_sample: true }))[0].generated_text.trim()
+                : `${topic} is a key concept in ${context}.`;
+        }
+
         switch (templateType) {
+            case 'greeting':
+                data = { message: 'How can I assist you today?' };
+                break;
             case 'explanation':
                 data = {
                     topic,
                     description: baseSentence,
                     examples: keywords.slice(2, 4).join(', ') || context
-                };
-                break;
-            case 'definition':
-                data = {
-                    term: topic,
-                    definition: baseSentence,
-                    context: keywords[2] || context
-                };
-                break;
-            case 'story':
-                data = {
-                    title: `The Story of ${topic}`,
-                    intro: baseSentence,
-                    body: `It involves ${context} and connects to ${keywords[2] || 'various ideas'}.`,
-                    conclusion: `${topic} shapes our understanding of ${context}.`
                 };
                 break;
             case 'qa':
@@ -392,120 +435,19 @@ async function generateOriginalSentence(prompt, entities, keywords, templateType
                     points: keywords.slice(2, 5).map(k => `- ${k}`).join('\n') || `- ${context}`
                 };
                 break;
-            case 'tutorial':
+            case 'self_description':
                 data = {
-                    topic,
-                    objective: `Learn ${topic} effectively`,
-                    steps: [
-                        { index: 1, step: baseSentence },
-                        { index: 2, step: `Apply ${context} in practice.` }
-                    ],
-                    tips: `Focus on ${keywords[2] || 'key concepts'}.`
-                };
-                break;
-            case 'pros_cons':
-                data = {
-                    topic,
-                    pros: [baseSentence, `Supports ${context}.`],
-                    cons: [`Requires understanding ${keywords[2] || 'complexity'}.`],
-                    verdict: `${topic} is valuable but needs careful application.`
-                };
-                break;
-            case 'faq':
-                data = {
-                    topic,
-                    questions: [
-                        { index: 1, question: `What is ${topic}?`, answer: baseSentence },
-                        { index: 2, question: `How does ${topic} work?`, answer: `It involves ${context}.` }
-                    ]
-                };
-                break;
-            case 'timeline':
-                data = {
-                    topic,
-                    events: [
-                        { year: 'Early', event: baseSentence },
-                        { year: 'Recent', event: `Advances in ${context}.` }
-                    ]
-                };
-                break;
-            case 'code_snippet':
-                data = {
-                    language: keywords[2] || 'python',
-                    topic,
-                    code: `# Example for ${topic}\nprint("${baseSentence}")`,
-                    explanation: `This code demonstrates ${context}.`
-                };
-                break;
-            case 'case_study':
-                data = {
-                    topic,
-                    background: baseSentence,
-                    analysis: `It relates to ${context} through practical applications.`,
-                    outcome: `${topic} achieved significant results.`
-                };
-                break;
-            case 'recommendation':
-                data = {
-                    topic,
-                    items: [
-                        { index: 1, item: baseSentence },
-                        { index: 2, item: `Leverage ${context} for better results.` }
-                    ],
-                    rationale: `Based on ${keywords[2] || 'analysis'}.`
-                };
-                break;
-            case 'interview':
-                data = {
-                    topic,
-                    questions: [
-                        { index: 1, question: `What is ${topic}?`, answer: baseSentence },
-                        { index: 2, question: `Why is ${topic} important?`, answer: `It drives ${context}.` }
-                    ]
-                };
-                break;
-            case 'glossary':
-                data = {
-                    topic,
-                    terms: [
-                        { term: topic, definition: baseSentence },
-                        { term: context, definition: `Related to ${keywords[2] || 'concepts'}.` }
-                    ]
-                };
-                break;
-            case 'troubleshooting':
-                data = {
-                    topic,
-                    issues: [
-                        { index: 1, issue: `Understanding ${topic}`, solution: baseSentence },
-                        { index: 2, issue: `Applying ${topic}`, solution: `Practice with ${context}.` }
-                    ],
-                    tips: `Focus on ${keywords[2] || 'practical steps'}.`
-                };
-                break;
-            case 'roadmap':
-                data = {
-                    topic,
-                    phases: [
-                        { index: 1, phase: baseSentence, timeline: 'Short-term' },
-                        { index: 2, phase: `Scale ${context}`, timeline: 'Long-term' }
-                    ],
-                    goals: `Achieve mastery in ${topic}.`
-                };
-                break;
-            case 'analysis':
-                data = {
-                    topic,
-                    overview: baseSentence,
-                    findings: [`Related to ${context}.`, `Impacts ${keywords[2] || 'outcomes'}.`],
-                    conclusion: `${topic} drives innovation.`
+                    description: baseSentence.replace(/^CASI is /, '').replace(/^CASI, /, ''),
+                    purpose: keywords[2] || 'Ready to answer your questions with clarity and creativity!'
                 };
                 break;
             case 'fallback':
                 data = { topic, context };
                 break;
+            default:
+                data = { topic, context };
         }
-        
+
         return template(data);
     } catch (error) {
         console.error('[CASI] Generate original sentence error:', error.message);
@@ -529,17 +471,15 @@ async function synthesizeFromOkeyAI(okeyText, prompt, patterns) {
         const sentenceEmbeddings = embeddings.slice(1);
 
         const rankedSentences = allSentences.map((sentence, index) => {
-            const similarity = lodash.sum(promptEmbedding.map((a, i) => a * sentenceEmbeddings[index][i])) /
-                (Math.sqrt(lodash.sum(promptEmbedding.map(a => a * a))) * Math.sqrt(lodash.sum(sentenceEmbeddings[index].map(b => b * b))) || 1);
+            const similarity = cosineSimilarity(promptEmbedding, sentenceEmbeddings[index]);
             return { sentence, score: similarity };
-        }).sort((a, b) => b.score - a.score);
+        }).sort((a, b) => b.score - a.score).slice(0, 3);
 
         let bestMatch = null;
         let bestScore = 0;
         for (const p of patterns) {
             const patternEmbedding = (await computeEmbeddings([p.text]))[0];
-            const similarity = lodash.sum(promptEmbedding.map((a, i) => a * patternEmbedding[i])) /
-                (Math.sqrt(lodash.sum(promptEmbedding.map(a => a * a))) * Math.sqrt(lodash.sum(patternEmbedding.map(b => b * b))) || 1);
+            const similarity = cosineSimilarity(promptEmbedding, patternEmbedding);
             if (similarity > bestScore) {
                 bestScore = similarity;
                 bestMatch = p;
@@ -547,150 +487,49 @@ async function synthesizeFromOkeyAI(okeyText, prompt, patterns) {
         }
 
         const intents = [
+            { type: 'self_description', keywords: ['who are you', 'what is casi', 'tell me about casi', 'casi'] },
+            { type: 'greeting', keywords: ['hello', 'hi', 'hey', 'greetings'] },
             { type: 'list', keywords: ['list', 'types', 'examples'] },
-            { type: 'comparison', keywords: ['compare', 'versus', 'vs'] },
-            { type: 'definition', keywords: ['define', 'definition', 'what is'] },
-            { type: 'story', keywords: ['story', 'tell me about', 'history'] },
             { type: 'qa', keywords: ['what is', 'how', 'why'] },
-            { type: 'summary', keywords: ['summarize', 'summary', 'overview'] },
-            { type: 'table', keywords: ['table', 'chart'] },
-            { type: 'tutorial', keywords: ['tutorial', 'guide', 'how to'] },
-            { type: 'pros_cons', keywords: ['pros and cons', 'advantages', 'disadvantages'] },
-            { type: 'faq', keywords: ['faq', 'questions', 'answers'] },
-            { type: 'timeline', keywords: ['timeline', 'history', 'chronology'] },
-            { type: 'code_snippet', keywords: ['code', 'program', 'script'] },
-            { type: 'case_study', keywords: ['case study', 'example', 'scenario'] },
-            { type: 'recommendation', keywords: ['recommend', 'suggest', 'best practices'] },
-            { type: 'interview', keywords: ['interview', 'q&a', 'discussion'] },
-            { type: 'glossary', keywords: ['glossary', 'terms', 'definitions'] },
-            { type: 'troubleshooting', keywords: ['troubleshoot', 'fix', 'issues'] },
-            { type: 'roadmap', keywords: ['roadmap', 'plan', 'strategy'] },
-            { type: 'analysis', keywords: ['analyze', 'analysis', 'evaluate'] }
+            { type: 'summary', keywords: ['summarize', 'summary', 'overview'] }
         ];
         const intent = intents.find(i => i.keywords.some(k => prompt.toLowerCase().includes(k)))?.type || 'explanation';
 
         let base = '';
-        if (intent === 'list' && rankedSentences.length > 0) {
-            const listItems = rankedSentences.slice(0, 3).map((item, index) => ({
+        if (intent === 'self_description') {
+            base = await generateOriginalSentence(prompt, entities, ['casi', 'ai', 'help'], 'self_description');
+            if (bestMatch) {
+                base += ' ' + await paraphraseSentence(bestMatch.text);
+            }
+        } else if (intent === 'greeting') {
+            const template = handlebars.compile(templates.greeting);
+            base = template({ message: 'How can I assist you today?' });
+        } else if (intent === 'list' && rankedSentences.length > 0) {
+            const listItems = rankedSentences.map((item, index) => ({
                 index: index + 1,
                 name: entities[index] || `Item ${index + 1}`,
                 description: item.sentence
             }));
             const template = handlebars.compile(templates.list);
             base = template({ items: listItems });
-            base += '\n' + await generateOriginalSentence(prompt, entities, [], 'summary');
-        } else if (intent === 'comparison' && rankedSentences.length > 1) {
-            const template = handlebars.compile(templates.comparison);
-            base = template({
-                item1: entities[0] || 'First concept',
-                item2: entities[1] || 'Second concept',
-                desc1: rankedSentences[0].sentence,
-                desc2: rankedSentences[1].sentence,
-                summary: await paraphraseSentence(rankedSentences.slice(0, 2).map(item => item.sentence).join(' '))
-            });
-            base += ' ' + await generateOriginalSentence(prompt, entities, [], 'explanation');
-        } else if (intent === 'definition') {
-            base = await generateOriginalSentence(prompt, entities, [], 'definition');
-            if (bestMatch) {
-                base += ' ' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'story') {
-            base = await generateOriginalSentence(prompt, entities, [], 'story');
-            if (rankedSentences.length > 0) {
-                base += '\n' + rankedSentences.slice(0, 2).map(item => item.sentence).join(' ');
-            }
         } else if (intent === 'qa') {
             base = await generateOriginalSentence(prompt, entities, [], 'qa');
             if (bestMatch) {
                 base += ' ' + await paraphraseSentence(bestMatch.text);
             }
-        } else if (intent === 'summary') {
-            base = await generateOriginalSentence(prompt, entities, [], 'summary');
-            if (rankedSentences.length > 0) {
-                base += '\n' + rankedSentences.slice(0, 2).map(item => item.sentence).join(' ');
-            }
-        } else if (intent === 'table' && rankedSentences.length > 0) {
-            const rows = rankedSentences.slice(0, 3).map((item, index) => ({
-                name: entities[index] || `Item ${index + 1}`,
-                description: item.sentence
-            }));
-            const template = handlebars.compile(templates.table);
-            base = template({ rows });
-            base += '\n' + await generateOriginalSentence(prompt, entities, [], 'summary');
-        } else if (intent === 'tutorial') {
-            base = await generateOriginalSentence(prompt, entities, [], 'tutorial');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'pros_cons') {
-            base = await generateOriginalSentence(prompt, entities, [], 'pros_cons');
-            if (rankedSentences.length > 0) {
-                base += '\n' + rankedSentences.slice(0, 2).map(item => item.sentence).join(' ');
-            }
-        } else if (intent === 'faq') {
-            base = await generateOriginalSentence(prompt, entities, [], 'faq');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'timeline') {
-            base = await generateOriginalSentence(prompt, entities, [], 'timeline');
-            if (rankedSentences.length > 0) {
-                base += '\n' + rankedSentences.slice(0, 2).map(item => item.sentence).join(' ');
-            }
-        } else if (intent === 'code_snippet') {
-            base = await generateOriginalSentence(prompt, entities, [], 'code_snippet');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'case_study') {
-            base = await generateOriginalSentence(prompt, entities, [], 'case_study');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'recommendation') {
-            base = await generateOriginalSentence(prompt, entities, [], 'recommendation');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'interview') {
-            base = await generateOriginalSentence(prompt, entities, [], 'interview');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'glossary') {
-            base = await generateOriginalSentence(prompt, entities, [], 'glossary');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'troubleshooting') {
-            base = await generateOriginalSentence(prompt, entities, [], 'troubleshooting');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'roadmap') {
-            base = await generateOriginalSentence(prompt, entities, [], 'roadmap');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
-        } else if (intent === 'analysis') {
-            base = await generateOriginalSentence(prompt, entities, [], 'analysis');
-            if (bestMatch) {
-                base += '\n' + await paraphraseSentence(bestMatch.text);
-            }
         } else {
-            base = rankedSentences.slice(0, 10).map(item => item.sentence).join(' ');
-            if (bestMatch) {
+            base = rankedSentences[0]?.sentence || await generateOriginalSentence(prompt, entities, [], 'explanation');
+            if (bestMatch && rankedSentences.length < 2) {
                 base += ' ' + await paraphraseSentence(bestMatch.text);
             }
-            base += ' ' + await generateOriginalSentence(prompt, entities, [], 'explanation');
         }
 
         let result = base;
-        if (promptEntities.length > 0 && !result.toLowerCase().includes(promptEntities[0].toLowerCase())) {
+        if (promptEntities.length > 0 && !result.toLowerCase().includes(promptEntities[0].toLowerCase()) && intent !== 'self_description') {
             result = `${promptEntities[0]}: ${result}`;
         }
 
-        result = result.replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
+        result = result.replace(/(\b\w+)(?:\s+\1\b)+/gi, '$1');
         result = result.replace(/\s{2,}/g, ' ').trim();
         if (!result.split('\n').some(line => /^\s*(\d+\.\s+|[-*]\s+|\|.*\|)/.test(line))) {
             result = result.charAt(0).toUpperCase() + result.slice(1);
@@ -734,58 +573,37 @@ async function generateResponse({ prompt, diversityFactor = 0.7, depth = 8, brea
             throw new Error('Prompt must be a non-empty string');
         }
 
+        const cleanedPrompt = preprocessPrompt(prompt);
+        if (['hello', 'hi', 'hey', 'greetings'].includes(cleanedPrompt)) {
+            const outputText = formatResponse('Hi! How can I assist you today?', maxWords, mood);
+            const confidence = 0.99;
+            const outputId = crypto.randomBytes(12).toString('hex');
+            return { text: outputText, confidence, outputId, source: 'CASI' };
+        }
+
         if (!nlpManager || !patternsCache.length) {
             await loadPatternsAndTrainModels();
         }
 
-        const cleanedPrompt = preprocessPrompt(prompt);
-        const okeyText = await fetchOkeyAIResponse(cleanedPrompt);
+        const nlpResult = await nlpManager.process('en', cleanedPrompt);
         let synthesized = '';
-        if (okeyText) {
-            synthesized = await synthesizeFromOkeyAI(okeyText, cleanedPrompt, patternsCache);
-            await client.connect();
-            const db = client.db('CASIDB');
-            const patternsCol = db.collection('patterns');
-            await patternsCol.insertOne({
-                concept: cleanedPrompt,
-                content: zlib.gzipSync(okeyText).toString('base64'),
-                entities: [],
-                sentiment: 0,
-                updatedAt: new Date(),
-                confidence: 0.97,
-                source: 'OkeyMetaAI',
-                title: `OkeyMetaAI: ${cleanedPrompt.slice(0, 50)}`
-            });
-            const paraphrased = await paraphraseSentence(okeyText);
-            await patternsCol.insertOne({
-                concept: cleanedPrompt,
-                content: zlib.gzipSync(paraphrased).toString('base64'),
-                entities: [],
-                sentiment: 0,
-                updatedAt: new Date(),
-                confidence: 0.95,
-                source: 'CASI_Paraphrased',
-                title: `Paraphrased: ${cleanedPrompt.slice(0, 50)}`
-            });
-            learningEmitter.emit('newPattern', {
-                concept: cleanedPrompt,
-                content: zlib.gzipSync(okeyText).toString('base64')
-            });
-            learningEmitter.emit('newPattern', {
-                concept: cleanedPrompt,
-                content: zlib.gzipSync(paraphrased).toString('base64')
-            });
-            console.log('[CASI] Learned from OkeyAI:', okeyText);
-            console.log('[CASI] Stored paraphrased:', paraphrased);
-        } else {
-            synthesized = await generateOriginalSentence(cleanedPrompt, [], [], 'fallback');
-            if (patternsCache.length > 0) {
-                const bestMatch = patternsCache[0];
-                synthesized += ' ' + await paraphraseSentence(bestMatch.text);
-            }
+        let confidence = 0.9;
+        let source = 'CASI';
+        let concept = cleanedPrompt;
+
+        // Detect self-description intent early
+        const selfDescriptionKeywords = ['who are you', 'what is casi', 'tell me about casi', 'casi'];
+        if (selfDescriptionKeywords.some(k => cleanedPrompt.includes(k))) {
+            concept = 'self_description';
         }
 
-        const nlpResult = await nlpManager.process('en', cleanedPrompt);
+        await client.connect();
+        const db = client.db('CASIDB');
+        const patternsCol = db.collection('patterns');
+        const patternCount = await patternsCol.countDocuments({ 
+            concept: { $regex: concept, $options: 'i' }, 
+            confidence: { $gte: 0.95 } 
+        });
 
         let fallbackText = '';
         if (patterns && patterns.length > 0) {
@@ -796,44 +614,118 @@ async function generateResponse({ prompt, diversityFactor = 0.7, depth = 8, brea
             if (best) {
                 try {
                     fallbackText = zlib.gunzipSync(Buffer.from(best.content, 'base64')).toString();
+                    synthesized = await paraphraseSentence(fallbackText);
+                    confidence = best.confidence + (best.feedbackScore || 0);
+                    source = 'CASI';
                 } catch {
                     fallbackText = '';
                 }
             }
         }
 
-        let outputText = synthesized || fallbackText || await generateOriginalSentence(cleanedPrompt, [], [], 'fallback');
+        if (patternCount >= 100 && textGenerator) {
+            try {
+                const generated = await textGenerator(`${concept === 'self_description' ? 'Describe CASI' : cleanedPrompt}:`, { max_new_tokens: 100, do_sample: true });
+                synthesized = generated[0].generated_text.replace(`${concept === 'self_description' ? 'Describe CASI' : cleanedPrompt}:`, '').trim();
+                confidence = 0.97;
+                source = 'LocalLLM';
+            } catch (error) {
+                console.warn('[CASI] Local LLM generation failed:', error.message);
+            }
+        } else if (!synthesized || confidence < 0.98) {
+            const okeyText = await fetchOkeyAIResponse(cleanedPrompt);
+            if (okeyText) {
+                synthesized = await synthesizeFromOkeyAI(okeyText, cleanedPrompt, patternsCache);
+                confidence = 0.98;
+                source = 'OkeyMetaAI';
+                await patternsCol.insertOne({
+                    concept,
+                    content: zlib.gzipSync(okeyText).toString('base64'),
+                    entities: [],
+                    sentiment: 0,
+                    updatedAt: new Date(),
+                    confidence: 0.97,
+                    source: 'OkeyMetaAI',
+                    title: `OkeyMetaAI: ${cleanedPrompt.slice(0, 50)}`,
+                    feedbackScore: 0,
+                    outputId: crypto.randomBytes(12).toString('hex')
+                });
+                const paraphrased = await paraphraseSentence(okeyText);
+                await patternsCol.insertOne({
+                    concept,
+                    content: zlib.gzipSync(paraphrased).toString('base64'),
+                    entities: [],
+                    sentiment: 0,
+                    updatedAt: new Date(),
+                    confidence: 0.95,
+                    source: 'CASI_Paraphrased',
+                    title: `Paraphrased: ${cleanedPrompt.slice(0, 50)}`,
+                    feedbackScore: 0,
+                    outputId: crypto.randomBytes(12).toString('hex')
+                });
+                learningEmitter.emit('newPattern', {
+                    concept,
+                    content: zlib.gzipSync(okeyText).toString('base64')
+                });
+                learningEmitter.emit('newPattern', {
+                    concept,
+                    content: zlib.gzipSync(paraphrased).toString('base64')
+                });
+                console.log('[CASI] Learned from OkeyAI:', okeyText);
+                console.log('[CASI] Stored paraphrased:', paraphrased);
+            }
+        }
+
+        if (!synthesized) {
+            synthesized = await generateOriginalSentence(cleanedPrompt, [], [], concept === 'self_description' ? 'self_description' : 'fallback');
+            if (patternsCache.length > 0) {
+                const bestMatch = patternsCache[0];
+                synthesized += ' ' + await paraphraseSentence(bestMatch.text);
+            }
+        }
+
+        let outputText = synthesized || fallbackText || await generateOriginalSentence(cleanedPrompt, [], [], concept === 'self_description' ? 'self_description' : 'fallback');
         outputText = formatResponse(outputText, maxWords, mood);
 
-        const confidence = okeyText ? 0.98 : 0.9;
         const outputId = crypto.randomBytes(12).toString('hex');
 
-        await client.connect();
-        const db = client.db('CASIDB');
-        const patternsCol = db.collection('patterns');
         await patternsCol.insertOne({
-            concept: cleanedPrompt,
+            concept,
             content: zlib.gzipSync(outputText).toString('base64'),
             entities: [],
             sentiment: 0,
             updatedAt: new Date(),
             confidence,
-            source: 'CASI',
-            title: `Response to: ${cleanedPrompt.slice(0, 50)}`
+            source,
+            title: `Response to: ${cleanedPrompt.slice(0, 50)}`,
+            feedbackScore: 0,
+            outputId
         });
 
         learningEmitter.emit('newPattern', {
-            concept: cleanedPrompt,
+            concept,
             content: zlib.gzipSync(outputText).toString('base64')
         });
 
-        return { text: outputText, confidence, outputId };
+        return { text: outputText, confidence, outputId, source };
     } catch (error) {
         console.error('[CASI] Generate response error:', error.message);
-        throw { message: `Generation failed: ${error.message}`, status: 500 };
+        const fallbackText = formatResponse('Sorry, something went wrong. Let’s try again!', 50, mood);
+        return {
+            text: fallbackText,
+            confidence: 0.9,
+            outputId: crypto.randomBytes(12).toString('hex'),
+            source: 'Fallback'
+        };
     } finally {
         await client.close();
     }
 }
 
-module.exports = { generateResponse, loadPatternsAndTrainModels, initializeModels };
+module.exports = { 
+    generateResponse, 
+    loadPatternsAndTrainModels, 
+    initializeModels, 
+    paraphraseSentence, 
+    formatResponse 
+};

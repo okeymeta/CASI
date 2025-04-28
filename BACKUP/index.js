@@ -4,7 +4,6 @@ const { scrapeAll, scrapeOnDemand } = require('../scrape');
 const { generateResponse, loadPatternsAndTrainModels, initializeModels } = require('../generate');
 const { init: initLattice } = require('../lattice');
 const winston = require('winston');
-const crypto = require('crypto');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -41,7 +40,7 @@ async function init() {
             console.log('ML models loaded');
         } catch (error) {
             logger.error('Failed to load ML models:', error.message);
-            console.warn('Proceeding with limited functionality');
+            console.warn('Proceeding with limited functionality; transformer-based features disabled');
         }
 
         try {
@@ -82,7 +81,7 @@ app.post('/api/scrape-all', async (req, res) => {
         await loadPatternsAndTrainModels();
         res.json(results);
     } catch (error) {
-        logger.error(`Scrape-all error: ${error.message}`);
+        logger.error('Scrape-all error:', error.message);
         res.status(500).json({ error: error.message });
     }
 });
@@ -91,20 +90,8 @@ app.post('/api/generate', async (req, res) => {
     try {
         const { prompt, diversityFactor = 0.7, depth = 8, breadth = 6, maxWords = 300, mood = 'neutral' } = req.body;
 
-        if (!prompt || typeof prompt !== 'string' || prompt.trim().length < 1) {
+        if (!prompt) {
             return res.status(400).json({ error: 'Prompt is required' });
-        }
-
-        const cleanedPrompt = prompt.toLowerCase().trim();
-        if (['hello', 'hi', 'hey', 'greetings'].includes(cleanedPrompt)) {
-            const response = {
-                text: `Hi! How can I assist you today?`,
-                confidence: 0.99,
-                outputId: crypto.randomBytes(12).toString('hex'),
-                source: 'CASI'
-            };
-            logger.info(`Generated greeting response for prompt: ${prompt}, outputId: ${response.outputId}`);
-            return res.json(response);
         }
 
         const patterns = app.locals.patterns;
@@ -112,25 +99,24 @@ app.post('/api/generate', async (req, res) => {
             throw new Error('Patterns collection not initialized');
         }
 
-        const query = cleanedPrompt.includes('casi') || cleanedPrompt.includes('who are you') ? 'self_description' : cleanedPrompt.split(' ').join(' ');
+        const query = prompt.toLowerCase().split(' ').join(' ');
         const existingPatterns = await patterns.find({
             concept: { $regex: query, $options: 'i' },
             confidence: { $gte: 0.95 }
-        }).sort({ feedbackScore: -1, confidence: -1, updatedAt: -1 }).limit(depth).toArray();
+        }).sort({ updatedAt: -1 }).limit(depth).toArray();
 
         let response;
-        const adjustedMaxWords = cleanedPrompt.length < 10 ? Math.min(maxWords, 50) : maxWords;
         if (existingPatterns.length > 0) {
             response = await generateResponse({
                 prompt,
                 diversityFactor,
                 depth,
                 breadth,
-                maxWords: adjustedMaxWords,
+                maxWords,
                 mood,
                 patterns: existingPatterns
             });
-            logger.info(`Generated response with existing patterns for prompt: ${prompt}, outputId: ${response.outputId}, source: ${response.source}`);
+            logger.info(`Generated response with existing patterns for prompt: ${prompt}, outputId: ${response.outputId}`);
         } else {
             logger.info(`No patterns found for "${prompt}", triggering on-demand scrape`);
             await scrapeOnDemand(query, prompt, patterns);
@@ -138,7 +124,7 @@ app.post('/api/generate', async (req, res) => {
             const newPatterns = await patterns.find({
                 concept: { $regex: query, $options: 'i' },
                 confidence: { $gte: 0.95 }
-            }).sort({ feedbackScore: -1, confidence: -1, updatedAt: -1 }).limit(depth).toArray();
+            }).sort({ updatedAt: -1 }).limit(depth).toArray();
 
             if (newPatterns.length > 0) {
                 response = await generateResponse({
@@ -146,69 +132,25 @@ app.post('/api/generate', async (req, res) => {
                     diversityFactor,
                     depth,
                     breadth,
-                    maxWords: adjustedMaxWords,
+                    maxWords,
                     mood,
                     patterns: newPatterns
                 });
-                logger.info(`Generated response with new patterns for prompt: ${prompt}, outputId: ${response.outputId}, source: ${response.source}`);
+                logger.info(`Generated response with new patterns for prompt: ${prompt}, outputId: ${response.outputId}`);
             } else {
-                response = await generateResponse({
-                    prompt,
-                    diversityFactor,
-                    depth,
-                    breadth,
-                    maxWords: adjustedMaxWords,
-                    mood,
-                    patterns: []
-                });
+                response = {
+                    text: 'Sorry, I couldn’t find enough info. Try again later!',
+                    confidence: 0.95,
+                    outputId: crypto.randomBytes(12).toString('hex')
+                };
                 logger.warn(`No patterns found after on-demand scraping for prompt: ${prompt}`);
             }
         }
 
         res.json(response);
     } catch (error) {
-        const promptForLog = req.body.prompt || 'unknown';
-        logger.error(`Generate error for prompt: ${promptForLog}: ${error.message}`);
-        res.status(error.status || 500).json({ 
-            error: 'Failed to generate response. Please try again.',
-            outputId: crypto.randomBytes(12).toString('hex'),
-            source: 'Error'
-        });
-    }
-});
-
-app.post('/api/feedback', async (req, res) => {
-    try {
-        const { outputId, vote } = req.body;
-        if (!outputId || !['upvote', 'downvote'].includes(vote)) {
-            return res.status(400).json({ error: 'outputId and vote (upvote/downvote) are required' });
-        }
-
-        await client.connect();
-        const db = client.db('CASIDB');
-        const patterns = db.collection('patterns');
-
-        const pattern = await patterns.findOne({ outputId });
-        if (!pattern) {
-            return res.status(404).json({ error: 'Response not found' });
-        }
-
-        const feedbackScore = pattern.feedbackScore || 0;
-        const newScore = vote === 'upvote' ? feedbackScore + 0.1 : feedbackScore - 0.1;
-        const newConfidence = Math.min(Math.max(pattern.confidence + (vote === 'upvote' ? 0.01 : -0.01), 0.9), 0.995);
-
-        await patterns.updateOne(
-            { outputId },
-            { $set: { feedbackScore: newScore, confidence: newConfidence, updatedAt: new Date() } }
-        );
-
-        logger.info(`Feedback recorded for outputId: ${outputId}, vote: ${vote}, newScore: ${newScore}`);
-        res.json({ message: 'Feedback recorded', newScore, newConfidence });
-    } catch (error) {
-        logger.error(`Feedback error: ${error.message}`);
-        res.status(500).json({ error: 'Failed to record feedback' });
-    } finally {
-        await client.close();
+        logger.error(`Generate error for prompt: ${prompt}: ${error.message}`);
+        res.status(error.status || 500).json({ error: error.message });
     }
 });
 
